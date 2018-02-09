@@ -1,5 +1,80 @@
-h1, h3
+/* FONTS */
+body {
+    font-family: 'Varela Round', sans-serif;
+}
+
+
+p {
+
+    font-size: 0.9em;
+}
+
+/* menu */
+.blockElt {
+    width: 280px;
+    padding: 20px 10px 10px 10px;
+    border: 1px solid black;
+    height: 350px;
+    overflow-y: scroll;
+}
+
+
+li{
+    list-style: none;
+}
+
+#logo {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+/* dashboard */
+
+nav {
+    transform: translate(8px, 23px);
+}
+
+.blockTitle
 {
+    font-weight: bold;
+    transform: translate(8px, 20px);
+    background-color: white;
+    /* width: 248px; */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#lastEpisode
+{
+    width: 156px;
+}
+
+#lastTicket
+{
+    width: 138px;
+}
+
+#lastComments
+{
+    width: 156px;
+}
+
+#reportedComments
+{
+    width: 248px;
+}
+
+#postsStats
+{
+    width: 192px;
+}
+
+#readersStats
+{
+    width: 197px;
+}
+
+h1, h3 {
     text-align:center;
 }
 h3
@@ -90,8 +165,8 @@ textarea {
 #create,
 #update,
 #delete {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     transition: all ease 0.3s;
 }
 

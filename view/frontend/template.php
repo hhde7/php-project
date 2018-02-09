@@ -9,4 +9,7 @@
 	<body>
 		<?= $content ?>
 	</body>
+	<?php
+	include('view\frontend\footer.php')
+	?>
 </html>

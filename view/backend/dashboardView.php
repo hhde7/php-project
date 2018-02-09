@@ -1,29 +1,94 @@
+<?php
+
+	require_once('model/CommentManager.php');
+	require_once('model/CounterManager.php');
+	$commentManager = new JeanForteroche\Blog\Model\CommentManager;
+	$postManager = new JeanForteroche\Blog\Model\PostManager;
+	$counterManager = new JeanForteroche\Blog\Model\CounterManager;
+
+?>
+
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style_blog.css">
-	<title>Tableau de bord</title>
-</head>
-<body>
-	<h1>Tableau de bord</h1>
-	<h2>Administrer mon blog</h2>
-	<div id="contener">
-		<a href="index_blog.php" id="read">
-			<p>Lire</p>
-		</a>
-		<a href="add_article.php" id="create">
-			<p>Poster</p>
-		</a>
-		<a href="modify_article.php" id="update">
-			<p>Modifier</p>
-		</a>
-		<a href="delete_article.php" id="delete">
-			<p>Effacer</p>
-		</a>
-	</div>
-	<br />
-	<div id="moderate">Modérer les commentaires signalés par la communauté</div> <!-- PHP n articles à modérer -->
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="public/css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+		<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-</body>
+		<title>Tableau de bord</title>
+	</head>
+	<body>
+		 
+		<div class="col-lg-12">
+			<a href="index.php"><img id="logo" src="public/images/logo_02.png"/></a>
+		</div>
+		
+		<div class="col-lg-3" id="menu">
+			<?php
+			include('menu.php');
+			?>
+		</div>
+
+		<div class="col-lg-3">
+			<p class="blockTitle" id="lastEpisode">Dernier épisode publié</p>
+			
+			<div class="blockElt">
+			<?php 
+			include('lastEpisode.php');
+			?>
+			</div>
+
+			<p class="blockTitle" id="lastTicket">Dernier billet publié</p>
+
+			<div class="blockElt">
+			<?php 
+			include('lastTicket.php');
+			?>
+			</div>
+		</div>
+		
+		<div class="col-lg-3">
+			<p class="blockTitle" id="lastComments">Commentaires récents</p>
+
+			<div class="blockElt">
+			<?php 
+			include('lastComments.php');
+			?>
+			</div>
+
+			<p class="blockTitle" id="reportedComments">Commentaires soumis à modération</p>
+
+			<div class="blockElt">
+			<?php 
+			include('reportedComments.php');
+			?>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<p class="blockTitle" id="postsStats">Statistiques sur mes articles</p>
+
+			<div class="blockElt">
+			<?php 
+			include('postsStats.php');
+			?>
+			</div>
+
+			<p class="blockTitle" id="readersStats">Statistiques sur mes lecteurs</p>
+
+			<div class="blockElt">
+			<?php 
+			include('readersStats.php');
+			?>
+			</div>
+		</div>
+
+		
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+		<script src="../../public/bootstrap/js/jquery.min.js"></script>
+		<script src="../../public/bootstrap/js/bootstrap.min.js"></script>
+	</body>
+	
 </html>

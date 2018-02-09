@@ -1,5 +1,3 @@
-<?php 
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,64 +7,76 @@
     </head>
         
     <body>
-        <h1>Mon super blog !</h1>
+        <h1>Articles</h1>
         <p><a href="index.php?action=listPosts">Retour à la liste des billets</a></p>
 
         <div class="news">
-            <h3>
-                <?= htmlspecialchars($post['title']) ?>
-                <em>le <?= $post['creation_date_fr'] ?></em>
-            </h3>
-            
-            <p>
-                <?= nl2br(htmlspecialchars($post['content'])) ?>
-            </p>
+            <h3><?= $post->getTitle().'<em>'.$post->getCreationDate().'</em>' ?></h3>
+            <p><?= $post->getContent() ?></p>
             <div id="navControl">
                 <?php
+                // Liens précédent et suivant
+                // Si premier article affiché -> pas de lien vers article précédent
+                // Si dernier article affiché -> pas de lien vers article suivant
                 if (isset($_GET['id']) AND $_GET['id'] > 1 ) {
-                    ?>
+                ?>
                     <a id="previousPost" href="index.php?action=post&id=<?=$_GET['id'] - 1 ?>">Précédent</a>
-                    <?php
+                <?php
                 }
+
+                // à mettre dans le controller
                 $lastPostId = new JeanForteroche\Blog\Model\PostManager();
                 $nb_posts = $lastPostId->nb_posts();
-
+                // ------------------------------
+                
                 if (isset($_GET['id']) AND $_GET['id'] < $nb_posts[0] ) {
-                    ?>
+                ?>
                     <a id="nextPost" href="index.php?action=post&id=<?=$_GET['id'] + 1 ?>">Suivant</a>
-                    <?php
-                    }
-                    ?>    
+                <?php
+                }
+                ?>    
             </div>
         </div>
 
         <h2>Commentaires</h2>
 
-        <?php
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-        while ($comment = $comments->fetch())
-        {
+        <?php 
+       
+        // Boucle parcourant le tableau d'objets $comments
+        for ($i=0; $i < count($comments) ; $i++) {
         ?>
-            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-            <?php
-            if (isset($_GET['report'])) {
-                $reportComment = $commentManager->reportComment($_GET['report']); 
-            }
+
+            <p><strong><?= $comments[$i]->getAuthor() ?></strong><em><?= $comments[$i]->getCommentDate() ?></em></p>
+            <p><?= $comments[$i]->getComment() ?></p>
             
-            $commentStatus = $commentManager->commentStatus($comment['id']);
-            if (isset($commentStatus) AND $commentStatus['status'] == 'reported') {
-            ?>
+        
+        <?php
+            /*  Utilisation d'un "booléen" MySQL de type TINYINT(1) avec :
+                FALSE = 0
+                TRUE = 1
+             */
+            if ($comments[$i]->getReported() === '1') {
+                ?>
                 <p id="reported">(message en attente de modération)</p>
-            <?php 
-            } else {
-            ?>
-                <a href="index.php?action=post&amp;report=<?=$comment['id']?>&amp;id=<?= $post['id'] ?>">(signaler un abus)</a>
-            <?php
-            }
-        }
+                <?php
+            } elseif ($comments[$i]->getReported() === '0') {
+                $thisComment = $comments[$i]->getCommentId();
+                
+                ?>
+                <a href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?=$_GET['id']?>">(signaler un abus)</a> 
+                <?php
+            } 
+          
         ?>
-        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+  
+        <?php
+        } // Fin de la boucle
+        $postManager = new JeanForteroche\Blog\Model\PostManager();
+        $post = $postManager->getPost($_GET['id']);
+        $postType = $post->getType();
+        ?>
+
+        <form action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>&amp;type=<?= $postType ?>" method="post">
             <div>
                 <label for="author">Auteur</label><br />
                 <input type="text" id="author" name="author" />
@@ -79,5 +89,8 @@
                 <input type="submit" />
             </div>
         </form>
+        <?php
+        include('visitorCounter.php');
+        ?>
     </body>
 </html>

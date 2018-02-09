@@ -5,13 +5,13 @@ $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
 
-<h1>Mon super blog !</h1>
+<h1>Jean Forteroche</h1>
 <p>Derniers billets du blog :</p>
 
 <p id="pagination">Allez à la page :     
 <?php
-$nb_pages = new JeanForteroche\Blog\Model\PostManager();
-$pagesNumber = $nb_pages->paging();
+$postManager = new JeanForteroche\Blog\Model\PostManager();
+$pagesNumber = $postManager->paging();
 
 for ($i=0; $i < $pagesNumber; $i++) {
 ?>
@@ -28,7 +28,7 @@ while ($data = $relatedPosts->fetch())
     <div class="news">
         <h3>
             <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
+            <em>le <?= $data['creationDateFr'] ?></em>
         </h3>
             
         <p>
