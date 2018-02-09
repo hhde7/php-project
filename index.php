@@ -11,7 +11,7 @@ try {
 				$controller->listPosts();
 			}
 			elseif ($_GET['action'] == 'post') {
-				if (isset($_GET['id']) && $_GET['id'] > 0) {
+				if (isset($_GET['id']) AND $_GET['id'] > 0) {
 					$controller->post();
 				}
 				else {
@@ -19,8 +19,8 @@ try {
 				}
 			}
 			elseif ($_GET['action'] == 'addComment') {
-	        	if (isset($_GET['id']) && $_GET['id'] > 0) {
-	            	if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+	        	if (isset($_GET['id']) AND $_GET['id'] > 0) {
+	            	if (!empty($_POST['author']) AND !empty($_POST['comment'])) {
 	                	$controller->addComment($_GET['id'], $_GET['type'], $_POST['author'], $_POST['comment']);
 	            	}
 	            	else {
@@ -35,7 +35,7 @@ try {
 	    		if (!isset($_GET['reported'])) {
 	    			$controller->confirmReport($_GET['comment']);
 	    		}
-	    		elseif (isset($_GET['reported']) && $_GET['reported'] > 0) {
+	    		elseif (isset($_GET['reported']) AND $_GET['reported'] > 0) {
 	    			$controller->reportComment($_GET['reported']);
 	    		}
 	    		else {
@@ -43,23 +43,31 @@ try {
 	    		}
 	    	}
 	    	elseif ($_GET['action'] == 'login' ) {
-	    		if (isset($_GET['action'])) {
+	    		if (isset($_GET['action']) AND !isset($_SESSION['email']) AND !isset($_SESSION['password'])) {
 	    			$controller->loginPage();
+	    		}
+	    		elseif (isset($_SESSION['email']) AND isset($_SESSION['password'])) {
+	    			$controller->displayDashboard();
 	    		}
 	    		else {
 	    			throw new Exception('erreur d\'accès à la page de connexion');
 	    		}
 	    	}
 	    	elseif ($_GET['action'] == 'loginCheck' ) {
-	    		if (isset($_POST['email']) && isset($_POST['password'])) {
+	    		if (isset($_POST['email']) AND isset($_POST['password']) OR !isset($_SESSION['email']) AND !isset($_SESSION['password']))
+	    		{
 	    			$controller->loginCheck($_POST['email'], $_POST['password']);
+	    		}
+	    		elseif (isset($_SESSION['email']) AND isset($_SESSION['password']))
+	    		{
+	    			$controller->displayDashboard();
 	    		}
 	    		else {
 	    			throw new Exception('erreur d\'accès à la page de connexion');
 	    		}
 	    	}
-	    	elseif ($_GET['action'] == 'dashboard' ) {
-	    		if (isset($_GET['action']) && isset($_SESSION['email']) && isset($_SESSION['password'])) {
+	    	elseif ($_GET['action'] == 'dashboard') {
+	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
 	    			$controller->displayDashboard();
 	    			if (isset($_GET['delete'])) {
 	    				$controller->moderateComments($_GET['delete'], 'delete');
@@ -70,6 +78,14 @@ try {
 	    		}
 	    		else {
 	    			throw new Exception('impossible de charger l\'espace membre');
+	    		}
+	    	}
+	    	elseif ($_GET['action'] == 'logout') {
+	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
+	    			$controller->logout();
+	    		}
+	    		else {
+	    			throw new Exception('il y a eu un problème lors de la déconnection...');
 	    		}
 	    	}
 	}

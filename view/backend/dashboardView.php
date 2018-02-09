@@ -2,6 +2,7 @@
 
 require_once('model/CommentManager.php');
 require_once('model/CounterManager.php');
+
 $commentManager = new JeanForteroche\Blog\Model\CommentManager;
 $postManager = new JeanForteroche\Blog\Model\PostManager;
 $counterManager = new JeanForteroche\Blog\Model\CounterManager;
@@ -90,5 +91,7 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		<script src="../../public/bootstrap/js/jquery.min.js"></script>
 		<script src="../../public/bootstrap/js/bootstrap.min.js"></script>
 	</body>
-	
+	<?php
+    include('view/frontend/footer.php');
+    ?>
 </html>

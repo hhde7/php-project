@@ -93,4 +93,7 @@
         include('visitorCounter.php');
         ?>
     </body>
+    <?php
+    include('footer.php');
+    ?>
 </html>

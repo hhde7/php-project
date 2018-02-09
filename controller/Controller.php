@@ -97,4 +97,11 @@ class Controller
 	{	
 		require('view/backend/dashboardView.php');
 	}
+
+	public function logout()
+	{
+		session_destroy();
+	    
+	    header( "Location: index.php");
+	}
 }
