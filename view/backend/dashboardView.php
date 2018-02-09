@@ -1,10 +1,10 @@
 <?php
 
-	require_once('model/CommentManager.php');
-	require_once('model/CounterManager.php');
-	$commentManager = new JeanForteroche\Blog\Model\CommentManager;
-	$postManager = new JeanForteroche\Blog\Model\PostManager;
-	$counterManager = new JeanForteroche\Blog\Model\CounterManager;
+require_once('model/CommentManager.php');
+require_once('model/CounterManager.php');
+$commentManager = new JeanForteroche\Blog\Model\CommentManager;
+$postManager = new JeanForteroche\Blog\Model\PostManager;
+$counterManager = new JeanForteroche\Blog\Model\CounterManager;
 
 ?>
 

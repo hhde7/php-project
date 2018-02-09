@@ -87,6 +87,8 @@ class Controller
 			throw new Exception('Les identifiants sont incorrects');
 		}
 		else {
+			$_SESSION['email'] = $email;
+			$_SESSION['password'] = $password;
 			header('location: index.php?action=dashboard');
 		}
 	}

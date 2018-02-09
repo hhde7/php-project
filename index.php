@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require_once('controller/Controller.php');
 $controller = new Controller;
 
@@ -56,7 +59,7 @@ try {
 	    		}
 	    	}
 	    	elseif ($_GET['action'] == 'dashboard' ) {
-	    		if (isset($_GET['action'])) {
+	    		if (isset($_GET['action']) && isset($_SESSION['email']) && isset($_SESSION['password'])) {
 	    			$controller->displayDashboard();
 	    			if (isset($_GET['delete'])) {
 	    				$controller->moderateComments($_GET['delete'], 'delete');
