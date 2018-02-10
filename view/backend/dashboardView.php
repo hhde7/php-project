@@ -3,6 +3,7 @@
 require_once('model/CommentManager.php');
 require_once('model/CounterManager.php');
 
+
 $commentManager = new JeanForteroche\Blog\Model\CommentManager;
 $postManager = new JeanForteroche\Blog\Model\PostManager;
 $counterManager = new JeanForteroche\Blog\Model\CounterManager;
@@ -17,7 +18,7 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		<link rel="stylesheet" type="text/css" href="public/css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 		<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+	
 		<title>Tableau de bord</title>
 	</head>
 	<body>
@@ -85,11 +86,15 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 			?>
 			</div>
 		</div>
-
 		
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		<script src="../../public/bootstrap/js/jquery.min.js"></script>
-		<script src="../../public/bootstrap/js/bootstrap.min.js"></script>
+		
+		
+		<!-- TINYMCE SCRIPTS -->
+		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/plugin/tinymce.min.js"></script>
+		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/plugin/init-tinymce.js"></script>
+
 	</body>
 	<?php
     include('view/frontend/footer.php');

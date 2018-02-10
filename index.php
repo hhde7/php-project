@@ -74,6 +74,9 @@ try {
 	    			}
 	    			elseif (isset($_GET['allow'])) {
 	    				$controller->moderateComments($_GET['allow'], 'allow');
+	    			}
+	    			elseif (isset($_GET['posted']) AND $_GET['posted'] == 'all') {
+	    				$controller->displayArticleWriter();
 	    			}   		
 	    		}
 	    		else {

@@ -98,6 +98,11 @@ class Controller
 		require('view/backend/dashboardView.php');
 	}
 
+	public function displayArticleWriter()
+	{
+		require('view/backend/articleWriter.php');
+	}
+
 	public function logout()
 	{
 		session_destroy();
