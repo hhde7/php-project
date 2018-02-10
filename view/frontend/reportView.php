@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,13 +13,13 @@ session_start();
 
 		<p></p>
 		
-		<?php
+<?php
 		if (isset($_GET['comment'])) {
 		?>	
 		<p>Souhaitez-vous vraiment signaler ce commentaire ?</p>
 			<a href="index.php?action=report&amp;id=<?=$_GET['id']?>&amp;reported=<?=$_GET['comment']?>"><input type="button" value="Oui" /></a>
 			<a href="index.php?action=post&amp;id=<?=$_GET['id']?>"><input type="button" value="Non" /></a>
-		<?php
+<?php
 		} else {
 		?>
 			<p>Commentaire signalé au modérateur</p>	

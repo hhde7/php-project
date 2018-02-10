@@ -37,17 +37,17 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 			<p class="blockTitle" id="lastEpisode">Dernier épisode publié</p>
 			
 			<div class="blockElt">
-			<?php 
-			include('lastEpisode.php');
-			?>
+				<?php 
+				include('lastEpisode.php');
+				?>
 			</div>
 
 			<p class="blockTitle" id="lastTicket">Dernier billet publié</p>
 
 			<div class="blockElt">
-			<?php 
-			include('lastTicket.php');
-			?>
+				<?php 
+				include('lastTicket.php');
+				?>
 			</div>
 		</div>
 		
@@ -55,17 +55,17 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 			<p class="blockTitle" id="lastComments">Commentaires récents</p>
 
 			<div class="blockElt">
-			<?php 
-			include('lastComments.php');
-			?>
+				<?php 
+				include('lastComments.php');
+				?>
 			</div>
 
 			<p class="blockTitle" id="reportedComments">Commentaires soumis à modération</p>
 
 			<div class="blockElt">
-			<?php 
-			include('reportedComments.php');
-			?>
+				<?php 
+				include('reportedComments.php');
+				?>
 			</div>
 		</div>
 
@@ -73,19 +73,23 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 			<p class="blockTitle" id="postsStats">Statistiques sur mes articles</p>
 
 			<div class="blockElt">
-			<?php 
-			include('postsStats.php');
-			?>
+				<?php 
+				include('postsStats.php');
+				?>
 			</div>
 
 			<p class="blockTitle" id="readersStats">Statistiques sur mes lecteurs</p>
 
 			<div class="blockElt">
-			<?php 
-			include('readersStats.php');
-			?>
+				<?php 
+				include('readersStats.php');
+				?>
 			</div>
 		</div>
+
+		<!-- JAVASCRIPT -->
+
+		<!-- FONT AWESOME SCRIPT -->
 		
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		

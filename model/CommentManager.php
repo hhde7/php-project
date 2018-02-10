@@ -16,6 +16,7 @@ class CommentManager extends Manager
 	    $req->execute(array($postId));
 	    $data = $req->fetchAll();
 	    $allComments = array();
+	    /* foreach */
 	    for ($i=0; $i < count($data) ; $i++) {
 	       	$comment = new Comment($data[$i]);
 	       	$allComments[] = $comment;
@@ -46,6 +47,7 @@ class CommentManager extends Manager
         $req->execute(array($type));
         $postId = $req->fetch(); 
      	
+
         return $postId[0];
     }
 
@@ -94,8 +96,8 @@ class CommentManager extends Manager
 		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM comments WHERE id = ?');
 		$req->execute(array($id));
-		$message = 'Commentaire n° ' . $id . ' supprimé';
-		
+		$message = 'Commentaire supprimé';
+
 		return $message;
 	}
 
@@ -104,7 +106,7 @@ class CommentManager extends Manager
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE comments SET reported = 0 WHERE id = ?');
 		$req->execute(array($id));
-		$message = 'Commentaire n° ' . $id . ' accepté';
+		$message = 'Commentaire accepté';
 
 		return $message;
 	}

@@ -68,16 +68,10 @@ try {
 	    	}
 	    	elseif ($_GET['action'] == 'dashboard') {
 	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
-	    			$controller->displayDashboard();
-	    			if (isset($_GET['delete'])) {
-	    				$controller->moderateComments($_GET['delete'], 'delete');
-	    			}
-	    			elseif (isset($_GET['allow'])) {
-	    				$controller->moderateComments($_GET['allow'], 'allow');
-	    			}
-	    			elseif (isset($_GET['posted']) AND $_GET['posted'] == 'all') {
-	    				$controller->displayArticleWriter();
-	    			}   		
+	    			$controller->displayDashboard();	    			   	   		
+		    		if (isset($_GET['new']) AND $_GET['new'] == 'ok') {
+		    			$controller->displayArticleWriter();
+		    		}
 	    		}
 	    		else {
 	    			throw new Exception('impossible de charger l\'espace membre');
@@ -91,7 +85,23 @@ try {
 	    			throw new Exception('il y a eu un problème lors de la déconnection...');
 	    		}
 	    	}
-	}
+	    	elseif ($_GET['action'] == 'moderate') {
+	    		if (isset($_GET['allow']) AND !isset($_GET['confirm']) OR isset($_GET['delete']) AND !isset($_GET['confirm'])) {
+	    			$controller->displayModeratePage();
+	    		}
+	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'allow') {
+	    			$controller->moderateComments($_GET['allow'], 'allow');
+	    			header('location: index.php?action=dashboard');
+	    		}
+	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'delete') {
+	    			$controller->moderateComments($_GET['delete'], 'delete');
+	    			header('location: index.php?action=dashboard');
+	    		}
+	    	}
+	    		
+	    	
+	  }
+	
 	else {
 		$controller->listPosts();
 	}

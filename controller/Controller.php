@@ -60,6 +60,11 @@ class Controller
 		require('view/frontend/reportView.php');
 	}
 
+	public function displayModeratePage()
+	{
+		require('view/backend/moderateView.php');
+	}
+
 	public function moderateComments($id, $action)
 	{
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
@@ -70,7 +75,6 @@ class Controller
 		} else {
 			throw new Exception('impossible de modérer ce commentaire');	
 		}
-		header( "Location: index.php?action=dashboard" );
 	}
 
 	public function loginPage()
