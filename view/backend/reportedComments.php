@@ -9,7 +9,7 @@
             $postType = '<i class="fas fa-bullhorn"></i>  ';
         } 
         else {
-            $postType = '<i class="fab fa-envira"></i> Épisode : ';
+            $postType = '<i class="fab fa-envira"></i>  ';
         }
         
         ?>

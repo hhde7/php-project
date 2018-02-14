@@ -3,6 +3,9 @@ body {
     font-family: 'Varela Round', sans-serif;
 }
 
+html {
+   
+}
 
 p {
 
@@ -10,18 +13,34 @@ p {
 }
 /* header */
 
-#header {
-    background-color: rgba(168,130,122,0.1);
-    height: 100px;
+header {
+    height: 110px;
     border-bottom: 1px dashed rgba(168,130,122,0.8);
+    background: url('../images/23(g).png') no-repeat left top;
+    background-width: cover;
+    background-color: rgba(168,130,122,0.1);
+    box-shadow: 0 0 11px grey;  
+    background-size: 100%;
 }
 
-#login-logout {
+.login-logout {
+    /*font-family: 'Waiting for the Sunrise', cursive;*/
+    /*font-weight: bold; */
     position: relative;
     float: right;
-    top: -90px;
+    text-align: right;
+    top: -80px;
     right: 20px;
     }
+
+.login-logout a {
+    color: black;
+}
+
+.login-logout a:hover {
+    text-decoration: none;
+}
+
 
 /* menu */
 .blockElt {
@@ -42,20 +61,32 @@ li{
 }
 
 #logo {
-    margin-top: 5px;
+    margin-top: 2px;
     margin-left: 23px;
+    
 }
 /* dashboard */
 
 /* menu */
 
-#adminTitle,
-#postsStatsTitle,
-#readersStatsTitle {
+#menu {
+    margin-top: 5px;
+}
+
+#adminTitle {
+
     transform: translateX(-16px);
     width: 298px;
     color: white;
 }
+
+#postsStatsTitle,
+#readersStatsTitle {
+    transform: translate(-16px,23px);
+    width: 299px;
+    color: white;
+}
+
 
 
 #adminTitle,
@@ -88,20 +119,14 @@ li{
     font-weight: normal;
 }
 
-#corner {
+.corner {
     transform: translate(271px, -16px);
 }
 
-#adminTitle a
-{
-    color: white;
+.cornerd {
+     transform: translate(272px, 8px);
 }
 
-#adminTitle a:hover
-{
-    color: rgb(230,230,230);
-    text-decoration: none;
-}
 
 h2 {
     font-size: 15px !important;
@@ -125,6 +150,45 @@ h2 {
     color: rgba(0,0,0,0.7);
 }
 
+.fa-paperclip {
+    color: rgba(124,25,198,0.5);
+}
+
+.fa-bell {
+    transform: rotateZ(344deg); 
+    color: rgba(181,11,11,0.5);
+}
+
+.fa-users {
+    color: rgba(155,169,44,0.6);
+}
+
+.fa-chart-line {
+    color: rgba(47,81,144,0.6);
+}
+
+.fa-calculator {
+    color: rgba(243,170,62,0.7);
+}
+
+.stats-square {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+
+
+
+.stats-square p {
+    border: 1px dashed rgba(168,130,122,0.8);
+    padding: 3px;
+    background-color: white;
+    width: 118px;
+    border-radius: 5px;
+}
+
+
+
 li a {
     color: rgba(0,0,0,0.7);
 }
@@ -135,11 +199,12 @@ li a:hover {
 
 nav {
     border-right: 1px dashed rgba(168,130,122,0.8);
-    padding: 0 15px 15px 15px;
-    /*border-radius: 15px 0 0 15px; */
+    padding: 1px 15px 15px 15px;
     transform: translate(-14px, -25px);
     background-color: rgba(168,130,122,0.1);
-        margin-bottom: -47px;
+    margin-bottom: -47px;
+    transform: translate(-15px,-4px);
+
 
   }
 
@@ -162,6 +227,7 @@ nav {
     font-size: 14px;
     transform: translateY(-35px);
     margin-bottom: -35px;
+    box-shadow: 0px 2px 11px #ababab;
 }
 
 #lastEpisode,
@@ -174,16 +240,26 @@ nav {
      background-color: rgba(59,63,173,0.1);
 }
 
+.menuContener {
+    box-shadow: -6px 19px 12px 6px grey; 
+}
+
 #postsStats,
-#readersStats {       
+#readersStats {  
+    box-shadow: 0 5px 11px grey;      
     background-color: rgba(168,130,122,0.1);
     padding: 15px 15px 15px 15px;
-    transform: translate(-14px, -31px);
+    transform: translate(-14px, -6px);
     border: none;
     border-right: 1px dashed rgba(168,130,122,0.8);
+    margin-top: -14px;
     margin-bottom: -51px;
 }
 
+#postsStats p,
+#readersStats p {
+
+}
 
 #lastEpisodeTitle,
 #lastTicketTitle,
@@ -198,6 +274,9 @@ nav {
 
 
 
+.stats-h2 {
+    margin-left: 0px;
+}
 
 h1, h3 {
     text-align:center;

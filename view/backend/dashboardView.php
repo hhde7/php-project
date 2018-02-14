@@ -17,6 +17,7 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="public/css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+		
 		<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 	
@@ -33,7 +34,7 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 			include('menu.php');
 			?>
 			<h2 id="postsStatsTitle">STATS SUR MES ARTICLES</h2>
-			<img id="corner" src="public/images/corner.png" />
+			<img class="cornerd" src="public/images/cornerd.png" />
 			<div id="postsStats">
 				<?php 
 				include('postsStats.php');
@@ -41,7 +42,7 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 			</div>
 
 			<h2 id="readersStatsTitle">STATS SUR MES LECTEURS</h2>
-			<img id="corner" src="public/images/corner.png" />
+			<img class="cornerd" src="public/images/cornerd.png" />
 			<div id="readersStats">
 				<?php 
 				include('readersStats.php');
@@ -84,25 +85,7 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 				?>
 			</div>
 		</div>
-		<!--
-		<div class="col-lg-2">
-			<h2 id="postsStatsTitle">STATS SUR MES ARTICLES</h2>
 
-			<div id="postsStats">
-				<?php 
-				include('postsStats.php');
-				?>
-			</div>
-
-			<h2 id="readersStatsTitle">STATS SUR MES LECTEURS</h2>
-
-			<div id="readersStats">
-				<?php 
-				include('readersStats.php');
-				?>
-			</div>
-		</div>
-		-->
 		<!-- JAVASCRIPT -->
 
 		<!-- FONT AWESOME SCRIPT -->

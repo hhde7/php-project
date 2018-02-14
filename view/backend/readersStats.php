@@ -7,10 +7,20 @@ $allReaders = $counterManager->getReaders(364*10);
 
 ?>
 
+<div>
+	<h2 class="stats-h2"><i class="fas fa-chart-line"></i> LECTEURS UNIQUES</h2>
+	
+	<div class="stats-square">
+		<div>
+			<p><?= '<strong>' . $dayReaders . '</strong>' ?><br />aujourd'hui</p>
+			<p><?= '<strong>' . $weekReaders . '</strong>' ?><br />cette semaine</p>
+		</div>
+		<div>
+			<p><?= '<strong>' . $monthReaders . '</strong>' ?><br />ce mois</p>
+			<p><?= '<strong>' . $yearReaders . '</strong>' ?><br />cette année</p>
+		</div>
+	</div>
 
-<p>Nombre de lecteurs unique</p><br />
-<p><?= $dayReaders ?> aujourd'hui</p>
-<p><?= $weekReaders ?> cette semaine</p>
-<p><?= $monthReaders ?> ce mois</p>
-<p><?= $yearReaders ?> cette année</p>
-<p>Total des lecteurs uniques : <?= $allReaders ?></p>
+	<h2 class="stats-h2"><i class="fas fa-calculator"></i> Total des lecteurs uniques : <?= '<strong>' . $allReaders . '</strong>' ?></h2>
+
+</div>

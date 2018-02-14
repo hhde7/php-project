@@ -1,7 +1,7 @@
 <nav class="menuContener">
 
-	<h2 id="adminTitle"><a href="index.php?action=dashboard">ADMINISTRATION DU BLOG</a></h2>
-	<img id="corner" src="public/images/corner.png" />
+	<h2 id="adminTitle">ADMINISTRATION DU BLOG</h2>
+	<img class="corner" src="public/images/cornerd.png" />
 	<!-- pas de h2 pour le texte en gras mais font-weight via css -->
 	<h2  id="episodesTitle" ><i class="fab fa-envira"></i>
 
