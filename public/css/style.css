@@ -6,73 +6,198 @@ body {
 
 p {
 
-    font-size: 0.9em;
+    font-size: 14px;
 }
+/* header */
+
+#header {
+    background-color: rgba(168,130,122,0.1);
+    height: 100px;
+    border-bottom: 1px dashed rgba(168,130,122,0.8);
+}
+
+#login-logout {
+    position: relative;
+    float: right;
+    top: -90px;
+    right: 20px;
+    }
 
 /* menu */
 .blockElt {
-    width: 280px;
+    width: 100%;
     padding: 20px 10px 10px 10px;
+    margin-left: 0;
     border: 1px solid black;
-    height: 350px;
+    height: 150px;
     overflow-y: scroll;
+    background-color: lightblue;
 }
+
 
 
 li{
     list-style: none;
+    margin-left: -13px;
 }
 
 #logo {
-    margin-top: 20px;
-    margin-left: 40px;
+    margin-top: 5px;
+    margin-left: 23px;
 }
-
 /* dashboard */
 
-nav {
-    transform: translate(8px, 23px);
+/* menu */
+
+#adminTitle,
+#postsStatsTitle,
+#readersStatsTitle {
+    transform: translateX(-16px);
+    width: 298px;
+    color: white;
 }
 
-.blockTitle
+
+#adminTitle,
+#lastEpisodeTitle,
+#lastTicketTitle,
+#lastCommentsTitle,
+#reportedCommentsTitle/*,
+#postsStatsTitle,
+#readersStatsTitle */{
+    text-align: center;
+    background-color: #a59191;
+    padding: 7px 5px 5px 5px;
+    box-shadow: 0px 2px 11px #ababab;
+    font-weight: normal;
+}
+
+#postsStatsTitle {
+    background-color: #88967f;
+     text-align: center;
+    padding: 7px 5px 5px 5px;
+    box-shadow: 0px 2px 11px #ababab;
+    font-weight: normal;
+}
+
+#readersStatsTitle {
+    background-color: #9194a5;
+     text-align: center;
+    padding: 7px 5px 5px 5px;
+    box-shadow: 0px 2px 11px #ababab;
+    font-weight: normal;
+}
+
+#corner {
+    transform: translate(271px, -16px);
+}
+
+#adminTitle a
 {
+    color: white;
+}
+
+#adminTitle a:hover
+{
+    color: rgb(230,230,230);
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 15px !important;
     font-weight: bold;
-    transform: translate(8px, 20px);
-    background-color: white;
-    /* width: 248px; */
-    padding-left: 10px;
-    padding-right: 10px;
+    color: grey;
 }
 
-#lastEpisode
-{
-    width: 156px;
+.fa-envira {
+    color: rgba(148,216,124,1);
 }
 
-#lastTicket
-{
-    width: 138px;
+.fa-bullhorn {
+    color: rgba(158,186,221,1);
 }
 
-#lastComments
-{
-    width: 156px;
+.fa-comments {
+    color: rgba(125,198,207,1);
 }
 
-#reportedComments
-{
-    width: 248px;
+.fa-arrow-circle-right {
+    color: rgba(0,0,0,0.7);
 }
 
-#postsStats
-{
-    width: 192px;
+li a {
+    color: rgba(0,0,0,0.7);
 }
 
-#readersStats
-{
-    width: 197px;
+li a:hover {
+    text-decoration: none;
 }
+
+nav {
+    border-right: 1px dashed rgba(168,130,122,0.8);
+    padding: 0 15px 15px 15px;
+    /*border-radius: 15px 0 0 15px; */
+    transform: translate(-14px, -25px);
+    background-color: rgba(168,130,122,0.1);
+        margin-bottom: -47px;
+
+  }
+
+
+
+#episodesTitle {
+    margin-top: -8px;
+    margin-left: 4px;
+}
+
+/* Dernier épisode publié */
+
+#lastEpisode,
+#lastTicket,
+#lastComments,
+#reportedComments {
+    border: 1px dashed rgba(168,130,122,0.8);
+    padding: 75px 15px 15px 15px;
+    height: 100%;
+    font-size: 14px;
+    transform: translateY(-35px);
+    margin-bottom: -35px;
+}
+
+#lastEpisode,
+#lastTicket {
+    background-color: rgba(238,106,85,0.1);
+}
+
+#lastComments,
+#reportedComments{
+     background-color: rgba(59,63,173,0.1);
+}
+
+#postsStats,
+#readersStats {       
+    background-color: rgba(168,130,122,0.1);
+    padding: 15px 15px 15px 15px;
+    transform: translate(-14px, -31px);
+    border: none;
+    border-right: 1px dashed rgba(168,130,122,0.8);
+    margin-bottom: -51px;
+}
+
+
+#lastEpisodeTitle,
+#lastTicketTitle,
+#lastCommentsTitle,
+#reportedCommentsTitle {
+    position: relative;
+    top: 24px;
+    width: 100%;
+    color: white;
+}
+
+
+
+
 
 h1, h3 {
     text-align:center;
@@ -159,43 +284,6 @@ textarea {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -150%);
-}
-
-#read,
-#create,
-#update,
-#delete {
-    width: 130px;
-    height: 130px;
-    transition: all ease 0.3s;
-}
-
-#read {
-    background-color: lightblue; 
-    border: 1px solid blue;
-}
-
-#create {
-    background-color: lightgreen; 
-    border: 1px solid green;
-}
-#update {
-    background-color: lightpink; 
-    border: 1px solid darkred;
-}
-#delete {
-    background-color: orange; 
-    border: 1px solid red;
-}
-
-#read:hover,
-#create:hover,
-#update:hover,
-#delete:hover {
-    background-color: red;
-    border-radius: 5px;
-    border: 1px solid black;
-    color: white;
 }
 
 footer {

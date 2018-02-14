@@ -1,36 +1,39 @@
-<nav class="blockElt">
-	<!-- pas de strong pour le texte en gras mais font-weight via css -->
-	<strong><i class="fab fa-envira"></i>
+<nav class="menuContener">
 
-Épisodes</strong>
+	<h2 id="adminTitle"><a href="index.php?action=dashboard">ADMINISTRATION DU BLOG</a></h2>
+	<img id="corner" src="public/images/corner.png" />
+	<!-- pas de h2 pour le texte en gras mais font-weight via css -->
+	<h2  id="episodesTitle" ><i class="fab fa-envira"></i>
+
+ÉPISODES</h2>
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;posted=allEpisodes" id="read">Tous les épisodes</a></li>
+<a href="index.php?action=dashboard&amp;published=allEpisodes" id="read">Tous les épisodes</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
 <a href="index.php?action=dashboard&amp;new=episode" id="create">Ajouter un épisode</a></li>
 	</ul>
-	<strong><i class="fas fa-bullhorn"></i>
+	<h2><i class="fas fa-bullhorn"></i>
 
-</i>Billets d'humeur</strong>
+</i>BILLETS D'HUMEUR</h2>
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;posted=allTickets">Tous les billets</a></li>
+<a href="index.php?action=dashboard&amp;published=allTickets">Tous les billets</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
 <a href="index.php?action=dashboard&amp;new=ticket">Ajouter un billet</a></li>
 	</ul>
-	<strong><i class="fas fa-comments"></i>
+	<h2><i class="fas fa-comments"></i>
 
-Commentaires</strong>
+COMMENTAIRES</h2>
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;comments=all" id="update">Tous les commentaires</a></li>
+<a href="index.php?action=dashboard&amp;published=allComments" id="update">Tous les commentaires</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;comments=reportedOnes">Commentaires à modérer</a></li>
+<a href="index.php?action=dashboard&amp;published=reportedComments">Commentaires à modérer</a></li>
 	</ul>
 </nav>

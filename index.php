@@ -69,7 +69,7 @@ try {
 	    	elseif ($_GET['action'] == 'dashboard') {
 	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
 	    			$controller->displayDashboard();	    			   	   		
-		    		if (isset($_GET['new']) AND $_GET['new'] == 'ok') {
+		    		if (isset($_GET['new']) AND ($_GET['new'] == 'ticket' OR $_GET['new'] == 'episode')) {
 		    			$controller->displayArticleWriter();
 		    		}
 	    		}

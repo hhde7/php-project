@@ -15,12 +15,12 @@ $ticketN1 = $postManager->getPost($mostReadTicket);
 
 ?>        
 
-<p>Nombre d'épisodes publiés : <?= count($episodeStats) ?></p>
-<p>Nombre de billets publiés : <?= count($ticketStats) ?></p>
+<p><i class="fab fa-envira"></i> <?= count($episodeStats) ?> épisodes publiés</p>
+<p><i class="fab fa-envira"></i> <?= $episode->getTitle() ?> est l'épisode le plus commenté</p>
+<p><i class="fab fa-envira"></i> <?= $episodeN1->getTitle() ?> est l'épisode le plus lu</p>
+<p><i class="fas fa-bullhorn"></i> <?= count($ticketStats) ?> billets publiés </p>
 
-<p>Épisode le plus commenté : <br /><?= $episode->getTitle() ?></p>
-<p>Ticket le plus commenté : <br /><?= $ticket->getTitle() ?></p>
+<p><i class="fas fa-bullhorn"></i> <?= $ticket->getTitle() ?> est le billet plus commenté</p>
 
-<p>Épisode le plus lu : <br /><?= $episodeN1->getTitle() ?></p>
-<p>Ticket le plus lu : <br /><?= $ticketN1->getTitle() ?></p>
+<p><i class="fas fa-bullhorn"></i> <?= $ticketN1->getTitle() ?>  est le billet le plus lu</p>
 

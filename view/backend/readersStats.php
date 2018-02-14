@@ -9,8 +9,8 @@ $allReaders = $counterManager->getReaders(364*10);
 
 
 <p>Nombre de lecteurs unique</p><br />
-<p>Aujourd'hui : <?= $dayReaders ?></p>
-<p>Cette semaine : <?= $weekReaders ?></p>
-<p>Ce mois : <?= $monthReaders ?></p>
-<p>Cette année : <?= $yearReaders ?></p>
+<p><?= $dayReaders ?> aujourd'hui</p>
+<p><?= $weekReaders ?> cette semaine</p>
+<p><?= $monthReaders ?> ce mois</p>
+<p><?= $yearReaders ?> cette année</p>
 <p>Total des lecteurs uniques : <?= $allReaders ?></p>

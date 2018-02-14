@@ -6,10 +6,10 @@
         $postTitle = $postManager->getPost($postId)->getTitle();
 
         if ($reportedComments[$i]->getPostType() === 'ticket') {
-            $postType = 'Billet : ';
+            $postType = '<i class="fas fa-bullhorn"></i>  ';
         } 
         else {
-            $postType = 'Épisode : ';
+            $postType = '<i class="fab fa-envira"></i> Épisode : ';
         }
         
         ?>

@@ -2,7 +2,7 @@
 	$lastEpisode = $postManager->getLastEpisode();
 	
 	    ?>
-        	<p><strong><?= $lastEpisode->getTitle() ?></strong></p>
+        	<p><i class="fab fa-envira"></i> <?= $lastEpisode->getTitle() ?></p>
         	<p><?= $lastEpisode->getContent() ?></p>
         
    

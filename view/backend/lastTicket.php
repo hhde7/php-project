@@ -2,5 +2,5 @@
     $lastTicket = $postManager->getLastTicket();
     
         ?>
-            <p><strong><?= $lastTicket->getTitle() ?></strong></p>
+            <p><i class="fas fa-bullhorn"></i> <?= $lastTicket->getTitle() ?></p>
             <p><?= $lastTicket->getContent() ?></p>

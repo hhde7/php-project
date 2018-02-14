@@ -6,10 +6,10 @@ for ($i=0; $i < count($lastComments) ; $i++) {
     $postTitle = $postManager->getPost($postId)->getTitle();
 
     if ($lastComments[$i]->getPostType() === 'ticket') {
-        $postType = 'Billet : ';
+        $postType = '<i class="fas fa-bullhorn"></i>  ';
     }
     else {
-        $postType = 'Épisode : ';
+        $postType = '<i class="fab fa-envira"></i>  ';
     }
 ?>
         <p><?= $postType . ' ' . $postTitle ?></p>

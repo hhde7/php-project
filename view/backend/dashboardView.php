@@ -18,75 +18,91 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		<link rel="stylesheet" type="text/css" href="public/css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 		<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 	
 		<title>Tableau de bord</title>
 	</head>
 	<body>
 		 
-		<div class="col-lg-12">
-			<a href="index.php"><img id="logo" src="public/images/logo_02.png"/></a>
-		</div>
+		<?php
+		include('view/frontend/header.php');
+		?>
 		
-		<div class="col-lg-3" id="menu">
+		<div class="col-lg-2" id="menu">
 			<?php
 			include('menu.php');
 			?>
+			<h2 id="postsStatsTitle">STATS SUR MES ARTICLES</h2>
+			<img id="corner" src="public/images/corner.png" />
+			<div id="postsStats">
+				<?php 
+				include('postsStats.php');
+				?>
+			</div>
+
+			<h2 id="readersStatsTitle">STATS SUR MES LECTEURS</h2>
+			<img id="corner" src="public/images/corner.png" />
+			<div id="readersStats">
+				<?php 
+				include('readersStats.php');
+				?>
+			</div>
+			
 		</div>
 
-		<div class="col-lg-3">
-			<p class="blockTitle" id="lastEpisode">Dernier épisode publié</p>
+		<div class="col-lg-5">
+			<h2 id="lastEpisodeTitle">DERNIER ÉPISODE PUBLIÉ</h2>
 			
-			<div class="blockElt">
+			<div id="lastEpisode">
 				<?php 
 				include('lastEpisode.php');
 				?>
 			</div>
 
-			<p class="blockTitle" id="lastTicket">Dernier billet publié</p>
+			<h2 id="lastTicketTitle">DERNIER BILLET PUBLIÉ</h2>
 
-			<div class="blockElt">
+			<div id="lastTicket">
 				<?php 
 				include('lastTicket.php');
 				?>
 			</div>
 		</div>
 		
-		<div class="col-lg-3">
-			<p class="blockTitle" id="lastComments">Commentaires récents</p>
+		<div class="col-lg-5">
+			<h2 id="reportedCommentsTitle">COMMENTAIRES SIGNALÉS</h2>
 
-			<div class="blockElt">
-				<?php 
-				include('lastComments.php');
-				?>
-			</div>
-
-			<p class="blockTitle" id="reportedComments">Commentaires soumis à modération</p>
-
-			<div class="blockElt">
+			<div id="reportedComments">
 				<?php 
 				include('reportedComments.php');
 				?>
 			</div>
+			<h2 id="lastCommentsTitle">COMMENTAIRES RÉCENTS</h2>
+
+			<div id="lastComments">
+				<?php 
+				include('lastComments.php');
+				?>
+			</div>
 		</div>
+		<!--
+		<div class="col-lg-2">
+			<h2 id="postsStatsTitle">STATS SUR MES ARTICLES</h2>
 
-		<div class="col-lg-3">
-			<p class="blockTitle" id="postsStats">Statistiques sur mes articles</p>
-
-			<div class="blockElt">
+			<div id="postsStats">
 				<?php 
 				include('postsStats.php');
 				?>
 			</div>
 
-			<p class="blockTitle" id="readersStats">Statistiques sur mes lecteurs</p>
+			<h2 id="readersStatsTitle">STATS SUR MES LECTEURS</h2>
 
-			<div class="blockElt">
+			<div id="readersStats">
 				<?php 
 				include('readersStats.php');
 				?>
 			</div>
 		</div>
-
+		-->
 		<!-- JAVASCRIPT -->
 
 		<!-- FONT AWESOME SCRIPT -->
@@ -100,7 +116,9 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/plugin/init-tinymce.js"></script>
 
 	</body>
+	<!--
 	<?php
     include('view/frontend/footer.php');
     ?>
+	-->
 </html>

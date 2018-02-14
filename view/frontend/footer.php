@@ -1,4 +1,4 @@
-<footer>
+<footer class='col-lg-12'>
 	<?php
 	if (!isset($_SESSION['email']) AND !isset($_SESSION['password']) ) {
 	?>
