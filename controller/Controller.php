@@ -47,6 +47,11 @@ class Controller
 		}
 	}
 
+	public function addPost($title, $content, $type) {
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$newPost = $postManager->newPost($title, $content, $type);
+	}
+
 	public function reportComment($commentId)
 	{	
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
@@ -65,7 +70,7 @@ class Controller
 		require('view/backend/moderateView.php');
 	}
 
-	public function moderateComments($id, $action)
+	public function moderateComment($id, $action)
 	{
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
 		if (isset($action) AND $action == 'delete') {
@@ -76,6 +81,20 @@ class Controller
 			throw new Exception('impossible de modérer ce commentaire');	
 		}
 	}
+
+	public function moderatePost($id)
+	{
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$postManager->deletePost($id);
+	}
+
+	public function updateArticle($id, $title, $content, $type)
+	{
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$postManager->updatePost($id, $title, $content, $type);
+	}
+
+
 
 	public function loginPage()
 	{
@@ -105,6 +124,41 @@ class Controller
 	public function displayArticleWriter()
 	{
 		require('view/backend/articleWriter.php');
+	}
+
+	public function displayAllEpisodes() 
+	{
+		require('view/backend/allEpisodes.php');
+	}
+
+	public function displayAllTickets() 
+	{
+		require('view/backend/allTickets.php');
+	}
+
+	public function displayAllComments() 
+	{
+		require('view/backend/allComments.php');
+	}
+
+	public function displayAllReportedComments() 
+	{
+		require('view/backend/allReportedComments.php');
+	}
+
+	public function displayWriteNewArticle() 
+	{
+		require('view/backend/newArticle.php');
+	}
+
+	public function displayComment()
+	{
+		require('view/backend/commentView.php');
+	}
+
+	public function displayPost()
+	{
+		require('view/backend/postView.php');
 	}
 
 	public function logout()

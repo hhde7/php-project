@@ -11,7 +11,7 @@ class PostManager extends Manager
     public function getAllEpisodes()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "episode" ');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "episode" ORDER BY creationDate DESC ');
         $data = $req->fetchAll();
         $allPosts = array();
         for ($i=0; $i < count($data) ; $i++) {
@@ -25,7 +25,7 @@ class PostManager extends Manager
     public function getAllTickets()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "ticket" ');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "ticket" ORDER BY creationDate DESC ');
         $data = $req->fetchAll();
         $allTickets = array();
         for ($i=0; $i < count($data) ; $i++) {
@@ -36,10 +36,24 @@ class PostManager extends Manager
         return $allTickets;
     }
 
+     public function getAllPosts()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts');
+        $data = $req->fetchAll();
+        $allPosts = array();
+        for ($i=0; $i < count($data) ; $i++) {
+            $post = new Post($data[$i]);
+            $allPosts[] = $post;
+        }
+     
+        return $allPosts;
+    }
+
     public function getPosts($pagesNumber)
     {
     	$db = $this->dbConnect();
-        $relatedPosts = $db->prepare('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE id  BETWEEN ? AND ? ');
+        $relatedPosts = $db->prepare('SELECT id, title, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, content, type FROM posts WHERE id  BETWEEN ? AND ? ');
 
 
         // a mettre dans le controller 
@@ -120,5 +134,44 @@ class PostManager extends Manager
         $postStatus = $req->fetch();
         
         return $postStatus;
+    }
+
+    public function newPost($title, $content, $type)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('INSERT INTO posts (title, content, creationDate, type) VALUES(:title, :content, :creationDate, :type)');
+        $creationDate = date("Y-m-d H:i:s");
+        $req->bindParam(':title', $title);
+        $req->bindParam(':content', $content);
+        $req->bindParam(':creationDate', $creationDate);
+        $req->bindParam(':type', $type);
+        $newPostData = $req->execute();
+        
+        return $newPostData;
+    }
+
+    public function deletePost($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $req->execute(array($id));
+        $message = 'Commentaire supprimé';
+
+        return $message;
+    }
+
+    public function updatePost($id, $title, $content, $type)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE posts SET title = :title, content = :content, type = :type WHERE id = :id ');
+        $req->bindParam(':id', $id);
+        $req->bindParam(':title', $title);
+        $req->bindParam(':content', $content);
+        $req->bindParam(':type', $type);
+        $updatedPost = $req->execute();
+        
+
+        return $updatedPost;
+
     }
 }

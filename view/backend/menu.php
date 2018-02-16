@@ -9,10 +9,10 @@
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;published=allEpisodes" id="read">Tous les épisodes</a></li>
+<a href="index.php?action=allEpisodes" id="read">Tous les épisodes</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;new=episode" id="create">Ajouter un épisode</a></li>
+<a href="index.php?action=episode" id="create">Ajouter un épisode</a></li>
 	</ul>
 	<h2><i class="fas fa-bullhorn"></i>
 
@@ -20,10 +20,10 @@
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;published=allTickets">Tous les billets</a></li>
+<a href="index.php?action=allTickets">Tous les billets</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;new=ticket">Ajouter un billet</a></li>
+<a href="index.php?action=ticket">Ajouter un billet</a></li>
 	</ul>
 	<h2><i class="fas fa-comments"></i>
 
@@ -31,9 +31,9 @@ COMMENTAIRES</h2>
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;published=allComments" id="update">Tous les commentaires</a></li>
+<a href="index.php?action=allComments" id="update">Tous les commentaires</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=dashboard&amp;published=reportedComments">Commentaires à modérer</a></li>
+<a href="index.php?action=reportedComments">Commentaires à modérer</a></li>
 	</ul>
 </nav>

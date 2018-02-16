@@ -69,12 +69,78 @@ try {
 	    	elseif ($_GET['action'] == 'dashboard') {
 	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
 	    			$controller->displayDashboard();	    			   	   		
-		    		if (isset($_GET['new']) AND ($_GET['new'] == 'ticket' OR $_GET['new'] == 'episode')) {
-		    			$controller->displayArticleWriter();
-		    		}
 	    		}
 	    		else {
 	    			throw new Exception('impossible de charger l\'espace membre');
+	    		}
+	    	}
+	    	elseif ($_GET['action'] == 'allEpisodes') {
+	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
+	    			$controller->displayAllEpisodes();
+	    			if (isset($_GET['see'])) {
+	    				$controller->displayPost();
+	    			}
+	    			elseif (isset($_GET['edit'])) {
+		    			$controller->displayArticleWriter();
+		    		}
+		    		elseif (isset($_GET['update'])) {
+		    			$controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_GET['type']);
+		    		}
+	    		}
+	    		else {
+	    			throw new Exception('impossible de charger la liste des épisodes');
+	    		}
+	    	}
+	    	elseif ($_GET['action'] == 'allTickets') {
+	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
+	    			$controller->displayAllTickets();
+	    			if (isset($_GET['see'])) {
+	    				$controller->displayPost();
+	    			}
+	    			elseif (isset($_GET['edit'])) {
+		    			$controller->displayArticleWriter();
+		    		}
+		    		elseif (isset($_GET['update'])) {
+		    			$controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_GET['type']);
+		    		}
+
+	    		}
+	    		else {
+	    			throw new Exception('impossible de charger la liste des billets');
+	    		}
+	    	}
+	    	elseif ($_GET['action'] == 'allComments') {
+	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
+	    			$controller->displayAllComments();
+	    			if (isset($_GET['see'])) {
+	    				$controller->displayComment();
+	    			}
+	    		}
+	    		else {
+	    			throw new Exception('impossible de charger la liste des commentaires');
+	    		}
+	    	}
+	    	elseif ($_GET['action'] == 'reportedComments') {
+	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
+	    			$controller->displayAllReportedComments();
+	    			if (isset($_GET['see'])) {
+	    				$controller->displayComment();
+	    			}
+	    		}
+	    		else {
+	    			throw new Exception('impossible de charger la liste des commentaires');
+	    		}
+	    	}
+	    	elseif ($_GET['action'] == 'episode' OR $_GET['action'] == 'ticket') {
+	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
+	    			$controller->displayWriteNewArticle();
+	    			if (isset($_GET['posted']) AND isset($_POST['title']) AND isset($_POST['content'])) {
+	    				$controller->addPost($_POST['title'], $_POST['content'], $_GET['posted']);
+	    				echo 'nouvel article publié';			
+	    			}
+	    		} 	    		
+	    		else {
+	    			throw new Exception('impossible d\' enregisterer l\'article');
 	    		}
 	    	}
 	    	elseif ($_GET['action'] == 'logout') {
@@ -90,12 +156,40 @@ try {
 	    			$controller->displayModeratePage();
 	    		}
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'allow') {
-	    			$controller->moderateComments($_GET['allow'], 'allow');
-	    			header('location: index.php?action=dashboard');
+	    			$controller->moderateComment($_GET['allow'], 'allow');
+	    			if ($_GET['from'] == 'dashboard') {
+	    				header('location: index.php?action=dashboard');
+	    			} 
+	    			elseif ($_GET['from'] == 'allComments') {
+	    				header('location: index.php?action=allComments');
+	    			}
+	    			elseif ($_GET['from'] == 'reportedComments') {
+	    				header('location: index.php?action=reportedComments');
+	    			}
 	    		}
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'delete') {
-	    			$controller->moderateComments($_GET['delete'], 'delete');
-	    			header('location: index.php?action=dashboard');
+	    			if (isset($_GET['from']) AND  $_GET['from'] == ('allEpisodes' OR 'allTickets')) 
+	    			{
+	    				$controller->moderatePost($_GET['delete']);
+	    				if ($_GET['from'] == 'allEpisodes') {
+	    					header('location: index.php?action=allEpisodes');
+	    				} elseif ($_GET['from'] == 'allTickets') {
+	    					header('location: index.php?action=allTickets');
+	    				}
+	    			}
+	    			else
+	    			{
+		    			$controller->moderateComment($_GET['delete'], 'delete');
+		    			if ($_GET['from'] == 'dashboard') {
+		    				header('location: index.php?action=dashboard');
+		    			}
+		    			elseif ($_GET['from'] == 'allComments') {
+		    				header('location: index.php?action=allTickets');
+		    			} 
+		    			elseif ($_GET['from'] == 'reportedComments') {
+		    				header('location: index.php?action=reportedComments');
+		    			}
+		    		}
 	    		}
 	    	}
 	    		

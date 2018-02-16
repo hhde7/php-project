@@ -3,6 +3,7 @@ namespace JeanForteroche\Blog\Model;
 
 class Post
 {
+	private $id;
 	private $title;
 	private $creationDate;
 	private $content;
@@ -10,12 +11,23 @@ class Post
 
 	public function __construct ($data)
 	{
+		$this->id = $data['id'];
 		$this->title = $data['title'];
 		$this->creationDate = $data['creationDateFr'];
 		$this->content = $data['content'];
 		$this->type = $data['type'];
 	}
 	
+	public function getPostId ()
+	{
+		return $this->id;
+	}
+	
+	public function setPostId ($id)
+	{
+		$this->id = $id;
+	}
+
 	public function getTitle ()
 	{
 		return mb_strtoupper($this->title) . ' ';

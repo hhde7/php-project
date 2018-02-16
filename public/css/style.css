@@ -3,12 +3,7 @@ body {
     font-family: 'Varela Round', sans-serif;
 }
 
-html {
-   
-}
-
 p {
-
     font-size: 14px;
 }
 /* header */
@@ -53,8 +48,6 @@ header {
     background-color: lightblue;
 }
 
-
-
 li{
     list-style: none;
     margin-left: -13px;
@@ -62,11 +55,10 @@ li{
 
 #logo {
     margin-top: 2px;
-    margin-left: 23px;
-    
+    margin-left: 23px; 
 }
-/* dashboard */
 
+/* dashboard */
 /* menu */
 
 #menu {
@@ -87,21 +79,18 @@ li{
     color: white;
 }
 
-
-
 #adminTitle,
 #lastEpisodeTitle,
 #lastTicketTitle,
 #lastCommentsTitle,
-#reportedCommentsTitle/*,
-#postsStatsTitle,
-#readersStatsTitle */{
+#reportedCommentsTitle {
     text-align: center;
     background-color: #a59191;
     padding: 7px 5px 5px 5px;
     box-shadow: 0px 2px 11px #ababab;
     font-weight: normal;
 }
+
 
 #postsStatsTitle {
     background-color: #88967f;
@@ -170,14 +159,24 @@ h2 {
 .fa-calculator {
     color: rgba(243,170,62,0.7);
 }
+/*----------- allEpisodes --------------*/
+.fa-eye {
+    color: darkblue;
+}
+
+.fa-edit {
+    color: orange;
+}
+
+.fa-trash-alt {
+    color: maroon;
+}
 
 .stats-square {
     display: flex;
     text-align: center;
     justify-content: space-around;
 }
-
-
 
 .stats-square p {
     border: 1px dashed rgba(168,130,122,0.8);
@@ -218,11 +217,9 @@ nav {
 /* Dernier épisode publié */
 
 #lastEpisode,
-#lastTicket,
-#lastComments,
-#reportedComments {
+#lastTicket {
     border: 1px dashed rgba(168,130,122,0.8);
-    padding: 75px 15px 15px 15px;
+    padding: 75px 2px 15px 15px;
     height: 100%;
     font-size: 14px;
     transform: translateY(-35px);
@@ -232,12 +229,25 @@ nav {
 
 #lastEpisode,
 #lastTicket {
-    background-color: rgba(238,106,85,0.1);
+    background-color: /*rgba(238,106,85,0.1)*/rgba(168,130,122,0.1);
+}
+
+#lastComments, 
+#reportedComments {
+    border: 1px dashed rgba(168,130,122,0.8);
+    padding: 75px 0px 0px 5px;
+    height: 100%;
+    font-size: 14px;
+    transform: translateY(-35px);
+    margin-bottom: -35px;
+    box-shadow: 0px 2px 11px #ababab;
 }
 
 #lastComments,
 #reportedComments{
-     background-color: rgba(59,63,173,0.1);
+    
+    background-color: /*rgba(59,63,173,0.1)*/rgba(168,130,122,0.1);
+    
 }
 
 .menuContener {
@@ -271,12 +281,29 @@ nav {
     color: white;
 }
 
-
-
-
 .stats-h2 {
     margin-left: 0px;
 }
+
+.box {
+    position: relative;
+    transform: translate(1px,-8px);
+    background-color: rgb(250,250,250);
+    border: 1px dotted #a59191;
+    margin: 0 auto 5px auto;
+    padding: 10px;
+    width: 97%;
+}
+
+/* ----------------- panneaux -------------- */
+
+.first-panel,
+.second-panel {
+    border: 1px dashed rgba(168,130,122,0.8);
+    background-color: rgba(168,130,122,0.1);
+
+}
+
 
 h1, h3 {
     text-align:center;

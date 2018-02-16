@@ -27,29 +27,10 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		 
 		<?php
 		include('view/frontend/header.php');
+		include('view/backend/lateralBar.php');
 		?>
 		
-		<div class="col-lg-2" id="menu">
-			<?php
-			include('menu.php');
-			?>
-			<h2 id="postsStatsTitle">STATS SUR MES ARTICLES</h2>
-			<img class="cornerd" src="public/images/cornerd.png" />
-			<div id="postsStats">
-				<?php 
-				include('postsStats.php');
-				?>
-			</div>
-
-			<h2 id="readersStatsTitle">STATS SUR MES LECTEURS</h2>
-			<img class="cornerd" src="public/images/cornerd.png" />
-			<div id="readersStats">
-				<?php 
-				include('readersStats.php');
-				?>
-			</div>
-			
-		</div>
+		
 
 		<div class="col-lg-5">
 			<h2 id="lastEpisodeTitle">DERNIER ÉPISODE PUBLIÉ</h2>
@@ -70,20 +51,25 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		</div>
 		
 		<div class="col-lg-5">
-			<h2 id="reportedCommentsTitle">COMMENTAIRES SIGNALÉS</h2>
 
-			<div id="reportedComments">
-				<?php 
-				include('reportedComments.php');
-				?>
-			</div>
-			<h2 id="lastCommentsTitle">COMMENTAIRES RÉCENTS</h2>
+				<h2 id="reportedCommentsTitle">COMMENTAIRES SIGNALÉS</h2>
 
-			<div id="lastComments">
-				<?php 
-				include('lastComments.php');
-				?>
-			</div>
+				<div class="col-lg-12" id="reportedComments">
+					<?php 
+					include('reportedComments.php');
+					?>
+				</div>
+			
+		
+
+				<h2 class="col-lg-12" id="lastCommentsTitle">COMMENTAIRES RÉCENTS</h2>
+
+				<div class="col-lg-12" id="lastComments">
+					<?php 
+					include('lastComments.php');
+					?>
+				</div>
+			
 		</div>
 
 		<!-- JAVASCRIPT -->
@@ -93,15 +79,11 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		
 		
-		<!-- TINYMCE SCRIPTS -->
-		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/js/jquery.min.js"></script>
-		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/plugin/tinymce.min.js"></script>
-		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/plugin/init-tinymce.js"></script>
-
+		
 	</body>
-	<!--
+	
 	<?php
     include('view/frontend/footer.php');
     ?>
-	-->
+	
 </html>

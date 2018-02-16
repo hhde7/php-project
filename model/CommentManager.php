@@ -40,7 +40,23 @@ class CommentManager extends Manager
 
     }
 
-     public function getMostCommentedArticle($type)
+    public function getComment($id)
+	{
+	    $db = $this->dbConnect(); 
+	    $req = $db->prepare('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE id = ? ORDER BY commentDateFr DESC');
+	    $req->execute(array($id));
+	    $data = $req->fetch();
+	    /*$allComments = array();*/
+	    /* foreach */
+	    /*for ($i=0; $i < count($data) ; $i++) {*/
+	       	$comment = new Comment($data);
+	       	/*$allComments[] = $comment;*/
+       	/*}*/
+	 
+       	return $comment;
+    }
+
+    public function getMostCommentedArticle($type)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT postId, COUNT(*) FROM comments WHERE postType = ? GROUP BY postId ORDER BY COUNT(*) DESC LIMIT 1' );
