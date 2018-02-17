@@ -1,6 +1,7 @@
 /* FONTS */
 body {
     font-family: 'Varela Round', sans-serif;
+    background: url('../images/stock/24.jpg');
 }
 
 p {
@@ -14,14 +15,12 @@ header {
     border-bottom: 1px dashed rgba(168,130,122,0.8);
     background: url('../images/23(g).png') no-repeat left top;
     background-width: cover;
-    background-color: rgba(168,130,122,0.1);
+    background-color: #f6f2f1;
     box-shadow: 0 0 11px grey;  
     background-size: 100%;
 }
 
 .login-logout {
-    /*font-family: 'Waiting for the Sunrise', cursive;*/
-    /*font-weight: bold; */
     position: relative;
     float: right;
     text-align: right;
@@ -63,7 +62,9 @@ li{
 /* menu */
 
 #menu {
-    margin-top: 5px;
+    position: relative;
+    z-index: -1;
+    margin-top: 4px;
 }
 
 #adminTitle {
@@ -94,16 +95,20 @@ li{
 
 
 #postsStatsTitle {
+    position: relative;
+    z-index: 1;
     background-color: #88967f;
-     text-align: center;
+    text-align: center;
     padding: 7px 5px 5px 5px;
     box-shadow: 0px 2px 11px #ababab;
     font-weight: normal;
 }
 
 #readersStatsTitle {
+    position: relative;
+    z-index: 1;
     background-color: #9194a5;
-     text-align: center;
+    text-align: center;
     padding: 7px 5px 5px 5px;
     box-shadow: 0px 2px 11px #ababab;
     font-weight: normal;
@@ -114,7 +119,9 @@ li{
 }
 
 .cornerd {
-     transform: translate(272px, 8px);
+    position: relative;
+    z-index: 1;
+    transform: translate(273px, 8px);
 }
 
 
@@ -209,7 +216,7 @@ nav {
     border-right: 1px dashed rgba(168,130,122,0.8);
     padding: 1px 15px 15px 15px;
     transform: translate(-14px, -25px);
-    background-color: rgba(168,130,122,0.1);
+    background-color: #f6f2f1;
     margin-bottom: -47px;
     transform: translate(-15px,-4px);
 
@@ -238,7 +245,9 @@ nav {
 
 #lastEpisode,
 #lastTicket {
-    background-color: /*rgba(238,106,85,0.1)*/rgba(168,130,122,0.1);
+    position: relative;
+    z-index: -1;
+    background-color: #f6f2f1;
 }
 
 #lastComments, 
@@ -254,8 +263,9 @@ nav {
 
 #lastComments,
 #reportedComments{
-    
-    background-color: /*rgba(59,63,173,0.1)*/rgba(168,130,122,0.1);
+    position: relative;
+    z-index: -1;
+    background-color: #f6f2f1;
     
 }
 
@@ -265,8 +275,8 @@ nav {
 
 #postsStats,
 #readersStats {  
-    box-shadow: 0 5px 11px grey;      
-    background-color: rgba(168,130,122,0.1);
+    box-shadow: 0 0px 11px grey;      
+    background-color: #f6f2f1;
     padding: 15px 15px 15px 15px;
     transform: translate(-14px, -6px);
     border: none;
@@ -294,26 +304,36 @@ nav {
     margin-left: 0px;
 }
 
-.box {
+.second-panel-comment-box {
     position: relative;
+    top: -22px;
+    left: -1px;
     transform: translate(1px,-8px);
-    background-color: rgb(250,250,250);
+    background-color: white;
     border: 1px dotted #a59191;
     margin: 0 auto 5px auto;
     padding: 10px;
-    width: 97%;
+    width: 100%;
 }
+
+.second-level-comment-contener {
+    position: relative;
+    top: 40px;
+    padding-bottom: 50px;
+}
+
 
 /* ----------------- panneaux -------------- */
 
 .first-panel,
-.second-panel {
+.second-panel,
+#lastEpisode {
     position: relative;
     transform: translate(68px,22px);
     border: 1px dashed rgba(168,130,122,0.8);
-    background-color: rgba(168,130,122,0.1);
+    background-color: #f6f2f1;
+    box-shadow: 0 0 11px grey;  
     height: 50%;
-
 }
 
 
@@ -332,6 +352,14 @@ nav {
     left: 4.9%;
 }
 
+.second-level-left-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -35px;
+    left: 9.5%;
+}
+
 .right-nail {
     position: relative;
     transform: rotate(60deg) scale(0.7);
@@ -340,6 +368,13 @@ nav {
     left: 79.3%;
 }
 
+.second-level-right-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -35px;
+    left: 84.0%;
+}
 
 .right-chain {
     z-index: 0;
@@ -361,7 +396,6 @@ nav {
 }
 
 .col-lg-4 {
-    box-shadow: 0 0 11px grey;  
 }
 
 .first-panel form,
@@ -408,22 +442,33 @@ tr:hover {
 }
 
 /* --SECOND PANEL ----------------*/
+.first-panel-post,
+.second-level-first-panel-post,
 .second-panel-post,
 .second-panel-comment {
     position: relative;
     top: -30px;
-    left: 5px;
     background-color: white;
     border: 1px dotted #a59191;
     padding: 20px;
 }
 
+
+.second-level-first-panel-post
+{
+    top: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 60px;
+}
+
+.first-panel-post-title,
 .second-panel-post-title,
 .second-panel-comment-author {
     padding-top: 20px;
     font-size: 25px !important;
 }
 
+.first-panel-post-title,
 .second-panel-post-title,
 .second-panel-post-date,
 .second-panel-comment-author,
@@ -434,13 +479,21 @@ tr:hover {
     margin: auto;
 }
 
-.second-panel-post-content,
-.second-panel-comment-content {
+.first-panel-post-content,
+.second-panel-post-content {
     position: relative;
     top: 15px;
     text-align: justify !important;
     margin: auto;
     padding-bottom: 25px;
+}
+
+.second-panel-comment-content {
+    position: relative;
+    top: 15px;
+    text-align: justify !important;
+    margin: auto;
+    padding: 30px 0 40px 0;
 }
 
 .second-panel-comment-relatedPost {

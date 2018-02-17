@@ -30,47 +30,19 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		include('view/backend/lateralBar.php');
 		?>
 		
-		
-
-		<div class="col-lg-5">
-			<h2 id="lastEpisodeTitle">DERNIER ÉPISODE PUBLIÉ</h2>
-			
-			<div id="lastEpisode">
-				<?php 
-				include('lastEpisode.php');
-				?>
-			</div>
-
-			<h2 id="lastTicketTitle">DERNIER BILLET PUBLIÉ</h2>
-
-			<div id="lastTicket">
-				<?php 
-				include('lastTicket.php');
-				?>
-			</div>
+		<div class="col-lg-4 first-panel">
+			<?php 
+			include('firstPanel.php');
+			?>
 		</div>
-		
-		<div class="col-lg-5">
 
-				<h2 id="reportedCommentsTitle">COMMENTAIRES SIGNALÉS</h2>
 
-				<div class="col-lg-12" id="reportedComments">
-					<?php 
-					include('reportedComments.php');
-					?>
-				</div>
-			
-		
-
-				<h2 class="col-lg-12" id="lastCommentsTitle">COMMENTAIRES RÉCENTS</h2>
-
-				<div class="col-lg-12" id="lastComments">
-					<?php 
-					include('lastComments.php');
-					?>
-				</div>
-			
+		<div class="col-lg-4 col-lg-push-1 second-panel">
+			<?php 
+			include('secondPanel.php');
+			?>
 		</div>
+
 
 		<!-- JAVASCRIPT -->
 
