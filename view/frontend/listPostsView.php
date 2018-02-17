@@ -33,7 +33,7 @@ while ($data = $relatedPosts->fetch())
         </h3>
             
         <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
+            <?= nl2br($data['content']) ?>
             <br />
             <em><a href="index.php?action=post&id=<?= $data['id'] ?>">Commentaires</a></em>
         </p>

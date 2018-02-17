@@ -20,25 +20,41 @@
 		include('view/frontend/header.php');
 		include('view/backend/lateralBar.php');
 	?>
-	<div class="col-lg-4"> 	
+	<div class="col-lg-4 first-panel"> 	
+
+		<h2 class="first-panel-title">TOUS LES COMMENTAIRES <i class="fas fa-comments"></i></h2>
+
+		<img src="public/images/chain1.png" class="left-chain"> 	
+		<img src="public/images/chain1.png" class="right-chain">
+		<img src="public/images/nail1.png" class="left-nail">
+		<img src="public/images/nail1.png" class="right-nail">
+
+		<table>
+			<tr>
+				<th>AUTEUR</th>		
+				<th>COMMENTAIRE</th>
+				<th>DATE DE PUBLICATION</th>
+				<th>ACTION</th>
+			</tr>
 	<?php
 		$post = $postManager->getAllPosts();
 		foreach ($post as $key => $value) {
 			$comment = $commentManager->getAllComments($value->getPostId());
 			foreach ($comment as $key => $value) {
 			?>
-				<p><?= $value->getAuthor() . ' ' . $value->getComment() . ' ' . $value->getCommentDate() ?> 
-					<a href="index.php?action=allComments&amp;see=<?= $value->getCommentId() ?>" title="Voir"><i class="fas fa-eye"></i></a>
-					<!--
-					<a href="index.php?action=allComments&amp;edit=<?= $value->getCommentId() ?>" title="Modifier"><i class="far fa-edit"></i></a>
-				-->
-					<a href="index.php?action=moderate&amp;delete=<?= $value->getCommentId() ?>&amp;from=allComments" title="Supprimer"><i class="far fa-trash-alt"></i></a>
-				</p>
+			<tr>
+				<td><?= mb_strimwidth($value->getAuthor(), 0, 15, '...') ?></td> 
+				<td><?= mb_strimwidth($value->getComment(), 0, 35, '...') ?></td>
+				<td><?= mb_strimwidth($value->getCommentDate(), 4, 18)?></td> 
+				<td><a href="index.php?action=allComments&amp;see=<?= $value->getCommentId() ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+				<a href="index.php?action=moderate&amp;delete=<?= $value->getCommentId() ?>&amp;from=allComments" title="Supprimer"><i class="fas fa-minus-circle"></i></a></td>
+			</tr>
 			<?php
 			}
 		}
 
 	?>
+		</table>
 	</div>
 
 	<!-- JAVASCRIPT -->

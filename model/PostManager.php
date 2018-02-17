@@ -155,18 +155,19 @@ class PostManager extends Manager
         $db = $this->dbConnect();
         $req = $db->prepare('DELETE FROM posts WHERE id = ?');
         $req->execute(array($id));
-        $message = 'Commentaire supprimé';
+        $message = 'article supprimé';
 
         return $message;
     }
 
-    public function updatePost($id, $title, $content, $type)
+    public function updatePost($id, $title, $content, $creationDate, $type)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE posts SET title = :title, content = :content, type = :type WHERE id = :id ');
+        $req = $db->prepare('UPDATE posts SET title = :title, content = :content, creationDate = :creationDate, type = :type WHERE id = :id ');
         $req->bindParam(':id', $id);
         $req->bindParam(':title', $title);
         $req->bindParam(':content', $content);
+        $req->bindParam(':creationDate', $creationDate);
         $req->bindParam(':type', $type);
         $updatedPost = $req->execute();
         

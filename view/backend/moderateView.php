@@ -8,7 +8,13 @@
 		elseif ($_GET['from'] == 'allTickets') {
 			$type = 'billet <i class="fas fa-bullhorn"></i>';
 		}
-		elseif ($_GET['from'] == ('allComments' OR 'reportedComments')) {
+		elseif ($_GET['from'] == 'allComments') {
+			$type = 'commentaire <i class="fas fa-comments"></i>';
+		}
+		elseif ($_GET['from'] == 'reportedComments') {
+			$type = 'commentaire <i class="fas fa-comments"></i>';
+		} 
+		elseif ($_GET['from'] == 'dashboard') {
 			$type = 'commentaire <i class="fas fa-comments"></i>';
 		}
 		?>

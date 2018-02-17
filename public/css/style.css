@@ -9,6 +9,7 @@ p {
 /* header */
 
 header {
+    z-index: 1;
     height: 110px;
     border-bottom: 1px dashed rgba(168,130,122,0.8);
     background: url('../images/23(g).png') no-repeat left top;
@@ -160,16 +161,24 @@ h2 {
     color: rgba(243,170,62,0.7);
 }
 /*----------- allEpisodes --------------*/
-.fa-eye {
-    color: darkblue;
+.fa-plus-circle {
+    color: #7ca96d;
 }
 
 .fa-edit {
     color: orange;
 }
 
-.fa-trash-alt {
-    color: maroon;
+.fa-minus-circle {
+    color: #a05d5d;
+}
+
+.fa-check-circle {
+    color: orange;
+}
+
+.fa-long-arrow-alt-right {
+    color: darkred;
 }
 
 .stats-square {
@@ -299,11 +308,146 @@ nav {
 
 .first-panel,
 .second-panel {
+    position: relative;
+    transform: translate(68px,22px);
     border: 1px dashed rgba(168,130,122,0.8);
     background-color: rgba(168,130,122,0.1);
+    height: 50%;
 
 }
 
+
+.left-chain {
+    z-index: 0;
+    position: relative;
+    top: -84px;
+    left: 10%; 
+}
+
+.left-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -55px;
+    left: 4.9%;
+}
+
+.right-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -55px;
+    left: 79.3%;
+}
+
+
+.right-chain {
+    z-index: 0;
+    position: relative;
+    top: -84px;
+    left: 85%; 
+}
+
+.first-panel-title 
+/*and second */{
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    color: white;
+    background-color: #a59191;
+    padding: 7px 5px 5px 5px;
+    box-shadow: 0px 2px 11px #ababab;
+    font-weight: normal;
+}
+
+.col-lg-4 {
+    box-shadow: 0 0 11px grey;  
+}
+
+.first-panel form,
+.second-panel form {
+    position: relative;
+    top: -48px;
+}
+
+form #title {
+    width: 100%;
+}
+
+form #submit {
+    position: relative;
+    top: 22px;
+    left: 0px;
+    width: 100%;;
+}
+
+table {
+    padding: 5px !important;
+    position: relative;
+    top: -31px;
+    background-color: white !important;
+    border: 1px dotted #a59191;
+    width: 100%;
+}
+
+th {
+    background-color: #afafafcc;
+    color: white;
+    font-weight: lighter;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+th,
+td {
+    padding-left: 10px !important;
+}
+
+tr:hover {
+    background-color: #ccc;
+}
+
+/* --SECOND PANEL ----------------*/
+.second-panel-post,
+.second-panel-comment {
+    position: relative;
+    top: -30px;
+    left: 5px;
+    background-color: white;
+    border: 1px dotted #a59191;
+    padding: 20px;
+}
+
+.second-panel-post-title,
+.second-panel-comment-author {
+    padding-top: 20px;
+    font-size: 25px !important;
+}
+
+.second-panel-post-title,
+.second-panel-post-date,
+.second-panel-comment-author,
+.second-panel-comment-date {
+    text-align: center;
+    font-weight: bold;
+    color: #445779cc;
+    margin: auto;
+}
+
+.second-panel-post-content,
+.second-panel-comment-content {
+    position: relative;
+    top: 15px;
+    text-align: justify !important;
+    margin: auto;
+    padding-bottom: 25px;
+}
+
+.second-panel-comment-relatedPost {
+    font-size: 10px ;
+}
+
+/* ------------------------- */
 
 h1, h3 {
     text-align:center;

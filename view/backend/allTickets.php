@@ -20,18 +20,35 @@
 		include('view/backend/lateralBar.php');
 	?>
 	<div class="col-lg-4 first-panel"> 	
+
+		<h2 class="first-panel-title">TOUS LES BILLETS <i class="fas fa-bullhorn"></i></h2>
+
+		<img src="public/images/chain1.png" class="left-chain"> 	
+		<img src="public/images/chain1.png" class="right-chain">
+		<img src="public/images/nail1.png" class="left-nail">
+		<img src="public/images/nail1.png" class="right-nail">
+
+		<table>
+			<tr>
+				<th>TITRE</th>		
+				<th>DATE DE PUBLICATION</th>
+				<th>ACTION</th>
+			</tr>
 	<?php
 		$ticket = $postManager->getAllTickets();
 		foreach ($ticket as $key => $value) {
 		?>
-			<p><?= $value->getTitle() ?> 
-				<a href="index.php?action=allTickets&amp;see=<?= $value->getPostId() ?>" title="Voir"><i class="fas fa-eye"></i></a>
+			<tr>
+				<td><?= mb_strimwidth($value->getTitle(), 0, 45, '...') ?></td> 
+				<td><?= mb_strimwidth($value->getCreationDate(), 10, 18) ?></td>
+				<td><a href="index.php?action=allTickets&amp;see=<?= $value->getPostId() ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
 				<a href="index.php?action=allTickets&amp;edit=<?= $value->getPostId() ?>&amp;type=ticket" title="Modifier"><i class="far fa-edit"></i></a>
-				<a href="index.php?action=moderate&amp;delete=<?= $value->getPostId() ?>&amp;from=allTickets" title="Supprimer"><i class="far fa-trash-alt"></i></a>
-			</p>
+				<a href="index.php?action=moderate&amp;delete=<?= $value->getPostId() ?>&amp;from=allTickets" title="Supprimer"><i class="far fa-trash-alt"></i></a></td>
+			</tr>
 		<?php
 		}
 	?>
+		</table>
 	</div>
 
 	<!-- JAVASCRIPT -->

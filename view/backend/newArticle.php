@@ -3,15 +3,13 @@
 	$postManager = new  JeanForteroche\Blog\Model\PostManager();
 
 	if ($_GET['action'] == 'episode') {
-		$type = 'nouvel épisode <i class="fab fa-envira"></i> 
+		$type = 'NOUVEL ÉPISODE <i class="fab fa-envira"></i> 
 ';
 	}
 	elseif ($_GET['action'] == 'ticket') {
-		$type = 'nouveau billet <i class="fas fa-bullhorn"></i>';
+		$type = 'NOUVEAU BILLET <i class="fas fa-bullhorn"></i>';
 	}
 ?>
-
-
 
 
 
@@ -31,18 +29,26 @@
 		include('view/frontend/header.php');
 		include('view/backend/lateralBar.php');
 	?>
-	<div class="col-lg-4"> 	
+	<div class="col-lg-4 first-panel"> 	
+
+		<h2 class="first-panel-title">RÉDIGER UN <?= $type ?></h2>
+
+		<img src="public/images/chain1.png" class="left-chain"> 	
+		<img src="public/images/chain1.png" class="right-chain">
+		<img src="public/images/nail1.png" class="left-nail">
+		<img src="public/images/nail1.png" class="right-nail">
+
 	<form action="index.php?action=<?= $_GET['action'] ?>&amp;posted=<?= $_GET['action'] ?>" method="post">
             <div>
                 <label for="author">Titre</label><br />
-                <input type="text" id="title" name="title" />
+                <input type="text" id="title" name="title"/>
             </div>
             <div>
-                <label for="comment">Contenu du <?= $type ?></label><br />
-                <textarea class="tinymce" id="writer" name="content" rows="25"></textarea>
+                <label for="comment">Contenu</label><br />
+                <textarea class="tinymce" id="writer" name="content"></textarea>
             </div>
             <div>
-                <input type="submit" />
+                <input type="submit" id="submit" />
             </div>
         </form>
 	<?php

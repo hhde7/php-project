@@ -88,10 +88,10 @@ class Controller
 		$postManager->deletePost($id);
 	}
 
-	public function updateArticle($id, $title, $content, $type)
+	public function updateArticle($id, $title, $content, $creationDate, $type)
 	{
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
-		$postManager->updatePost($id, $title, $content, $type);
+		$postManager->updatePost($id, $title, $content, $creationDate, $type);
 	}
 
 

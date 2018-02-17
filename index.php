@@ -84,7 +84,8 @@ try {
 		    			$controller->displayArticleWriter();
 		    		}
 		    		elseif (isset($_GET['update'])) {
-		    			$controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_GET['type']);
+		    			$controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_POST['creationDate'], $_GET['type']);
+		    			$controller->displayPost();
 		    		}
 	    		}
 	    		else {
@@ -101,7 +102,8 @@ try {
 		    			$controller->displayArticleWriter();
 		    		}
 		    		elseif (isset($_GET['update'])) {
-		    			$controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_GET['type']);
+		    			$controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_POST['creationDate'], $_GET['type']);
+		    			$controller->displayPost();
 		    		}
 
 	    		}
@@ -152,9 +154,10 @@ try {
 	    		}
 	    	}
 	    	elseif ($_GET['action'] == 'moderate') {
-	    		if (isset($_GET['allow']) AND !isset($_GET['confirm']) OR isset($_GET['delete']) AND !isset($_GET['confirm'])) {
+	    		if ((isset($_GET['allow']) AND !isset($_GET['confirm'])) OR (isset($_GET['delete']) AND !isset($_GET['confirm']))) {
 	    			$controller->displayModeratePage();
 	    		}
+	    		// CONFIRMER LA CONSERVATION DE LA PUBLICATION
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'allow') {
 	    			$controller->moderateComment($_GET['allow'], 'allow');
 	    			if ($_GET['from'] == 'dashboard') {
@@ -167,6 +170,7 @@ try {
 	    				header('location: index.php?action=reportedComments');
 	    			}
 	    		}
+	    		// CONFIRMER LA SUPPRESSION DE LA PUBLICATION
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'delete') {
 	    			if (isset($_GET['from']) AND  $_GET['from'] == ('allEpisodes' OR 'allTickets')) 
 	    			{
@@ -177,14 +181,14 @@ try {
 	    					header('location: index.php?action=allTickets');
 	    				}
 	    			}
-	    			else
+	    			elseif (isset($_GET['from']) AND  $_GET['from'] == 'dashboard' OR $_GET['from'] == 'allComments' OR $_GET['from'] == 'reportedComments')
 	    			{
 		    			$controller->moderateComment($_GET['delete'], 'delete');
 		    			if ($_GET['from'] == 'dashboard') {
 		    				header('location: index.php?action=dashboard');
 		    			}
 		    			elseif ($_GET['from'] == 'allComments') {
-		    				header('location: index.php?action=allTickets');
+		    				header('location: index.php?action=allComments');
 		    			} 
 		    			elseif ($_GET['from'] == 'reportedComments') {
 		    				header('location: index.php?action=reportedComments');
