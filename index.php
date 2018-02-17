@@ -157,7 +157,9 @@ try {
 	    		if ((isset($_GET['allow']) AND !isset($_GET['confirm'])) OR (isset($_GET['delete']) AND !isset($_GET['confirm']))) {
 	    			$controller->displayModeratePage();
 	    		}
-	    		// CONFIRMER LA CONSERVATION DE LA PUBLICATION
+
+
+	    		// CONFIRMER LA CONSERVATION DU COMMENTAIRE
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'allow') {
 	    			$controller->moderateComment($_GET['allow'], 'allow');
 	    			if ($_GET['from'] == 'dashboard') {
@@ -170,31 +172,46 @@ try {
 	    				header('location: index.php?action=reportedComments');
 	    			}
 	    		}
+
+
+
 	    		// CONFIRMER LA SUPPRESSION DE LA PUBLICATION
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'delete') {
-	    			if (isset($_GET['from']) AND  $_GET['from'] == ('allEpisodes' OR 'allTickets')) 
+
+					// SUPPRESSION : EPISODE OU BILLET
+	    			if (isset($_GET['from']) AND  $_GET['from'] == 'allEpisodes') 
+	    			{	
+	    				$controller->moderatePost($_GET['delete']);
+	    				header('location: index.php?action=allEpisodes');
+	    			}
+	    			elseif (isset($_GET['from']) AND  $_GET['from'] == 'allTickets')
 	    			{
 	    				$controller->moderatePost($_GET['delete']);
-	    				if ($_GET['from'] == 'allEpisodes') {
-	    					header('location: index.php?action=allEpisodes');
-	    				} elseif ($_GET['from'] == 'allTickets') {
-	    					header('location: index.php?action=allTickets');
-	    				}
+	    				header('location: index.php?action=allTickets');
 	    			}
-	    			elseif (isset($_GET['from']) AND  $_GET['from'] == 'dashboard' OR $_GET['from'] == 'allComments' OR $_GET['from'] == 'reportedComments')
+
+	    			// SUPPRESSION : COMMENTAIRE
+	    			elseif (isset($_GET['from']) AND ($_GET['from'] == 'dashboard'))
 	    			{
 		    			$controller->moderateComment($_GET['delete'], 'delete');
-		    			if ($_GET['from'] == 'dashboard') {
-		    				header('location: index.php?action=dashboard');
-		    			}
-		    			elseif ($_GET['from'] == 'allComments') {
-		    				header('location: index.php?action=allComments');
-		    			} 
-		    			elseif ($_GET['from'] == 'reportedComments') {
-		    				header('location: index.php?action=reportedComments');
-		    			}
+		    			header('location: index.php?action=dashboard');
 		    		}
-	    		}
+		    		elseif (isset($_GET['from']) AND ($_GET['from'] == 'allComments'))
+	    			{
+		    			$controller->moderateComment($_GET['delete'], 'delete');
+		    			header('location: index.php?action=allComments');
+		    		}
+		    		elseif (isset($_GET['from']) AND ($_GET['from'] == 'reportedComments'))
+	    			{
+		    			$controller->moderateComment($_GET['delete'], 'delete');
+		    			header('location: index.php?action=reportedComments');
+		    		}
+		    		else
+		    		{
+		    			throw new Exception('c\'est là que ça plante');
+		    				
+		    		}
+		    	}
 	    	}
 	    		
 	    	
