@@ -7,8 +7,8 @@ $controller = new Controller;
 
 try {
 	if (isset($_GET['action'])) {
-			if ($_GET['action'] == 'listPosts') {
-				$controller->listPosts();
+			if ($_GET['action'] == 'home') {
+				$controller->home();
 			}
 			elseif ($_GET['action'] == 'post') {
 				if (isset($_GET['id']) AND $_GET['id'] > 0) {
@@ -218,7 +218,7 @@ try {
 	  }
 	
 	else {
-		$controller->listPosts();
+		$controller->home();
 	}
 }
 catch (Exception $e) {

@@ -6,6 +6,14 @@ require_once('model/MemberManager.php');
 
 class Controller 
 {
+	public function home()
+	{
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$post = $postManager->getAllPosts();
+
+		require('view/frontend/homeView.php');
+	}
+
 	public function post()
 	{
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
@@ -21,17 +29,6 @@ class Controller
 			
 			require('view/frontend/postView.php');
 		}
-	}
-
-	public function listPosts()
-	{
-		$nb_pages = new JeanForteroche\Blog\Model\PostManager();
-		$pagesNumber = $nb_pages->paging();
-
-		$postManager = new JeanForteroche\Blog\Model\PostManager();
-		$relatedPosts = $postManager->getPosts($pagesNumber);
-
-		require('view/frontend/listPostsView.php');
 	}
 
 	public function addComment($postId, $postType, $author, $comment)

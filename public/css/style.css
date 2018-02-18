@@ -67,6 +67,24 @@ li{
     margin-top: 4px;
 }
 
+.right-bar {
+    position: relative;
+    z-index: -1;
+    background-color: #f6f2f1;
+    border: 1px dashed rgba(168,130,122,0.8);
+    padding: 25px 0 10px;
+    font-size: 14px;
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 11px #ababab;
+    text-align: center;
+}
+
+#profil {
+    text-align: center;
+    width: 100%;
+    border: 1px dashed rgba(168,130,122,0.8);
+}
+
 #adminTitle {
 
     transform: translateX(-16px);
@@ -285,9 +303,8 @@ nav {
     margin-bottom: -51px;
 }
 
-#postsStats p,
-#readersStats p {
-
+#readersStats {
+    min-height: 100%;
 }
 
 #lastEpisodeTitle,
@@ -391,12 +408,11 @@ nav {
     color: white;
     background-color: #a59191;
     padding: 7px 5px 5px 5px;
-    box-shadow: 0px 2px 11px #ababab;
+    box-shadow: 0px 2px 11px #444444;;
     font-weight: normal;
 }
 
-.col-lg-4 {
-}
+
 
 .first-panel form,
 .second-panel form {
@@ -413,6 +429,11 @@ form #submit {
     top: 22px;
     left: 0px;
     width: 100%;;
+}
+
+.date-of-publication {
+    color: grey;
+    font-weight: normal;
 }
 
 table {
