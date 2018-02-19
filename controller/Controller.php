@@ -9,7 +9,199 @@ class Controller
 	public function home()
 	{
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
-		$post = $postManager->getAllPosts();
+		$lastTicket = $postManager->getLastTicket();
+		$lastEpisode = $postManager->getLastEpisode();
+		$firstEpisode = $postManager->getFirstEpisode();
+		$firstTicket = $postManager->getFirstTicket();
+		
+
+		// SI PAGE DE GARDE OU, DERNIER TICKET ET DERNIER EPISODE 
+		if (!isset($_GET['ticket'], $_GET['episode']) OR $_GET['ticket'] == $lastTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId())
+		{
+			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
+			$ticket = $postManager->getLastTicket();
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
+
+			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = Null;
+
+			$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextEpisodeLink = Null; 		
+		}
+		// SI PREMIER TICKET ET PREMIER EPISODE
+		elseif ($_GET['ticket'] == $firstTicket->getPostId() AND $_GET['episode'] == $firstEpisode->getPostId())
+		{
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+
+			$previousTicketLink = Null;
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+
+			$previousEpisodeLink = Null;
+			$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+		}
+		// SI PREMIER TICKET, ET UN EPISODE != DU DERNIER
+		elseif ($_GET['ticket'] == $firstTicket->getPostId() AND $_GET['episode'] != $lastEpisode->getPostId()) {
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+
+			$previousTicketLink = Null;
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+			
+			$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+		}
+		// SI PREMIER TICKET ET DERNIER EPISODE
+		elseif ($_GET['ticket'] == $firstTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId()) 
+		{
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+			$previousTicketLink = Null;
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+
+			$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextEpisodeLink = Null; 	
+
+		}
+		// SI UN TICKET != PREMIER ET DERNIER EPISODE
+		elseif ($_GET['ticket'] != $firstTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId()) {
+
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+
+			$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextEpisodeLink = Null;
+		}
+		// SI UN TICKET != (PREMIER & DERNIER) ET EPISODE != (PREMIER & DERNIER)
+		elseif ($_GET['ticket'] != $firstTicket->getPostId() AND
+				$_GET['ticket'] != $lastTicket->getPostId() AND
+				$_GET['episode'] != $firstEpisode->getPostId() AND
+				$_GET['episode'] != $lastEpisode->getPostId())
+		{
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+
+			$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+		}
+		// SI DERNIER TICKET ET PREMIER EPISODE
+		elseif ($_GET['ticket'] == $lastTicket->getPostId() AND $_GET['episode'] == $firstEpisode->getPostId()) {
+
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = Null;
+
+			$previousEpisodeLink = Null;
+			$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+		}
+		// SI DERNIER TICKET ET UN EPISODE != (PERMIER & DERNIER)
+		elseif ($_GET['ticket'] == $lastTicket->getPostId() AND
+				$_GET['episode'] != $firstEpisode->getPostId() AND
+				$_GET['episode'] != $lastEpisode->getPostId()) 
+		{
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+
+			$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+		}
+		// SI TICKET != (PERMIER & DERNIER) ET DERNIER EPISODE
+		elseif ($_GET['ticket'] != $firstTicket->getPostId() AND
+				$_GET['ticket'] != $lastTicket->getPostId() AND
+				$_GET['episode'] != $lastEpisode->getPostId()) 
+		{
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+
+			$previousEpisodeLink = Null;
+			$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+		}
+		else {
+			echo 'nope';
+		}
+
+
+		
+
+/*
+
+		elseif (isset($_GET['ticket'], $_GET['episode'])) {
+			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
+			$ticket = $postManager->getLastTicket();
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$previousEpisode = $postManager->getPreviousPost($_GET['episode'], 'episode');
+			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+
+			if ($_GET['ticket'] == $lastTicket->getPostId())
+			{
+				$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+				$nextTicketLink = Null;
+			}
+			else {
+				$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $_GET['episode'] .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $_GET['episode'] .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+			}
+
+			if ($_GET['episode'] == $lastEpisode->getPostId()) {
+				$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+				$nextEpisodeLink = Null;
+			}
+			else
+			{
+				$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $_GET['ticket'] .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+				$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $_GET['ticket'] . '&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+			}
+
+		}
+		
+*/
 
 		require('view/frontend/homeView.php');
 	}
@@ -120,7 +312,7 @@ class Controller
 
 	public function displayArticleWriter()
 	{
-		require('view/backend/articleWriter.php');
+		require('view/backend/articleEditor.php');
 	}
 
 	public function displayAllEpisodes() 

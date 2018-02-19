@@ -79,6 +79,13 @@ li{
     text-align: center;
 }
 
+.right-bar li {
+    transform: translateX(-25px);
+    text-align: left;
+    width: 141px;
+
+}
+
 #profil {
     text-align: center;
     width: 100%;
@@ -204,6 +211,11 @@ h2 {
 
 .fa-long-arrow-alt-right {
     color: darkred;
+}
+
+.fa-hand-point-left,
+.fa-hand-point-right {
+    color: #445779cc;
 }
 
 .stats-square {
@@ -491,13 +503,18 @@ tr:hover {
 
 .first-panel-post-title,
 .second-panel-post-title,
+.first-panel-post-date,
 .second-panel-post-date,
 .second-panel-comment-author,
 .second-panel-comment-date {
     text-align: center;
     font-weight: bold;
-    color: #445779cc;
+    color: #445779cc !important;
     margin: auto;
+}
+
+.episode-number {
+    font-size: 45px !important;
 }
 
 .first-panel-post-content,
@@ -612,4 +629,16 @@ textarea {
 
 footer {
     text-align: center;
+}
+
+
+/* ########## HOME ############*/
+.previous-ticket-link,
+.previous-episode-link {
+    float: left;
+}
+
+.next-ticket-link,
+.next-episode-link {
+    float: right;
 }

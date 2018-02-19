@@ -14,9 +14,10 @@ $postManager = new JeanForteroche\Blog\Model\PostManager;
 include('profil.php');
 ?>
 <h2>BILLET SIMPLE POUR L'ALASKA</h2>
-<p>LES ÉPISODES</p>
+<p class="first-panel-title">LES ÉPISODES</p>
 <?php
-//include('allEpisodes.php');
+include('allEpisodesTitles.php');
 ?>
 		
 </div>
+

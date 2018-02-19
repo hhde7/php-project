@@ -7,7 +7,20 @@ require_once('model/Post.php');
 
 class PostManager extends Manager
 {
-    
+    public function getAllPosts()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts');
+        $data = $req->fetchAll();
+        $allPosts = array();
+        for ($i=0; $i < count($data) ; $i++) {
+            $post = new Post($data[$i]);
+            $allPosts[] = $post;
+        }
+     
+        return $allPosts;
+    }
+
     public function getAllEpisodes()
     {
         $db = $this->dbConnect();
@@ -36,20 +49,7 @@ class PostManager extends Manager
         return $allTickets;
     }
 
-     public function getAllPosts()
-    {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts');
-        $data = $req->fetchAll();
-        $allPosts = array();
-        for ($i=0; $i < count($data) ; $i++) {
-            $post = new Post($data[$i]);
-            $allPosts[] = $post;
-        }
-     
-        return $allPosts;
-    }
-
+    //------------- A supprimer ----------------------   // 
     public function getPosts($pagesNumber)
     {
     	$db = $this->dbConnect();
@@ -78,6 +78,7 @@ class PostManager extends Manager
         return $relatedPosts;
     }
 
+    //------------- A supprimer ----------------------   // 
     public function nb_posts()
     {
         $db = $this->dbConnect();
@@ -86,7 +87,7 @@ class PostManager extends Manager
 
         return $nb_posts;
     }       
-
+    //------------- A supprimer ----------------------   // 
     public function paging()
     {
         $nb_posts = $this->nb_posts();
@@ -125,6 +126,27 @@ class PostManager extends Manager
 
         return $lastTicket;
     }
+
+    public function getFirstEpisode()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "episode" ORDER BY creationDate ASC LIMIT 1');
+        $data = $req->fetch();
+        $lastPost = new Post($data);
+
+        return $lastPost;
+    }
+
+     public function getFirstTicket()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "ticket" ORDER BY creationDate ASC LIMIT 1');
+        $data = $req->fetch();
+        $lastTicket = new Post($data);
+
+        return $lastTicket;
+    }
+
 
     public function postCheck($postId)
     {
@@ -174,5 +196,28 @@ class PostManager extends Manager
 
         return $updatedPost;
 
+    }
+
+    // PAGINATION ---//
+    public function getPreviousPost($id, $type) 
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE creationDate < (SELECT creationDate FROM posts WHERE id = ?) AND type = ? ORDER BY creationDate DESC LIMIT 1');
+        $req->execute(array($id, $type));
+        $data = $req->fetch();
+        $post = new Post($data);
+     
+        return $post;
+    }
+
+     public function getNextPost($id, $type) 
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE creationDate > (SELECT creationDate FROM posts WHERE id = ?) AND type = ? ORDER BY creationDate ASC LIMIT 1');
+        $req->execute(array($id, $type));
+        $data = $req->fetch();
+        $post = new Post($data);
+     
+        return $post;
     }
 }

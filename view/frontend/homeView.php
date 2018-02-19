@@ -2,8 +2,6 @@
 
 require_once('model/CommentManager.php');
 
-$postManager = new JeanForteroche\Blog\Model\PostManager;
-
 ?>
 
 <!DOCTYPE html>
@@ -25,18 +23,21 @@ $postManager = new JeanForteroche\Blog\Model\PostManager;
 		include('view/frontend/header.php');
 		include('view/frontend/lateralBar.php');
 		?>
-		<div class="col-lg-4 col-lg-pull-1 first-panel">
+		
+		
+		<div class="col-lg-2 col-lg-pull-1 second-panel">
 		<?php
-		include('view/backend/firstPanel.php');
+		include('view/frontend/firstPanel.php');
 		?>
 		</div>
 
-		<div class="col-lg-4 second-panel">
+		<div class="col-lg-5  second-panel">
 		<?php
-		include('view/backend/firstPanel.php');
+		include('view/frontend/secondPanel.php');
 		?>
 		</div>
-		
+
+
 
 
 		<!-- JAVASCRIPT -->
