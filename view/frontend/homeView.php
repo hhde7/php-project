@@ -40,18 +40,18 @@ require_once('model/CommentManager.php');
 
 
 
+		
+		
+	<?php
+    include('view/frontend/footer.php');
+    ?>
+		
 		<!-- JAVASCRIPT -->
 
 		<!-- FONT AWESOME SCRIPT -->
 		
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		
-		
-		
 	</body>
 	
-	<?php
-    include('view/frontend/footer.php');
-    ?>
 	
 </html>

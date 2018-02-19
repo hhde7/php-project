@@ -366,7 +366,8 @@ nav {
 }
 
 
-.left-chain {
+.left-chain,
+.front-second-panel-left-chain {
     z-index: 0;
     position: relative;
     top: -84px;
@@ -381,7 +382,32 @@ nav {
     left: 4.9%;
 }
 
-.second-level-left-nail {
+.front-first-panel-left-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -55px;
+    left: -0.5%;
+}
+
+.front-second-panel-left-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -55px;
+    left: 6%;
+}
+
+.front-second-panel-second-level-left-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -35px;
+    left: 9.3%;
+}
+
+.second-level-left-nail,
+.front-first-panel-second-level-left-nail {
     position: relative;
     transform: rotate(60deg) scale(0.7);
     z-index: 5;
@@ -397,6 +423,22 @@ nav {
     left: 79.3%;
 }
 
+.front-first-panel-right-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -55px;
+    left: 72.7%;
+}
+
+.front-second-panel-right-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -55px;
+    left: 82.5%;
+}
+
 .second-level-right-nail {
     position: relative;
     transform: rotate(60deg) scale(0.7);
@@ -405,11 +447,35 @@ nav {
     left: 84.0%;
 }
 
+.front-first-panel-second-level-right-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -34px;
+    left: 82%;
+}
+
+
+.front-second-panel-second-level-right-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -34px;
+    left: 86.5%;
+}
+
 .right-chain {
     z-index: 0;
     position: relative;
     top: -84px;
     left: 85%; 
+}
+
+.front-second-panel-right-chain {
+    z-index: 0;
+    position: relative;
+    top: -84px;
+    left: 87%; 
 }
 
 .first-panel-title 
@@ -430,6 +496,14 @@ nav {
 .second-panel form {
     position: relative;
     top: -48px;
+}
+
+/* front form */
+.ticket-comment-form input,
+.ticket-comment-form textarea,
+.episode-comment-form input,
+.episode-comment-form textarea {
+    width: 100%;
 }
 
 form #title {
@@ -538,6 +612,13 @@ tr:hover {
     font-size: 10px ;
 }
 
+
+/* laisser un commentaire */
+
+.leave-comment {
+    transform: translateY(-25px);
+}
+
 /* ------------------------- */
 
 h1, h3 {
@@ -569,8 +650,16 @@ h3
     margin:auto;
 }
 
-#reported {
+.reported {
     color: red;
+}
+
+.report-it {
+    position: relative;
+}
+
+.report-it:hover {
+     text-decoration: none;  
 }
 
 a
@@ -597,18 +686,24 @@ textarea {
     float: right;
 }
 
-#box {
+.centered-box {
     position: absolute;
     text-align: center;
-    width: 200px;
-    border: 1px solid black;
+    
+    border: 1px dotted  #a59191;
     border-radius: 3px;
-    padding: 10px 10px 20px 10px;
-    background-color: black;
-    color: white;
+    padding: 10px 20px 25px 20px;
+    background-color: white;
+  
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+}
+
+.centered-box form input {
+    width: 100%;
+    border: 1px solid grey;
+    height: 20px;
 }
 
 #login-submit {

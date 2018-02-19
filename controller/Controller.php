@@ -139,7 +139,7 @@ class Controller
 			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
 
 			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
-			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+			$nextTicketLink = Null;
 
 			$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
 			$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
@@ -163,45 +163,9 @@ class Controller
 			$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
 		}
 		else {
-			echo 'nope';
+			throw new Exception("Erreur de pagination");
+			
 		}
-
-
-		
-
-/*
-
-		elseif (isset($_GET['ticket'], $_GET['episode'])) {
-			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
-			$ticket = $postManager->getLastTicket();
-			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
-			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
-			$previousEpisode = $postManager->getPreviousPost($_GET['episode'], 'episode');
-			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
-
-			if ($_GET['ticket'] == $lastTicket->getPostId())
-			{
-				$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
-				$nextTicketLink = Null;
-			}
-			else {
-				$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $_GET['episode'] .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
-			$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $_GET['episode'] .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
-			}
-
-			if ($_GET['episode'] == $lastEpisode->getPostId()) {
-				$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
-				$nextEpisodeLink = Null;
-			}
-			else
-			{
-				$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $_GET['ticket'] .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
-				$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $_GET['ticket'] . '&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
-			}
-
-		}
-		
-*/
 
 		require('view/frontend/homeView.php');
 	}
@@ -232,7 +196,7 @@ class Controller
 			throw new Exception('Impossible d\'ajouter le commentaire !');
 		}
 		else {
-			header('location: index.php?action=post&id=' . $postId);
+			header('location: index.php?ticket=' . $_GET['ticket'] . '&episode=' . $_GET['episode']);
 		}
 	}
 

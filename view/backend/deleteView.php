@@ -18,19 +18,18 @@ if(isset($_GET['type'])) {
 	}
 }
 ?>
+<div class="centered-box">
+	<h2>Supprimer un <?= $type ?></h2>
 
-<h2>Supprimer un <?= $type ?></h2>
-
-		
-<?php
-		if (isset($_GET['type'])) {
-		?>	
+			
+	<?php
+	if (isset($_GET['type'])) {
+	?>	
 		<p>Souhaitez-vous vraiment supprimer cette entrée ?</p>
-			<a href="<?= $href?>&amp;delete=<?= $_GET['delete'] ?>&amp;done=yes"><input type="button" value="Oui" id='deleteButton'/></a>
-			<a href="<?= $href ?>"><input type="button" value="Non" /></a>
-<?php
-		}
-		
-		?>
-
-		<script type="text/javascript" src="http://localhost/test/jeanforteroche/scripts/refresh.js"></script>
+		<a href="<?= $href?>&amp;delete=<?= $_GET['delete'] ?>&amp;done=yes"><input type="button" value="Oui" id='deleteButton'/></a>
+		<a href="<?= $href ?>"><input type="button" value="Non" /></a>
+	<?php
+	}
+	?>
+</div>
+<script type="text/javascript" src="http://localhost/test/jeanforteroche/scripts/refresh.js"></script>

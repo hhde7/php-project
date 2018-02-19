@@ -19,9 +19,9 @@ try {
 				}
 			}
 			elseif ($_GET['action'] == 'addComment') {
-	        	if (isset($_GET['id']) AND $_GET['id'] > 0) {
+	        	if (isset($_GET['ticket'], $_GET['episode']) AND $_GET['ticket'] > 0 AND $_GET['episode'] > 0) {
 	            	if (!empty($_POST['author']) AND !empty($_POST['comment'])) {
-	                	$controller->addComment($_GET['id'], $_GET['type'], $_POST['author'], $_POST['comment']);
+	                	$controller->addComment($_GET['post'], $_GET['type'], $_POST['author'], $_POST['comment']);
 	            	}
 	            	else {
 	                	throw new Exception('tous les champs ne sont pas remplis !');

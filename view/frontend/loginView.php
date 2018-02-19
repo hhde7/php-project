@@ -9,15 +9,16 @@
 	<title>Login</title>
 </head>
 <body>
-	<div id="box">
+	<div class="centered-box">
 		<form method="post" action="index.php?action=loginCheck">
-			<label>Adresse mail : <input type="email" name="email" required ></label><br />
+			<label><strong>Mail</strong></label><br />
+			<input type="email" name="email" required /><br />
 			
-			<label>Mot de passe : <input type="password" name="password" required></label>
+			<label><strong>Mdp</strong></label><br />
+			<input type="password" name="password" required /><br />
 			<input id="login-submit" type="submit" value="Valider" >
 		</form>
-		<p>**Mot de passe oublié</p>
-		<p>**Retour au blog</p>		
+		<p><a href="index.php">Retour au blog</a></p>
 	</div>
 </body>
 </html>
