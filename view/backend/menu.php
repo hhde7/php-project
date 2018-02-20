@@ -9,7 +9,7 @@
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=allEpisodes" id="read">Tous les épisodes</a></li>
+<a href="index.php?action=allEpisodes&amp;page=1" id="read">Tous les épisodes</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
 <a href="index.php?action=episode" id="create">Ajouter un épisode</a></li>
@@ -20,7 +20,7 @@
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=allTickets">Tous les billets</a></li>
+<a href="index.php?action=allTickets&amp;page=1">Tous les billets</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
 <a href="index.php?action=ticket">Ajouter un billet</a></li>
@@ -31,9 +31,9 @@ COMMENTAIRES</h2>
 	<ul>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=allComments" id="update">Tous les commentaires</a></li>
+<a href="index.php?action=allComments&amp;page=1" id="update">Tous les commentaires</a></li>
 		<li><i class="fas fa-arrow-circle-right"></i>
 
-<a href="index.php?action=reportedComments">Commentaires à modérer</a></li>
+<a href="index.php?action=reportedComments&amp;page=1">Commentaires à modérer</a></li>
 	</ul>
 </nav>

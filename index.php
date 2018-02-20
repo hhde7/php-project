@@ -10,6 +10,7 @@ try {
 			if ($_GET['action'] == 'home') {
 				$controller->home();
 			}
+			/*
 			elseif ($_GET['action'] == 'post') {
 				if (isset($_GET['id']) AND $_GET['id'] > 0) {
 					$controller->post();
@@ -18,6 +19,7 @@ try {
 					throw new Exception('aucun identifiant de billet envoyé');
 				}
 			}
+			*/
 			elseif ($_GET['action'] == 'addComment') {
 	        	if (isset($_GET['ticket'], $_GET['episode']) AND $_GET['ticket'] > 0 AND $_GET['episode'] > 0) {
 	            	if (!empty($_POST['author']) AND !empty($_POST['comment'])) {
@@ -66,6 +68,8 @@ try {
 	    			throw new Exception('erreur d\'accès à la page de connexion');
 	    		}
 	    	}
+
+
 	    	elseif ($_GET['action'] == 'dashboard') {
 	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
 	    			$controller->displayDashboard();	    			   	   		
@@ -166,10 +170,10 @@ try {
 	    				header('location: index.php?action=dashboard');
 	    			} 
 	    			elseif ($_GET['from'] == 'allComments') {
-	    				header('location: index.php?action=allComments');
+	    				header('location: index.php?action=allComments&page=' . $_GET['page'] );
 	    			}
 	    			elseif ($_GET['from'] == 'reportedComments') {
-	    				header('location: index.php?action=reportedComments');
+	    				header('location: index.php?action=reportedComments&page=' . $_GET['page']);
 	    			}
 	    		}
 
@@ -182,12 +186,12 @@ try {
 	    			if (isset($_GET['from']) AND  $_GET['from'] == 'allEpisodes') 
 	    			{	
 	    				$controller->moderatePost($_GET['delete']);
-	    				header('location: index.php?action=allEpisodes');
+	    				header('location: index.php?action=allEpisodes&page=' . $_GET['page']);
 	    			}
 	    			elseif (isset($_GET['from']) AND  $_GET['from'] == 'allTickets')
 	    			{
 	    				$controller->moderatePost($_GET['delete']);
-	    				header('location: index.php?action=allTickets');
+	    				header('location: index.php?action=allTickets&page=' . $_GET['page']);
 	    			}
 
 	    			// SUPPRESSION : COMMENTAIRE
@@ -199,12 +203,12 @@ try {
 		    		elseif (isset($_GET['from']) AND ($_GET['from'] == 'allComments'))
 	    			{
 		    			$controller->moderateComment($_GET['delete'], 'delete');
-		    			header('location: index.php?action=allComments');
+		    			header('location: index.php?action=allComments&page=' . $_GET['page']);
 		    		}
 		    		elseif (isset($_GET['from']) AND ($_GET['from'] == 'reportedComments'))
 	    			{
 		    			$controller->moderateComment($_GET['delete'], 'delete');
-		    			header('location: index.php?action=reportedComments');
+		    			header('location: index.php?action=reportedComments&page=' . $_GET['page']);
 		    		}
 		    		else
 		    		{

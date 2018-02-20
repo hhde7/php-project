@@ -1,4 +1,4 @@
-<h2 class="first-panel-title">ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></i></i></h2>
+<h2 class="first-panel-title">BILLET SIMPLE POUR L'ALASKA - ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></i></i></h2>
 
 <img src="public/images/chain1.png" class="front-second-panel-left-chain"> 	
 <img src="public/images/chain1.png" class="front-second-panel-right-chain">

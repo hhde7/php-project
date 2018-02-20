@@ -49,11 +49,11 @@ class PostManager extends Manager
         return $allTickets;
     }
 
-    //------------- A supprimer ----------------------   // 
-    public function getPosts($pagesNumber)
+   /* //------------- A supprimer ----------------------   // 
+    public function getAllPostsPerPage($pagesNumber)
     {
     	$db = $this->dbConnect();
-        $relatedPosts = $db->prepare('SELECT id, title, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, content, type FROM posts WHERE id  BETWEEN ? AND ? ');
+        $relatedPosts = $db->prepare('SELECT id, title, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, content, type FROM posts WHERE type = episode AND id  BETWEEN ? AND ? ');
 
 
         // a mettre dans le controller 
@@ -77,21 +77,22 @@ class PostManager extends Manager
         // --------------------------
         return $relatedPosts;
     }
-
-    //------------- A supprimer ----------------------   // 
-    public function nb_posts()
+*/
+    
+    public function nb_posts($type)
     {
         $db = $this->dbConnect();
-        $answer = $db->query('SELECT COUNT(*) FROM posts');
-        $nb_posts = $answer->fetch();
+        $req = $db->prepare('SELECT COUNT(*) FROM posts WHERE type = ?');
+        $req->execute(array($type));
+        $nb_posts = $req->fetch();
 
         return $nb_posts;
     }       
-    //------------- A supprimer ----------------------   // 
-    public function paging()
+
+    public function paging($type)
     {
-        $nb_posts = $this->nb_posts();
-        $nb_pages = ceil(($nb_posts[0] / 10));
+        $nb_posts = $this->nb_posts($type);
+        $nb_pages = ceil(($nb_posts[0] / 20));
 
         return $nb_pages;
     }

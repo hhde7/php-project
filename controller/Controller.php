@@ -170,6 +170,7 @@ class Controller
 		require('view/frontend/homeView.php');
 	}
 
+	/*
 	public function post()
 	{
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
@@ -186,6 +187,7 @@ class Controller
 			require('view/frontend/postView.php');
 		}
 	}
+	*/
 
 	public function addComment($postId, $postType, $author, $comment)
 	{
@@ -269,6 +271,7 @@ class Controller
 		}
 	}
 
+	
 	public function displayDashboard()
 	{	
 		require('view/backend/dashboardView.php');

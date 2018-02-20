@@ -25,6 +25,21 @@ class CommentManager extends Manager
        	return $allComments;
     }
 
+    public function getAllUnsortedComments()
+	{
+	    $db = $this->dbConnect(); 
+	    $req = $db->query('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments ORDER BY commentDateFr DESC');
+	    $data = $req->fetchAll();
+	    $allComments = array();
+	    /* foreach */
+	    for ($i=0; $i < count($data) ; $i++) {
+	       	$comment = new Comment($data[$i]);
+	       	$allComments[] = $comment;
+       	}
+	 
+       	return $allComments;
+    }
+
     public function getLastComments()
     {
     	$db = $this->dbConnect();
@@ -127,5 +142,31 @@ class CommentManager extends Manager
 
 		return $message;
 	}
+
+	public function nb_comments($reported)
+    {
+        $db = $this->dbConnect();
+        if ($reported == 1) {
+        	$req = $db->prepare('SELECT COUNT(*) FROM comments WHERE reported = 1');
+        	$req->execute(array($reported));
+        	$nb_comments = $req->fetch();
+        }  
+        else
+        {
+        	$req = $db->query('SELECT COUNT(*) FROM comments');
+        	$nb_comments = $req->fetch();
+        } 
+
+        return $nb_comments;
+    }       
+
+    public function paging($reported)
+    {
+        $nb_posts = $this->nb_comments($reported);
+        $nb_pages = ceil(($nb_posts[0] / 20));
+
+        return $nb_pages;
+    }
+
 
 }

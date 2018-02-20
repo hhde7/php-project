@@ -32,7 +32,7 @@ if ($type == 'episode') {
 	<img src="public/images/nail1.png" class="left-nail">
 	<img src="public/images/nail1.png" class="right-nail">
 
-	<form name="formulaire" id="formulaire" action="index.php?action=<?= $_GET['action'] ?>&amp;update=<?= $_GET['edit'] ?>&amp;type=<?= $_GET['type'] ?>&amp;from=allEpisodes" method="post">
+	<form name="formulaire" id="formulaire" action="index.php?action=<?= $_GET['action'] ?>&amp;update=<?= $_GET['edit'] ?>&amp;type=<?= $_GET['type'] ?>&amp;from=allEpisodes&amp;page=<?= $_GET['page'] ?>" method="post">
 	    <label>Titre :</label><br />
 	    <input type="text" value="<?= $episode->getTitle() ?>" id="title" name="title" /><br />
 	    <label class="date-of-publication"><?= $originalDate ?></label><br />

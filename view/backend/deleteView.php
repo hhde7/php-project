@@ -2,19 +2,19 @@
 if(isset($_GET['type'])) {
 	if ($_GET['type'] == 'episode') {
 		$type = 'épisode';
-		$href = 'index.php?action=allEpisodes';
+		$href = 'index.php?action=allEpisodes&amp;page=' . $_GET['page'];
 	}
 	elseif ($_GET['type'] == 'ticket') {
 		$type = 'billet';
-		$href = 'index.php?action=allTickets';
+		$href = 'index.php?action=allTickets' . $_GET['page'];
 	}
 	elseif ($_GET['action'] == 'allComments' AND $_GET['type'] == 'comment') {
 		$type = 'commentaire';
-		$href = 'index.php?action=allComments';
+		$href = 'index.php?action=allComments' . $_GET['page'];
 	}
 	elseif ($_GET['action'] == 'reportedComments' AND $_GET['type'] == 'comment') {
 		$type = 'commentaire';
-		$href = 'index.php?action=reportedComments';
+		$href = 'index.php?action=reportedComments&page=' . $_GET['page'];
 	}
 }
 ?>

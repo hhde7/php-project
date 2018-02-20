@@ -39,17 +39,17 @@
 					<a href="index.php?action=<?= $action ?>&amp;allow=<?=$_GET['allow']?>&amp;confirm=allow&amp;from=dashboard"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=dashboard"><input type="button" value="Non" /></a>
 				<?php
-				}
+				}/*
 				elseif ($_GET['from'] == 'allComments') {
 				?>
 					<a href="index.php?action=<?= $action ?>&amp;allow=<?=$_GET['allow']?>&amp;confirm=allow&amp;from=allComments"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=allComments"><input type="button" value="Non" /></a>
 				<?php
-				}
+				}*/
 				elseif ($_GET['from'] == 'reportedComments') {
 				?>
-					<a href="index.php?action=<?= $action ?>&amp;allow=<?=$_GET['allow']?>&amp;confirm=allow&amp;from=reportedComments"><input type="button" value="Oui" /></a>
-					<a href="index.php?action=reportedComments"><input type="button" value="Non" /></a>
+					<a href="index.php?action=<?= $action ?>&amp;allow=<?=$_GET['allow']?>&amp;confirm=allow&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
+					<a href="index.php?action=reportedComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
 				}
 			} elseif (isset($_GET['delete']) AND $_GET['delete'] > 0) {
@@ -65,26 +65,26 @@
 				}
 				elseif ($_GET['from'] == 'allEpisodes') {
 				?>
-					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allEpisodes"><input type="button" value="Oui" /></a>
-					<a href="index.php?action=allEpisodes"><input type="button" value="Non" /></a>
+					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allEpisodes&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
+					<a href="index.php?action=allEpisodes&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
 				}
 				elseif ($_GET['from'] == 'allTickets') {
 				?>
-					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allTickets"><input type="button" value="Oui" /></a>
-					<a href="index.php?action=allTickets"><input type="button" value="Non" /></a>
+					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allTickets&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
+					<a href="index.php?action=allTickets&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
 				}
 				elseif ($_GET['from'] == 'allComments') {
 				?>
-					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allComments"><input type="button" value="Oui" /></a>
-					<a href="index.php?action=allComments"><input type="button" value="Non" /></a>
+					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
+					<a href="index.php?action=allComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
 				}
 				elseif ($_GET['from'] == 'reportedComments') {
 				?>
-					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=reportedComments"><input type="button" value="Oui" /></a>
-					<a href="index.php?action=reportedComments"><input type="button" value="Non" /></a>
+					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
+					<a href="index.php?action=reportedComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
 				}
 				?>

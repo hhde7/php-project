@@ -39,20 +39,44 @@
 	<?php
 		
 			$reportedComment = $commentManager->getAllReportedComments();
-			foreach ($reportedComment as $key => $value) {
-			?>
+			if ($_GET['page'] == 1) {
+			$start = 0;
+			$end = 20;
+		} 
+		elseif ($_GET['page'] > 1) {
+			$start = $_GET['page']*20 - 20;
+			$end = $_GET['page']*20;
+		}
+		for ($i=$start; $i < $end ; $i++) { 
+		 
+			if (isset($reportedComment[$i])) {
+				?>
 			<tr>
-				<td><?= $value->getAuthor() ?></td> 
-				<td><?= mb_strimwidth($value->getComment(), 0, 35, '...') ?></td>
-				<td><?= mb_strimwidth($value->getCommentDate(), 4, 18)?></td> 
-				<td><a href="index.php?action=reportedComments&amp;see=<?= $value->getCommentId() ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
-				<a href="index.php?action=moderate&amp;allow=<?= $value->getCommentId() ?>&amp;from=reportedComments" title="Accepter"><i class="fas fa-check-circle"></i></a>
-			<a href="index.php?action=moderate&amp;delete=<?= $value->getCommentId() ?>&amp;from=reportedComments" title="Supprimer"><i class="fas fa-minus-circle"></i></a></td>
+				<td><?= $reportedComment[$i]->getAuthor() ?></td> 
+				<td><?= mb_strimwidth($reportedComment[$i]->getComment(), 0, 35, '...') ?></td>
+				<td><?= mb_strimwidth($reportedComment[$i]->getCommentDate(), 4, 18)?></td> 
+				<td><a href="index.php?action=reportedComments&amp;see=<?= $reportedComment[$i]->getCommentId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+				<a href="index.php?action=moderate&amp;allow=<?= $reportedComment[$i]->getCommentId() ?>&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>" title="Accepter"><i class="fas fa-check-circle"></i></a>
+			<a href="index.php?action=moderate&amp;delete=<?= $reportedComment[$i]->getCommentId() ?>&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="fas fa-minus-circle"></i></a></td>
 			</tr>
 			<?php
 			}
+		}
 	?>
 		</table>
+
+		<p id="pagination">Allez à la page :     
+<?php
+$reported = 1;
+$pagesNumber = $commentManager->paging($reported);
+
+for ($j=0; $j < $pagesNumber; $j++) {
+?>
+    <a href="index.php?action=reportedComments&page=<?= $j+1 ?>"><?= $j+1 ?></a>
+<?php 
+}
+?>
+</p> 
 	</div>
 
 	<!-- JAVASCRIPT -->

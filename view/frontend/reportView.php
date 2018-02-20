@@ -9,7 +9,7 @@
     <body>
     	<div class="centered-box">
 	        <h4>Signaler un commentaire <span><i class="fas fa-comments"></i></span> inapproprié</h4>
-	        <p><a href="index.php?ticket=<?=$_GET['ticket']?>&amp;episode=<?= $_GET['episode'] ?>">Retour</a></p>
+	
 
 
 			<p></p>
@@ -29,6 +29,8 @@
 	<?php
 			} else {
 			?>
+				<p><a href="index.php?ticket=<?=$_GET['ticket']?>&amp;episode=<?= $_GET['episode'] ?>">Retour</a></p>
+
 				<p>Commentaire signalé au modérateur</p>	
 			<?php
 			}

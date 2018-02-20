@@ -34,21 +34,53 @@
 				<th>DATE DE PUBLICATION</th>
 				<th>ACTION</th>
 			</tr>
+
+
 	<?php
 		$episode = $PostManager->getAllEpisodes();
+		if ($_GET['page'] == 1) {
+			$start = 0;
+			$end = 20;
+		} 
+		elseif ($_GET['page'] > 1) {
+			$start = $_GET['page']*20 - 20;
+			$end = $_GET['page']*20;
+		}
+
+		for ($i=$start; $i < $end ; $i++) { 
+		 
+		 if (isset($episode[$i])) {
+		 			
+		 		
+		/*
 		foreach ($episode as $key => $value) {
+		*/
 		?>
 			<tr>
-				<td><?= mb_strimwidth($value->getTitle(), 0, 45, '...') ?></td> 
-				<td><?= mb_strimwidth($value->getCreationDate(), 10, 18) ?></td>
-				<td><a href="index.php?action=allEpisodes&amp;see=<?= $value->getPostId() ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
-				<a href="index.php?action=allEpisodes&amp;edit=<?= $value->getPostId() ?>&amp;type=episode" title="Modifier"><i class="far fa-edit"></i></a>
-				<a href="index.php?action=moderate&amp;delete=<?= $value->getPostId() ?>&amp;type=<?= $value->getType()?>&amp;from=allEpisodes" title="Supprimer"><i class="far fa-trash-alt"></i></a></td>
+				<td><?= mb_strimwidth($episode[$i]->getTitle(), 0, 45, '...') ?></td> 
+				<td><?= mb_strimwidth($episode[$i]->getCreationDate(), 10, 18) ?></td>
+				<td><a href="index.php?action=allEpisodes&amp;see=<?= $episode[$i]->getPostId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+				<a href="index.php?action=allEpisodes&amp;edit=<?= $episode[$i]->getPostId() ?>&amp;type=episode&amp;page=<?= $_GET['page'] ?>" title="Modifier"><i class="far fa-edit"></i></a>
+				<a href="index.php?action=moderate&amp;delete=<?= $episode[$i]->getPostId() ?>&amp;type=<?= $episode[$i]->getType()?>&amp;from=allEpisodes&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="far fa-trash-alt"></i></a></td>
 			</tr>
 		<?php
+		 }		
 		}
 	?>
 		</table>
+
+<p id="pagination">Allez à la page :     
+<?php
+$pagesNumber = $postManager->paging('episode');
+
+for ($j=0; $j < $pagesNumber; $j++) {
+?>
+    <a href="index.php?action=allEpisodes&page=<?= $j+1 ?>"><?= $j+1 ?></a>
+<?php 
+}
+?>
+</p>
+
 	</div>
 
 	<!-- JAVASCRIPT -->

@@ -1,5 +1,5 @@
 
-<h2 class="first-panel-title">BILLETS D'HUMEUR <i class="fas fa-bullhorn"></i></i></i></h2>
+<h2 class="first-panel-title">À VOTRE ATTENTION <i class="fas fa-bullhorn"></i></i></i></h2>
 
 <img src="public/images/chain1.png" class="left-chain"> 	
 <img src="public/images/chain1.png" class="right-chain">

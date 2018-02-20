@@ -36,7 +36,39 @@
 				<th>DATE DE PUBLICATION</th>
 				<th>ACTION</th>
 			</tr>
-	<?php
+
+<?php
+		$comment = $commentManager->getAllUnsortedComments();
+		if ($_GET['page'] == 1) {
+			$start = 0;
+			$end = 20;
+		} 
+		elseif ($_GET['page'] > 1) {
+			$start = $_GET['page']*20 - 20;
+			$end = $_GET['page']*20;
+		}
+		for ($i=$start; $i < $end ; $i++) { 
+		 
+			if (isset($comment[$i])) {
+				?>
+				<tr>
+					<td><?= mb_strimwidth($comment[$i]->getAuthor(), 0, 15, '...') ?></td> 
+					<td><?= mb_strimwidth($comment[$i]->getComment(), 0, 35, '...') ?></td>
+					<td><?= mb_strimwidth($comment[$i]->getCommentDate(), 4, 18)?></td> 
+					<td><a href="index.php?action=allComments&amp;see=<?= $comment[$i]->getCommentId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+						<a href="index.php?action=moderate&amp;delete=<?= $comment[$i]->getCommentId() ?>&amp;from=allComments&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="fas fa-minus-circle"></i></a></td>
+					</tr>
+			<?php
+				}
+			}
+		
+		 		
+		/*
+		foreach ($episode as $key => $value) {
+		*/
+		?>
+
+	<?php /*
 		$post = $postManager->getAllPosts();
 		foreach ($post as $key => $value) {
 			$comment = $commentManager->getAllComments($value->getPostId());
@@ -46,15 +78,28 @@
 				<td><?= mb_strimwidth($value->getAuthor(), 0, 15, '...') ?></td> 
 				<td><?= mb_strimwidth($value->getComment(), 0, 35, '...') ?></td>
 				<td><?= mb_strimwidth($value->getCommentDate(), 4, 18)?></td> 
-				<td><a href="index.php?action=allComments&amp;see=<?= $value->getCommentId() ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
-				<a href="index.php?action=moderate&amp;delete=<?= $value->getCommentId() ?>&amp;from=allComments" title="Supprimer"><i class="fas fa-minus-circle"></i></a></td>
+				<td><a href="index.php?action=allComments&amp;see=<?= $value->getCommentId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+				<a href="index.php?action=moderate&amp;delete=<?= $value->getCommentId() ?>&amp;from=allComments&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="fas fa-minus-circle"></i></a></td>
 			</tr>
 			<?php
 			}
 		}
-
+*/
 	?>
 		</table>
+
+		<p id="pagination">Allez à la page :     
+<?php
+$allComments = 'withReported';
+$pagesNumber = $commentManager->paging($allComments);
+
+for ($j=0; $j < $pagesNumber; $j++) {
+?>
+    <a href="index.php?action=allComments&page=<?= $j+1 ?>"><?= $j+1 ?></a>
+<?php 
+}
+?>
+</p> 
 	</div>
 
 	<!-- JAVASCRIPT -->
