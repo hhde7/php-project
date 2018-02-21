@@ -1,24 +1,54 @@
+/* #############################*/
+
+
+/* SOMMAIRE
+/*
+/* FRONTEND
+/*
+/* -
+
 /* FONTS */
+
 body {
     font-family: 'Varela Round', sans-serif;
-    background: url('../images/stock/24.jpg');
+    background: url(../images/stock/24.jpg);
+}
+
+h1 {
+    text-align: center;
 }
 
 p {
     font-size: 14px;
 }
-/* header */
+
+a {
+    text-decoration: none;
+    color: purple;
+}
+
+
+/*  ###########  HEADER ########### */
 
 header {
     z-index: 1;
     height: 110px;
-    border-bottom: 1px dashed rgba(168,130,122,0.8);
-    background: url('../images/23(g).png') no-repeat left top;
-    background-width: cover;
-    background-color: #f6f2f1;
-    box-shadow: 0 0 11px grey;  
+    background: url(../images/23.png) no-repeat left top;
+    border-bottom: 1px dashed rgba(168, 130, 122, 0.8);
     background-size: 100%;
+    background-color: #f6f2f1;
+    box-shadow: 0 0 11px grey;
+    background-width: cover;
 }
+
+
+/* ########### LIENS DE LOGIN ########### */
+
+
+/* -----> FRONTEND */
+
+
+/* -----> BACKEND */
 
 .login-logout {
     position: relative;
@@ -26,10 +56,10 @@ header {
     text-align: right;
     top: -80px;
     right: 20px;
-    }
+}
 
 .login-logout a {
-    color: black;
+    color: #000;
 }
 
 .login-logout a:hover {
@@ -37,29 +67,84 @@ header {
 }
 
 
-/* menu */
-.blockElt {
-    width: 100%;
-    padding: 20px 10px 10px 10px;
-    margin-left: 0;
-    border: 1px solid black;
-    height: 150px;
-    overflow-y: scroll;
-    background-color: lightblue;
+/* ########### MENU ########### */
+
+
+/* -----> FRONTEND */
+
+#logo {
+    margin-top: 2px;
+    margin-left: 23px;
 }
 
-li{
+.right-bar {
+    position: relative;
+    z-index: -1;
+    background-color: #f6f2f1;
+    border: 1px dashed rgba(168, 130, 122, 0.8);
+    padding: 25px 0 10px;
+    font-size: 14px;
+    transform: translateY(-5px);
+    box-shadow: 0 0 11px #ababab;
+    text-align: center;
+    color: #445779cc;
+}
+
+.right-bar ul {}
+
+.right-bar li {
+    transform: translateX(-25px);
+    text-align: left;
+    width: 141px;
+    font-weight: 700;
+}
+
+.right-bar h2 {
+    border: 1px dotted rgba(168, 130, 122, 0.8);
+    border-top: none;
+    background-color: #FFF;
+    margin-top: 0;
+    font-weight: 700;
+    color: #445779cc!important;
+}
+
+.right-bar li a {
+    color: #445779cc!important;
+}
+
+#profil {
+    text-align: center;
+    width: 100%;
+    border: 1px dotted rgba(168, 130, 122, 0.8);
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.right-bar-episode-title {
+    background-color: #a59191;
+    color: #FFF;
+    box-shadow: 0 2px 11px #4444448c;
+}
+
+
+/* ########### MENU ########### */
+
+
+/* -----> FRONTEND */
+
+
+/* -----> BACKEND */
+
+li {
     list-style: none;
     margin-left: -13px;
 }
 
-#logo {
-    margin-top: 2px;
-    margin-left: 23px; 
-}
 
-/* dashboard */
-/* menu */
+/* ########### MENU ########### */
+
+
+/* -----> BACKEND */
 
 #menu {
     position: relative;
@@ -67,106 +152,116 @@ li{
     margin-top: 4px;
 }
 
-.right-bar {
-    position: relative;
-    z-index: -1;
+nav {
+    border-right: 1px dashed rgba(168, 130, 122, 0.8);
+    padding: 1px 15px 15px;
+    transform: translate(-14px, -25px);
     background-color: #f6f2f1;
-    border: 1px dashed rgba(168,130,122,0.8);
-    padding: 25px 0 10px;
-    font-size: 14px;
-    transform: translateY(-5px);
-    box-shadow: 0px 0px 11px #ababab;
-    text-align: center;
-    color: #445779cc;
+    margin-bottom: -47px;
+    transform: translate(-15px, -4px);
+    box-shadow: -6px 19px 12px 6px grey;
 }
 
-.right-bar ul {
+#posts-stats,
+#readers-stats {
+    box-shadow: 0 0 11px grey;
+    background-color: #f6f2f1;
+    padding: 15px;
+    transform: translate(-14px, -6px);
+    border: none;
+    border-right: 1px dashed rgba(168, 130, 122, 0.8);
+    margin-top: -14px;
+    margin-bottom: -51px;
 }
 
-.right-bar li {
-    transform: translateX(-25px);
-    text-align: left;
-    width: 141px;
-    font-weight: bold;
+#readers-stats {
+    min-height: 100%;
 }
 
-.right-bar h2 {
-    border: 1px dotted rgba(168,130,122,0.8);
-    border-top: none;
-    background-color: white;
-    margin-top: 0;
-    font-weight: bold;
-    color: #445779cc !important;
+#menu li a {
+    color: rgba(0, 0, 0, 0.7);
 }
 
-.right-bar li a {
-    color: #445779cc !important;
+
+/* ########### MENU ########### */
+
+
+/* -----> FRONTEND */
+
+
+/* -----> BACKEND */
+
+li a:hover {
+    text-decoration: none;
 }
 
-#profil {
-    text-align: center;
-    width: 100%;
-    border: 1px dotted rgba(168,130,122,0.8);
-    border-bottom: none;
-    margin-bottom: 0px;
+h2 {
+    font-size: 15px!important;
+    font-weight: 700;
+    color: grey;
 }
 
-.right-bar-episode-title {
-    background-color: #a59191;
-    color: white;
-    box-shadow: 0px 2px 11px #4444448c;
-}
 
-#adminTitle {
+/* ########### MENU ########### */
 
+
+/* -----> BACKEND */
+
+#admin-title {
     transform: translateX(-16px);
     width: 298px;
-    color: white;
-}
-
-#postsStatsTitle,
-#readersStatsTitle {
-    transform: translate(-16px,23px);
-    width: 299px;
-    color: white;
-}
-
-#adminTitle,
-#lastEpisodeTitle,
-#lastTicketTitle,
-#lastCommentsTitle,
-#reportedCommentsTitle {
-    text-align: center;
     background-color: #a59191;
-    padding: 7px 5px 5px 5px;
-    box-shadow: 0px 2px 11px #ababab;
-    font-weight: normal;
 }
 
+#episodes {
+    margin-top: -8px;
+    margin-left: 4px;
+}
 
-#postsStatsTitle {
-    position: relative;
-    z-index: 1;
+#posts-stats-title {
     background-color: #88967f;
-    text-align: center;
-    padding: 7px 5px 5px 5px;
-    box-shadow: 0px 2px 11px #ababab;
-    font-weight: normal;
 }
 
-#readersStatsTitle {
+#readers-stats-title {
+    background-color: #9194a5;
+}
+
+#posts-stats-title,
+#readers-stats-title {
     position: relative;
     z-index: 1;
-    background-color: #9194a5;
-    text-align: center;
-    padding: 7px 5px 5px 5px;
-    box-shadow: 0px 2px 11px #ababab;
-    font-weight: normal;
+    transform: translate(-16px, 23px);
+    width: 299px;
 }
+
+#admin-title,
+#posts-stats-title,
+#readers-stats-title {
+    padding: 7px 5px 5px;
+    box-shadow: 0 2px 11px #ababab;
+    font-weight: 400;
+    text-align: center;
+    color: #FFF;
+}
+
+
+/* ########### MENU ########### */
+
+
+/* -- COIN DROIT DES TITRES -- */
+
+
+/* -----> BACKEND */
+
+
+/* admin-title */
 
 .corner {
     transform: translate(271px, -16px);
 }
+
+
+/* posts-stats-title , readers-stats-title */
 
 .cornerd {
     position: relative;
@@ -175,52 +270,69 @@ li{
 }
 
 
-h2 {
-    font-size: 15px !important;
-    font-weight: bold;
-    color: grey;
-}
+/* ########### MENU ########### */
+
+
+/* ------- FONT AWESOME ------- */
+
+
+/* -----> FRONTEND */
+
+
+/* -----> BACKEND */
 
 .fa-envira {
-    color: rgba(148,216,124,1);
+    color: rgba(148, 216, 124, 1);
 }
 
 .fa-bullhorn {
-    color: rgba(158,186,221,1);
+    color: rgba(158, 186, 221, 1);
 }
 
 .fa-comments {
-    color: rgba(125,198,207,1);
+    color: rgba(125, 198, 207, 1);
 }
 
-.fa-arrow-circle-right {
-    color: rgba(0,0,0,0.7);
-}
+
+/* ########### MENU ########### */
+
+
+/* -----> BACKEND */
 
 .fa-paperclip {
-    color: rgba(124,25,198,0.5);
+    color: rgba(124, 25, 198, 0.5);
 }
 
 .fa-bell {
-    transform: rotateZ(344deg); 
-    color: rgba(181,11,11,0.5);
+    transform: rotateZ(344deg);
+    color: rgba(181, 11, 11, 0.5);
 }
 
 .fa-users {
-    color: rgba(155,169,44,0.6);
+    color: rgba(155, 169, 44, 0.6);
+}
+
+.fa-arrow-circle-right {
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .fa-chart-line {
-    color: rgba(47,81,144,0.6);
+    color: rgba(47, 81, 144, 0.6);
 }
 
 .fa-calculator {
-    color: rgba(243,170,62,0.7);
+    color: rgba(243, 170, 62, 0.7);
 }
-/*----------- allEpisodes --------------*/
+
 .fa-plus-circle {
     color: #7ca96d;
 }
+
+
+/* ######### ICONES ÉDITION ARTICLES, COMMENTAIRES ######### */
+
+
+/* -----> BACKEND */
 
 .fa-edit {
     color: orange;
@@ -234,13 +346,32 @@ h2 {
     color: orange;
 }
 
+
+/* ######### ICONE PRÉCÉDENT LE NOM DE L'ARTICLE LIÉ AU COMMENTAIRE ######### */
+
+
+/* PANNEAU CONTENU DE COMMENTAIRE */
+
+
+/* -----> BACKEND */
+
 .fa-long-arrow-alt-right {
-    color: darkred;
+    color: #8B0000;
 }
+
+
+/* ######### ICONES NAVIGATION PAGINATION ######### */
+
+
+/* -----> FRONTEND */
 
 .fa-hand-point-left,
 .fa-hand-point-right {
-color: #445779cc !important;}
+    color: #445779cc!important;
+}
+
+
+/* ######### MES LECTEURS ######### */
 
 .stats-square {
     display: flex;
@@ -249,122 +380,61 @@ color: #445779cc !important;}
 }
 
 .stats-square p {
-    border: 1px dashed rgba(168,130,122,0.8);
+    border: 1px dashed rgba(168, 130, 122, 0.8);
     padding: 3px;
-    background-color: white;
+    background-color: #FFF;
     width: 118px;
     border-radius: 5px;
 }
 
 
-
-#menu li a {
-    color: rgba(0,0,0,0.7);
-}
-
-li a:hover {
-    text-decoration: none;
-}
-
-nav {
-    border-right: 1px dashed rgba(168,130,122,0.8);
-    padding: 1px 15px 15px 15px;
-    transform: translate(-14px, -25px);
-    background-color: #f6f2f1;
-    margin-bottom: -47px;
-    transform: translate(-15px,-4px);
+/* ######### PANNEAUX 1 & 2 ######### */
 
 
-  }
+/* -----> FRONTEND */
 
 
+/* -----> BACKEND */
 
-#episodesTitle {
-    margin-top: -8px;
-    margin-left: 4px;
-}
-
-/* Dernier épisode publié */
-
-#lastEpisode,
-#lastTicket {
-    border: 1px dashed rgba(168,130,122,0.8);
-    padding: 75px 2px 15px 15px;
-    height: 100%;
-    font-size: 14px;
-    transform: translateY(-35px);
-    margin-bottom: -35px;
-    box-shadow: 0px 2px 11px #ababab;
-}
-
-#lastEpisode,
-#lastTicket {
+.first-panel,
+.second-panel {
     position: relative;
-    z-index: -1;
+    transform: translate(68px, 22px);
+    border: 1px dashed rgba(168, 130, 122, 0.8);
     background-color: #f6f2f1;
+    box-shadow: 0 0 11px grey;
+    height: 50%;
 }
 
-#lastComments, 
-#reportedComments {
-    border: 1px dashed rgba(168,130,122,0.8);
-    padding: 75px 0px 0px 5px;
-    height: 100%;
-    font-size: 14px;
-    transform: translateY(-35px);
-    margin-bottom: -35px;
-    box-shadow: 0px 2px 11px #ababab;
-}
-
-#lastComments,
-#reportedComments{
+.first-panel-title,
+.second-panel-title {
     position: relative;
-    z-index: -1;
-    background-color: #f6f2f1;
-    
+    z-index: 5;
+    text-align: center;
+    color: #FFF;
+    background-color: #a59191;
+    padding: 7px 5px 5px;
+    box-shadow: 0 2px 11px #444;
+    font-weight: 400;
 }
 
-.menuContener {
-    box-shadow: -6px 19px 12px 6px grey; 
-}
 
-#postsStats,
-#readersStats {  
-    box-shadow: 0 0px 11px grey;      
-    background-color: #f6f2f1;
-    padding: 15px 15px 15px 15px;
-    transform: translate(-14px, -6px);
-    border: none;
-    border-right: 1px dashed rgba(168,130,122,0.8);
-    margin-top: -14px;
-    margin-bottom: -51px;
-}
+/* ######### PANNEAU 2 ######### */
 
-#readersStats {
-    min-height: 100%;
-}
 
-#lastEpisodeTitle,
-#lastTicketTitle,
-#lastCommentsTitle,
-#reportedCommentsTitle {
-    position: relative;
-    top: 24px;
-    width: 100%;
-    color: white;
-}
+/* -----> BACKEND */
 
-.stats-h2 {
-    margin-left: 0px;
-}
+
+/* ... DASHBOARD */
 
 .second-panel-comment-box {
     position: relative;
     top: -22px;
     left: -1px;
-    transform: translate(1px,-8px);
-    background-color: white;
+    transform: translate(1px, -8px);
+    background-color: #FFF;
     border: 1px dotted #a59191;
-    margin: 0 auto 5px auto;
+    margin: 0 auto 5px;
     padding: 10px;
     width: 100%;
 }
@@ -376,42 +446,55 @@ nav {
 }
 
 
-/* ----------------- panneaux -------------- */
-
-.first-panel,
-.second-panel,
-#lastEpisode {
-    position: relative;
-    transform: translate(68px,22px);
-    border: 1px dashed rgba(168,130,122,0.8);
-    background-color: #f6f2f1;
-    box-shadow: 0 0 11px grey;  
-    height: 50%;
-}
+/* ######### PANNEAU 1 & 2 ######### */
 
 
-.left-chain,
-.front-second-panel-left-chain {
+/* -----> FRONTEND */
+
+
+/* -----> BACKEND */
+
+
+/* ... CHAINES LEFT */
+
+.front-first-panel-left-chain,
+.front-second-panel-left-chain,
+.back-first-panel-left-chain,
+.back-second-panel-left-chain {
     z-index: 0;
     position: relative;
     top: -84px;
-    left: 10%; 
+    left: 10%;
 }
 
-.left-nail {
+
+/* ... CHAINES RIGHT */
+
+.front-first-panel-right-chain,
+.back-first-panel-right-chain,
+.back-second-panel-right-chain {
+    z-index: 0;
     position: relative;
-    transform: rotate(60deg) scale(0.7);
-    z-index: 5;
-    top: -55px;
-    left: 4.9%;
+    top: -84px;
+    left: 85%;
 }
+
+.front-second-panel-right-chain {
+    z-index: 0;
+    position: relative;
+    top: -84px;
+    left: 87%;
+}
+
+
+/* ... CLOUS LEFT */
 
 .front-first-panel-left-nail {
     position: relative;
     transform: rotate(60deg) scale(0.7);
     z-index: 5;
     top: -55px;
-    left: -0.5%;
+    left: -.5%;
 }
 
 .front-second-panel-left-nail {
@@ -422,6 +505,25 @@ nav {
     left: 6%;
 }
 
+.back-first-panel-left-nail,
+.back-second-panel-left-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -55px;
+    left: 4.9%;
+}
+
+.front-first-panel-second-level-left-nail,
+.back-first-panel-second-level-left-nail,
+.back-second-panel-second-level-left-nail {
+    position: relative;
+    transform: rotate(60deg) scale(0.7);
+    z-index: 5;
+    top: -35px;
+    left: 9.5%;
+}
+
 .front-second-panel-second-level-left-nail {
     position: relative;
     transform: rotate(60deg) scale(0.7);
@@ -430,16 +532,11 @@ nav {
     left: 9.3%;
 }
 
-.second-level-left-nail,
-.front-first-panel-second-level-left-nail {
-    position: relative;
-    transform: rotate(60deg) scale(0.7);
-    z-index: 5;
-    top: -35px;
-    left: 9.5%;
-}
 
-.right-nail {
+/* ... CLOUS RIGHT */
+
+.back-first-panel-right-nail,
+.back-second-panel-right-nail {
     position: relative;
     transform: rotate(60deg) scale(0.7);
     z-index: 5;
@@ -463,14 +560,6 @@ nav {
     left: 82.5%;
 }
 
-.second-level-right-nail {
-    position: relative;
-    transform: rotate(60deg) scale(0.7);
-    z-index: 5;
-    top: -35px;
-    left: 84.0%;
-}
-
 .front-first-panel-second-level-right-nail {
     position: relative;
     transform: rotate(60deg) scale(0.7);
@@ -478,7 +567,6 @@ nav {
     top: -34px;
     left: 82%;
 }
-
 
 .front-second-panel-second-level-right-nail {
     position: relative;
@@ -488,33 +576,23 @@ nav {
     left: 86.5%;
 }
 
-.right-chain {
-    z-index: 0;
+.back-first-panel-second-level-right-nail,
+.back-second-panel-second-level-right-nail {
     position: relative;
-    top: -84px;
-    left: 85%; 
-}
-
-.front-second-panel-right-chain {
-    z-index: 0;
-    position: relative;
-    top: -84px;
-    left: 87%; 
-}
-
-.first-panel-title 
-/*and second */{
-    position: relative;
+    transform: rotate(60deg) scale(0.7);
     z-index: 5;
-    text-align: center;
-    color: white;
-    background-color: #a59191;
-    padding: 7px 5px 5px 5px;
-    box-shadow: 0px 2px 11px #444444;;
-    font-weight: normal;
+    top: -35px;
+    left: 84%;
 }
 
 
+/* -----> BACKEND */
+
+
+/* FORMULAIRES */
+
+
+/* RÉDACTION D'ARTICLE */
 
 .first-panel form,
 .second-panel form {
@@ -522,71 +600,141 @@ nav {
     top: -48px;
 }
 
-/* front form */
-.ticket-comment-form input,
-.ticket-comment-form textarea,
-.episode-comment-form input,
-.episode-comment-form textarea {
+
+/*
+form .title {
+width: 100%;
+}
+*/
+
+
+/* ######## FORMULAIRES ######## */
+
+
+/* -----> FRONTEND */
+
+
+/* -----> BACKEND */
+
+form input,
+form textarea,
+form input,
+textarea {
     width: 100%;
 }
 
-form #title {
-    width: 100%;
-}
-
-form #submit {
+form .submit {
     position: relative;
     top: 22px;
-    left: 0px;
-    width: 100%;;
+    left: 0;
+    width: 100%;
 }
+
+
+/* ... RÉDACTION DE COMMENTAIRES */
+
+
+/* -----> FRONTEND */
+
+textarea {
+    width: 250px;
+    height: 200px;
+}
+
+.leave-comment {
+    transform: translateY(-10px);
+    float: right;
+}
+
+.ticket-comment-form,
+.episode-comment-form {
+    margin-top: 50px;
+}
+
+
+/* ... SIGNALER UN COMMENTAIRE  */
+
+.reported {
+    color: #e28989;
+    float: right;
+}
+
+.report-it {
+    position: relative;
+}
+
+.report-it:hover {
+    text-decoration: none;
+}
+
+
+/* ........ MODIFIER UN ARTICLE */
+
+
+/* -----> BACKEND */
 
 .date-of-publication {
     color: grey;
-    font-weight: normal;
+    font-weight: 400;
 }
 
+.form-datetime {
+    width: auto;
+}
+
+
+/* TABLEAUX DES ARTICLES & COMMENTAIREs */
+
+
+/* -----> BACKEND */
+
 table {
-    padding: 5px !important;
+    padding: 5px!important;
     position: relative;
     top: -31px;
-    background-color: white !important;
+    background-color: #FFF!important;
     border: 1px dotted #a59191;
     width: 100%;
 }
 
 th {
     background-color: #afafafcc;
-    color: white;
+    color: #FFF;
     font-weight: lighter;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
+    padding-top: 5px!important;
+    padding-bottom: 5px!important;
 }
 
 th,
 td {
-    padding-left: 10px !important;
+    padding-left: 10px!important;
 }
 
 tr:hover {
     background-color: #ccc;
 }
 
-/* --SECOND PANEL ----------------*/
+
+/* MISE EN  FORME DU CONTENU TEXTUEL DES PANNEAUX */
+
+
+/* -----> FRONTEND */
+
+
+/* -----> BACKEND */
+
 .first-panel-post,
-.second-level-first-panel-post,
 .second-panel-post,
+.first-panel-second-level-post,
 .second-panel-comment {
     position: relative;
     top: -30px;
-    background-color: white;
+    background-color: #FFF;
     border: 1px dotted #a59191;
     padding: 20px;
 }
 
-
-.second-level-first-panel-post
-{
+.first-panel-second-level-post {
     top: 10px;
     padding-bottom: 12px;
     margin-bottom: 60px;
@@ -596,7 +744,7 @@ tr:hover {
 .second-panel-post-title,
 .second-panel-comment-author {
     padding-top: 20px;
-    font-size: 25px !important;
+    font-size: 25px!important;
 }
 
 .first-panel-post-title,
@@ -606,21 +754,20 @@ tr:hover {
 .second-panel-comment-author,
 .second-panel-comment-date {
     text-align: center;
-    font-weight: bold;
-    color: #445779cc !important;
+    font-weight: 700;
+    color: #445779cc!important;
     margin: auto;
 }
 
-
 .episode-number {
-    font-size: 45px !important;
+    font-size: 45px!important;
 }
 
 .first-panel-post-content,
 .second-panel-post-content {
     position: relative;
     top: 15px;
-    text-align: justify !important;
+    text-align: justify!important;
     margin: auto;
     padding-bottom: 25px;
 }
@@ -628,104 +775,66 @@ tr:hover {
 .second-panel-comment-content {
     position: relative;
     top: 15px;
-    text-align: justify !important;
+    text-align: justify!important;
     margin: auto;
-    padding: 30px 0 40px 0;
+    padding: 30px 0 40px;
 }
 
 .second-panel-comment-relatedPost {
-    font-size: 10px ;
+    font-size: 10px;
 }
 
 
-/* laisser un commentaire */
+/* ######## PAGINATION ######## */
 
-.leave-comment {
-    transform: translateY(-25px);
-}
 
-/* ------------------------- */
+/* -----> FRONTEND */
 
-h1, h3 {
-    text-align:center;
-}
-h3
-{
-    background-color: white;
-    font-weight: bold;
-    color: black;
-    
-    font-size:0.9em;
-    margin-bottom:0px;
-    padding: 5px;
-}
-.news p
-{
-    background-color:#CCCCCC;
-    margin-top:0px;
-    padding: 5px;
-    border-radius: 0 0 15px 15px; 
-    transition: background-color ease 0.3s;
-}
-
-.news p:hover {
-    background-color: red;
-}
-.news
-{
-    width:70%;
-    margin:auto;
-}
-
-.reported {
-    color: red;
-}
-
-.report-it {
-    position: relative;
-}
-
-.report-it:hover {
-     text-decoration: none;  
-}
-
-a
-{
-    text-decoration: none;
-    color: purple;
-}
-
-textarea {
-   
-    width: 250px;
-    height: 200px;
-}
-
-#navControl {
+#nav-control {
     height: 25px;
 }
+
+.previous-ticket-link,
+.previous-episode-link {
+    float: left;
+}
+
+.next-ticket-link,
+.next-episode-link {
+    float: right;
+}
+
+
+/* -----> BACKEND */
 
 #pagination {
     text-align: right;
 }
 
-#nextPost {
-    float: right;
-}
+
+/* PAGE DE CONFIRMATION D'ACTIONS ET LOGIN
+/* -----> FRONTEND */
+
+
+/* -----> BACKEND */
 
 .centered-box {
     position: absolute;
     text-align: center;
-    
-    border: 1px dotted  #a59191;
+    border: 1px dotted #a59191;
     border-radius: 3px;
-    padding: 10px 20px 25px 20px;
-    background-color: white;
-  
+    padding: 10px 20px 25px;
+    background-color: #FFF;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
+
+
+/* -----> FRONTEND */
+
+
+/* LOGIN */
 
 .centered-box form input {
     width: 100%;
@@ -737,30 +846,9 @@ textarea {
     margin-top: 20px;
 }
 
-#contener {
-     display: flex;
-     text-align: center;
-}
 
-#contener p {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -150%);
-}
+/* ######## FOOTER ######## */
 
 footer {
     text-align: center;
-}
-
-
-/* ########## HOME ############*/
-.previous-ticket-link,
-.previous-episode-link {
-    float: left;
-}
-
-.next-ticket-link,
-.next-episode-link {
-    float: right;
 }
