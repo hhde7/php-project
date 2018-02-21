@@ -14,12 +14,12 @@
 ?>
 <div class="col-lg-4 col-lg-push-1 second-panel">
 
-	<h2 class="first-panel-title">CONTENU DU COMMENTAIRE <i class="fas fa-comments"></i></h2>
+	<h2 class="second-panel-title">CONTENU DU COMMENTAIRE <i class="fas fa-comments"></i></h2>
 
-	<img src="public/images/chain1.png" class="left-chain"> 	
-	<img src="public/images/chain1.png" class="right-chain">
-	<img src="public/images/nail1.png" class="left-nail">
-	<img src="public/images/nail1.png" class="right-nail">
+	<img src="public/images/chain1.png" class="back-second-panel-left-chain"> 	
+	<img src="public/images/chain1.png" class="back-second-panel-right-chain">
+	<img src="public/images/nail1.png" class="back-second-panel-left-nail">
+	<img src="public/images/nail1.png" class="back-second-panel-right-nail">
 
 	<div class="second-panel-comment">
 		<h2 class="second-panel-comment-author" ><?= $comment->getAuthor() ?></h2>

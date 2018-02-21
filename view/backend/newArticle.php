@@ -33,22 +33,22 @@
 
 		<h2 class="first-panel-title">RÉDIGER UN <?= $type ?></h2>
 
-		<img src="public/images/chain1.png" class="left-chain"> 	
-		<img src="public/images/chain1.png" class="right-chain">
-		<img src="public/images/nail1.png" class="left-nail">
-		<img src="public/images/nail1.png" class="right-nail">
+		<img src="public/images/chain1.png" class="back-first-panel-left-chain"> 	
+		<img src="public/images/chain1.png" class="back-first-panel-right-chain">
+		<img src="public/images/nail1.png" class="back-first-panel-left-nail">
+		<img src="public/images/nail1.png" class="back-first-panel-right-nail">
 
 	<form action="index.php?action=<?= $_GET['action'] ?>&amp;posted=<?= $_GET['action'] ?>" method="post">
             <div>
                 <label for="author">Titre</label><br />
-                <input type="text" id="title" name="title"/>
+                <input type="text" class="title" name="title" required/>
             </div>
             <div>
                 <label for="comment">Contenu</label><br />
-                <textarea class="tinymce" id="writer" name="content"></textarea>
+                <textarea class="tinymce" id="writer" name="content" ></textarea>
             </div>
             <div>
-                <input type="submit" id="submit" />
+                <input type="submit" class="submit" />
             </div>
         </form>
 	<?php

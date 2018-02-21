@@ -23,10 +23,10 @@
 
 		<h2 class="first-panel-title">TOUS LES ÉPISODES <i class="fab fa-envira"></i></h2>
 
-		<img src="public/images/chain1.png" class="left-chain"> 	
-		<img src="public/images/chain1.png" class="right-chain">
-		<img src="public/images/nail1.png" class="left-nail">
-		<img src="public/images/nail1.png" class="right-nail">
+		<img src="public/images/chain1.png" class="back-first-panel-left-chain"> 	
+		<img src="public/images/chain1.png" class="back-first-panel-right-chain">
+		<img src="public/images/nail1.png" class="back-first-panel-left-nail">
+		<img src="public/images/nail1.png" class="back-first-panel-right-nail">
 
 		<table>
 			<tr>

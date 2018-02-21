@@ -1,16 +1,16 @@
 <?php 
 	$reportedComments = $commentManager->getAllReportedComments();
 ?>
-<h2 class="first-panel-title">COMMENTAIRES SIGNALÉS <i class="fas fa-comments"></i></h2>
-        <img src="public/images/chain1.png" class="left-chain">     
-        <img src="public/images/chain1.png" class="right-chain">
-        <img src="public/images/nail1.png" class="left-nail">
-        <img src="public/images/nail1.png" class="right-nail">
+<h2 class="second-panel-title">COMMENTAIRES RÉCENTS SIGNALÉS <i class="fas fa-comments"></i></h2>
+        <img src="public/images/chain1.png" class="back-second-panel-left-chain">     
+        <img src="public/images/chain1.png" class="back-second-panel-right-chain">
+        <img src="public/images/nail1.png" class="back-second-panel-left-nail">
+        <img src="public/images/nail1.png" class="back-second-panel-right-nail">
 
 
 <?php
 	
-	for ($i=0; $i < count($reportedComments) ; $i++) {
+	for ($i=0; $i < 2 /*count($reportedComments)*/ ; $i++) {
         $postId = $reportedComments[$i]->getPostId();
         $postTitle = $postManager->getPost($postId)->getTitle();
 
@@ -33,17 +33,18 @@
         
         <?php     
     }
-    ?> 
-<h2 class="first-panel-title">COMMENTAIRES RÉCENTS <i class="fas fa-comments"></i></h2>
+    ?>
+    <a href="index.php?action=reportedComments&page=1">Tout voir</a> 
+<h2 class="second-panel-title">COMMENTAIRES RÉCENTS <i class="fas fa-comments"></i></h2>
 
-        <img src="public/images/nail1.png" class="second-level-left-nail">
-        <img src="public/images/nail1.png" class="second-level-right-nail">
+        <img src="public/images/nail1.png" class="back-second-panel-second-level-left-nail">
+        <img src="public/images/nail1.png" class="back-second-panel-second-level-right-nail">
     <div class="second-level-comment-contener">    
 <?php
-$limit = 10;
+
 $lastComments = $commentManager->getLastComments();
 
-for ($i=0; $i < count($lastComments) ; $i++) {
+for ($i=0; $i < 5 /*count($lastComments)*/ ; $i++) {
     $postId = $lastComments[$i]->getPostId();
     $postTitle = $postManager->getPost($postId)->getTitle();
 
@@ -63,5 +64,6 @@ for ($i=0; $i < count($lastComments) ; $i++) {
 <?php
     }
 ?>
+    <a href="index.php?action=allComments&page=1">Tout voir</a> 
     </div>
 

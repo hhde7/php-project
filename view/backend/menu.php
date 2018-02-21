@@ -1,9 +1,9 @@
-<nav class="menuContener">
+<nav>
 
-	<h2 id="adminTitle">ADMINISTRATION DU BLOG</h2>
+	<h2 id="admin-title">ADMINISTRATION DU BLOG</h2>
 	<img class="corner" src="public/images/cornerd.png" />
 	<!-- pas de h2 pour le texte en gras mais font-weight via css -->
-	<h2  id="episodesTitle" ><i class="fab fa-envira"></i>
+	<h2  id="episodes" ><i class="fab fa-envira"></i>
 
 ÉPISODES</h2>
 	<ul>

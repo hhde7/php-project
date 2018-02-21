@@ -17,12 +17,12 @@ if ($type == 'episode') {
 ?>
 <div class="col-lg-4 col-lg-push-1 second-panel">
 
-	<h2 class="first-panel-title">CONTENU<?= $type ?></h2>
+	<h2 class="second-panel-title">CONTENU<?= $type ?></h2>
 
-		<img src="public/images/chain1.png" class="left-chain"> 	
-		<img src="public/images/chain1.png" class="right-chain">
-		<img src="public/images/nail1.png" class="left-nail">
-		<img src="public/images/nail1.png" class="right-nail">
+		<img src="public/images/chain1.png" class="back-second-panel-left-chain"> 	
+		<img src="public/images/chain1.png" class="back-second-panel-right-chain">
+		<img src="public/images/nail1.png" class="back-second-panel-left-nail">
+		<img src="public/images/nail1.png" class="back-second-panel-right-nail">
 
 	<div class="second-panel-post">
 		<h2 class="second-panel-post-title" ><?= $post->getTitle() ?></h2>

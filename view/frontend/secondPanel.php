@@ -1,4 +1,4 @@
-<h2 class="first-panel-title">BILLET SIMPLE POUR L'ALASKA - ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></i></i></h2>
+<h2 class="second-panel-title">BILLET SIMPLE POUR L'ALASKA - ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></i></i></h2>
 
 <img src="public/images/chain1.png" class="front-second-panel-left-chain"> 	
 <img src="public/images/chain1.png" class="front-second-panel-right-chain">
@@ -13,7 +13,7 @@
 	<p class="first-panel-post-content"><?= $episode_->getContent() ?></p>
 </div>
 
-<div id="navControl">
+<div id="nav-control">
 	<?= $previousEpisodeLink ?>
 	<?= $nextEpisodeLink ?>
 </div>
@@ -23,7 +23,7 @@
 
 $comment = $commentManager->getAllComments($episode_->getPostId());
 ?>
-<h2 class="first-panel-title">COMMENTAIRES <i class="fa fa-comments"></i></i></i></h2>
+<h2 class="second-panel-title">COMMENTAIRES <i class="fa fa-comments"></i></i></i></h2>
 
 <img src="public/images/nail1.png" class="front-second-panel-second-level-left-nail">
 <img src="public/images/nail1.png" class="front-second-panel-second-level-right-nail">
@@ -44,7 +44,7 @@ $comment = $commentManager->getAllComments($episode_->getPostId());
         {
             $thisComment = $value->getCommentId();
             ?>
-            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?=$_GET['ticket']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">(signaler un abus)<br /></a>
+            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?=$_GET['ticket']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">signaler un abus<br /></a>
         <?php
     	}
     	elseif ($value->getReported() === '1' AND !isset($_GET['ticket']))
@@ -58,7 +58,7 @@ $comment = $commentManager->getAllComments($episode_->getPostId());
     	{
     		$thisComment = $value->getCommentId();
             ?>
-            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $lastTicket->getPostId() ?>&amp;ticket=<?= $lastTicket->getPostId() ?>&amp;episode=<?= $lastEpisode->getPostId() ?>">(signaler un abus)<br /></a>
+            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $lastTicket->getPostId() ?>&amp;ticket=<?= $lastTicket->getPostId() ?>&amp;episode=<?= $lastEpisode->getPostId() ?>">signaler un abus<br /></a>
         <?php
     	}
     	?>
@@ -86,7 +86,7 @@ $postManager = new JeanForteroche\Blog\Model\PostManager();
                 <textarea class="comment" name="comment" required></textarea>
             </div>
             <div>
-                <input type="submit" />
+                <input type="submit" class="submit" />
             </div>
         </form>
 <?php

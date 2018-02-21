@@ -8,7 +8,7 @@ $allReaders = $counterManager->getReaders(364*10);
 ?>
 
 <div>
-	<h2 class="stats-h2"><i class="fas fa-chart-line"></i> LECTEURS UNIQUES</h2>
+	<h2><i class="fas fa-chart-line"></i> LECTEURS UNIQUES</h2>
 	
 	<div class="stats-square">
 		<div>
@@ -21,6 +21,6 @@ $allReaders = $counterManager->getReaders(364*10);
 		</div>
 	</div>
 
-	<h2 class="stats-h2"><i class="fas fa-calculator"></i> Total des lecteurs uniques : <?= '<strong>' . $allReaders . '</strong>' ?></h2>
+	<h2><i class="fas fa-calculator"></i> Total des lecteurs uniques : <?= '<strong>' . $allReaders . '</strong>' ?></h2>
 
 </div>
