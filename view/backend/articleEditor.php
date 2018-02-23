@@ -23,15 +23,17 @@ if ($type == 'episode') {
 
 ?>
 
-<div class="col-lg-4 col-lg-push-1 second-panel">
+<div class="col-lg-4 col-lg-push-1 second-panel  second-panel-back">
 
 	<h2 class="second-panel-title">MODIFIER UN <?= $type ?></h2>
-
-	<img src="public/images/chain1.png" class="back-second-panel-left-chain"> 	
-	<img src="public/images/chain1.png" class="back-second-panel-right-chain">
-	<img src="public/images/nail1.png" class="back-second-panel-left-nail">
-	<img src="public/images/nail1.png" class="back-second-panel-right-nail">
-
+	<div class="chains-nails-contener">
+    	<div>
+			<img src="public/images/chain2.png" class="back-second-panel-left-chain"> 	
+			<img src="public/images/chain2.png" class="back-second-panel-right-chain">
+			<img src="public/images/nail1.png" class="back-second-panel-left-nail-article-editor">
+			<img src="public/images/nail1.png" class="back-second-panel-right-nail-article-editor">
+		</div>
+	</div>
 	<form name="formulaire" id="formulaire" action="index.php?action=<?= $_GET['action'] ?>&amp;update=<?= $_GET['edit'] ?>&amp;type=<?= $_GET['type'] ?>&amp;from=allEpisodes&amp;page=<?= $_GET['page'] ?>" method="post">
 	    <label>Titre :</label><br />
 	    <input type="text" value="<?= $episode->getTitle() ?>" class="title" name="title" required/><br />

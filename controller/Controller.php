@@ -170,24 +170,62 @@ class Controller
 		require('view/frontend/homeView.php');
 	}
 
-	/*
-	public function post()
+	
+	public function ticketsMobile()
 	{
-		$postManager = new JeanForteroche\Blog\Model\PostManager();
-		$postStatus = $postManager->postCheck($_GET['id']);
 
-		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$lastTicket = $postManager->getLastTicket();
+		$lastEpisode = $postManager->getLastEpisode();
+		$firstEpisode = $postManager->getFirstEpisode();
+		$firstTicket = $postManager->getFirstTicket();
 		
-		if (empty($postStatus))	{
-			throw new Exception('Le billet ' . $_GET['id'] . ' n\'existe pas');
-		} else 	{
-			$post = $postManager->getPost($_GET['id']);
-			$comments = $commentManager->getAllComments($_GET['id']);
-			
-			require('view/frontend/postView.php');
+		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
+		$comments = $commentManager->getAllComments($lastTicket->getPostId());
+
+		if ($_GET['ticket'] == $lastTicket->getPostId()) 
+		{
+			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
+			$ticket = $postManager->getLastTicket();
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+		
+			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = Null;
 		}
+		elseif (isset($_GET['ticket']) AND $_GET['ticket'] == $firstTicket->getPostId())
+		{
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+
+			$previousTicketLink = Null;
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+		}
+		elseif (isset($_GET['ticket']) AND $_GET['ticket'] != $lastTicket->getPostId() AND $_GET['ticket'] != $firstTicket->getPostId())
+		{
+			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost($_GET['ticket']);
+			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
+			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+
+			
+			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+			$nextTicketLink = '<a class="next-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+		}
+			
+		require('view/frontend/ticketsMobile.php');
+		
 	}
-	*/
+		
+	public function mobileList()
+	{	
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$lastTicket = $postManager->getLastTicket();
+		$lastEpisode = $postManager->getLastEpisode();
+
+		require('view/frontend/mobileList.php');
+	}	
 
 	public function addComment($postId, $postType, $author, $comment)
 	{

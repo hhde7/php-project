@@ -1,10 +1,15 @@
 
-<h2 class="first-panel-title">À VOTRE ATTENTION <i class="fas fa-bullhorn"></i></i></i></h2>
-
-<img src="public/images/chain1.png" class="front-first-panel-left-chain"> 	
-<img src="public/images/chain1.png" class="front-first-panel-right-chain">
-<img src="public/images/nail1.png" class="front-first-panel-left-nail">
-<img src="public/images/nail1.png" class="front-first-panel-right-nail">
+<h2 class="first-panel-title">ACTUALITÉS <i class="fas fa-bullhorn"></i></i></i></h2>
+<div class="chains-nails-contener">
+    <div>
+        <img src="public/images/chain2.png" class="front-first-panel-left-chain"> 	
+        <img src="public/images/chain2.png" class="front-first-panel-right-chain">
+    </div>
+    <div>
+        <img src="public/images/nail1.png" class="front-first-panel-left-nail">
+        <img src="public/images/nail1.png" class="front-first-panel-right-nail">
+    </div>
+</div>
 
 <div class="first-panel-post">
 	<p class="first-panel-post-title"><?= $ticket->getTitle() ?></p>
@@ -23,10 +28,12 @@
 $comment = $commentManager->getAllComments($ticket->getPostId());
 ?>
 <h2 class="first-panel-title">COMMENTAIRES <i class="fa fa-comments"></i></i></i></h2>
-
-<img src="public/images/nail1.png" class="front-first-panel-second-level-left-nail">
-<img src="public/images/nail1.png" class="front-first-panel-second-level-right-nail">
-
+<div class="chains-nails-contener">
+    <div>
+        <img src="public/images/nail1.png" class="front-first-panel-second-level-left-nail">
+        <img src="public/images/nail1.png" class="front-first-panel-second-level-right-nail">
+    </div>
+</div>
 <div class="second-level-first-panel-post">
 	<?php
 	foreach ($comment as $key => $value) {

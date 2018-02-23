@@ -30,14 +30,14 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		include('view/backend/lateralBar.php');
 		?>
 		
-		<div class="col-lg-4 first-panel">
+		<div class="col-lg-4 first-panel first-panel-back">
 			<?php 
 			include('firstPanel.php');
 			?>
 		</div>
 
 
-		<div class="col-lg-4 col-lg-push-1 second-panel">
+		<div class="col-lg-4 col-lg-push-1 second-panel second-panel-back">
 			<?php 
 			include('secondPanel.php');
 			?>

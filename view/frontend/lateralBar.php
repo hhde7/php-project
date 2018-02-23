@@ -9,11 +9,11 @@ $postManager = new JeanForteroche\Blog\Model\PostManager;
 
 ?>
 
-<div class="col-lg-1 col-lg-push-11 right-bar" >
+<div class="col-lg-1 col-lg-push-11 col-md-1 col-md-push-11 col-sm-2 col-sm-push-10 hidden-xs right-bar" >
 <?php
 include('profil.php');
 ?>
-<p class="right-bar-episode-title">LES ÉPISODES</p>
+<p class="right-bar-episode-title mobile-episode-title">LES ÉPISODES</p>
 <?php
 include('allEpisodesTitles.php');
 ?>

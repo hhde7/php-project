@@ -12,15 +12,17 @@
 	}
 
 ?>
-<div class="col-lg-4 col-lg-push-1 second-panel">
+<div class="col-lg-4 col-lg-push-1 second-panel second-panel-back">
 
 	<h2 class="second-panel-title">CONTENU DU COMMENTAIRE <i class="fas fa-comments"></i></h2>
-
-	<img src="public/images/chain1.png" class="back-second-panel-left-chain"> 	
-	<img src="public/images/chain1.png" class="back-second-panel-right-chain">
-	<img src="public/images/nail1.png" class="back-second-panel-left-nail">
-	<img src="public/images/nail1.png" class="back-second-panel-right-nail">
-
+	<div class="chains-nails-contener">
+    	<div>
+			<img src="public/images/chain1.png" class="back-second-panel-left-chain"> 	
+			<img src="public/images/chain1.png" class="back-second-panel-right-chain">
+			<img src="public/images/nail1.png" class="back-second-panel-left-nail-article">
+			<img src="public/images/nail1.png" class="back-second-panel-right-nail-article">
+		</div>
+	</div>
 	<div class="second-panel-comment">
 		<h2 class="second-panel-comment-author" ><?= $comment->getAuthor() ?></h2>
 		<p class="second-panel-comment-date"><?= mb_strimwidth($comment->getCommentDate(), 0, 22) ?></p>

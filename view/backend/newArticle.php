@@ -29,15 +29,17 @@
 		include('view/frontend/header.php');
 		include('view/backend/lateralBar.php');
 	?>
-	<div class="col-lg-4 first-panel"> 	
+	<div class="col-lg-4 first-panel first-panel-back"> 	
 
 		<h2 class="first-panel-title">RÉDIGER UN <?= $type ?></h2>
-
-		<img src="public/images/chain1.png" class="back-first-panel-left-chain"> 	
-		<img src="public/images/chain1.png" class="back-first-panel-right-chain">
-		<img src="public/images/nail1.png" class="back-first-panel-left-nail">
-		<img src="public/images/nail1.png" class="back-first-panel-right-nail">
-
+		<div class="chains-nails-contener">
+    		<div>
+				<img src="public/images/chain2.png" class="back-first-panel-left-chain"> 	
+				<img src="public/images/chain2.png" class="back-first-panel-right-chain">
+				<img src="public/images/nail1.png" class="back-first-panel-left-nail-new-article">
+				<img src="public/images/nail1.png" class="back-first-panel-right-nail-new-article">
+			</div>
+		</div>
 	<form action="index.php?action=<?= $_GET['action'] ?>&amp;posted=<?= $_GET['action'] ?>" method="post">
             <div>
                 <label for="author">Titre</label><br />

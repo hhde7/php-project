@@ -20,15 +20,18 @@
 		include('view/frontend/header.php');
 		include('view/backend/lateralBar.php');
 	?>
-	<div class="col-lg-4 first-panel"> 	
+	<div class="col-lg-4 first-panel first-panel-back"> 	
 
 		<h2 class="first-panel-title">TOUS LES COMMENTAIRES <i class="fas fa-comments"></i></h2>
 
-		<img src="public/images/chain1.png" class="back-first-panel-left-chain"> 	
-		<img src="public/images/chain1.png" class="back-first-panel-right-chain">
-		<img src="public/images/nail1.png" class="back-first-panel-left-nail">
-		<img src="public/images/nail1.png" class="back-first-panel-right-nail">
-
+		<div class="chains-nails-contener">
+    		<div>
+				<img src="public/images/chain2.png" class="back-first-panel-left-chain"> 	
+				<img src="public/images/chain2.png" class="back-first-panel-right-chain">
+				<img src="public/images/nail1.png" class="back-first-panel-left-nail-comment">
+				<img src="public/images/nail1.png" class="back-first-panel-right-nail-comment">
+			</div>
+		</div>
 		<table>
 			<tr>
 				<th>AUTEUR</th>		
@@ -52,10 +55,10 @@
 			if (isset($comment[$i])) {
 				?>
 				<tr>
-					<td><?= mb_strimwidth($comment[$i]->getAuthor(), 0, 15, '...') ?></td> 
-					<td><?= mb_strimwidth($comment[$i]->getComment(), 0, 35, '...') ?></td>
-					<td><?= mb_strimwidth($comment[$i]->getCommentDate(), 4, 18)?></td> 
-					<td><a href="index.php?action=allComments&amp;see=<?= $comment[$i]->getCommentId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+					<td class="table-author"><?= mb_strimwidth($comment[$i]->getAuthor(), 0, 15, '...') ?></td> 
+					<td class="table-comment"><?= mb_strimwidth($comment[$i]->getComment(), 0, 35, '...') ?></td>
+					<td class="table-date-comment"><?= mb_strimwidth($comment[$i]->getCommentDate(), 4, 18)?></td> 
+					<td class="table-options"><a href="index.php?action=allComments&amp;see=<?= $comment[$i]->getCommentId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
 						<a href="index.php?action=moderate&amp;delete=<?= $comment[$i]->getCommentId() ?>&amp;from=allComments&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="fas fa-minus-circle"></i></a></td>
 					</tr>
 			<?php

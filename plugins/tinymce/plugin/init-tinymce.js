@@ -5,7 +5,7 @@ tinymce.init({
 	branding: false,
 
 	height: 300,
-	width: 600,
+	width: '100%',
   theme: 'modern',
   plugins: 'print preview fullpage searchreplace autolink directionality visualblocks visualchars image link media template table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help',
   toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',

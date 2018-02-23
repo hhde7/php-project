@@ -15,15 +15,17 @@ if ($type == 'episode') {
 } 
 
 ?>
-<div class="col-lg-4 col-lg-push-1 second-panel">
+<div class="col-lg-4 col-lg-push-1 second-panel second-panel-back">
 
 	<h2 class="second-panel-title">CONTENU<?= $type ?></h2>
-
-		<img src="public/images/chain1.png" class="back-second-panel-left-chain"> 	
-		<img src="public/images/chain1.png" class="back-second-panel-right-chain">
-		<img src="public/images/nail1.png" class="back-second-panel-left-nail">
-		<img src="public/images/nail1.png" class="back-second-panel-right-nail">
-
+		<div class="chains-nails-contener">
+    		<div>
+				<img src="public/images/chain2.png" class="back-second-panel-left-chain"> 	
+				<img src="public/images/chain2.png" class="back-second-panel-right-chain">
+				<img src="public/images/nail1.png" class="back-second-panel-left-nail-article">
+				<img src="public/images/nail1.png" class="back-second-panel-right-nail-article">
+			</div>
+		</div>
 	<div class="second-panel-post">
 		<h2 class="second-panel-post-title" ><?= $post->getTitle() ?></h2>
 		<p class="second-panel-post-date"><?= mb_strimwidth($post->getCreationDate(), 0, 28) ?></p>

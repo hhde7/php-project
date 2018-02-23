@@ -1,11 +1,13 @@
 <h2 class="second-panel-title">BILLET SIMPLE POUR L'ALASKA - ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></i></i></h2>
-
-<img src="public/images/chain1.png" class="front-second-panel-left-chain"> 	
-<img src="public/images/chain1.png" class="front-second-panel-right-chain">
-<img src="public/images/nail1.png" class="front-second-panel-left-nail">
-<img src="public/images/nail1.png" class="front-second-panel-right-nail">
-
-<div class="first-panel-post">
+<div class="chains-nails-contener">
+    <div>
+        <img src="public/images/chain2.png" class="front-second-panel-left-chain"> 	
+        <img src="public/images/chain2.png" class="front-second-panel-right-chain">
+        <img src="public/images/nail1.png" class="front-second-panel-left-nail">
+        <img src="public/images/nail1.png" class="front-second-panel-right-nail">
+    </div>
+</div>
+<div class="second-panel-post">
 
 	<p class="first-panel-post-title episode-number"><?= mb_strimwidth($episode_->getTitle(),0,2) ?></p>
 	<p class="first-panel-post-title"><?= mb_strimwidth($episode_->getTitle(),2,100) ?></p>
@@ -24,10 +26,12 @@
 $comment = $commentManager->getAllComments($episode_->getPostId());
 ?>
 <h2 class="second-panel-title">COMMENTAIRES <i class="fa fa-comments"></i></i></i></h2>
-
-<img src="public/images/nail1.png" class="front-second-panel-second-level-left-nail">
-<img src="public/images/nail1.png" class="front-second-panel-second-level-right-nail">
-
+<div class="chains-nails-contener">
+    <div>
+        <img src="public/images/nail1.png" class="front-second-panel-second-level-left-nail">
+        <img src="public/images/nail1.png" class="front-second-panel-second-level-right-nail">
+    </div>
+</div>
 <div class="second-level-first-panel-post">
 	<?php
 	foreach ($comment as $key => $value) {

@@ -111,7 +111,7 @@ class CommentManager extends Manager
 	public function getAllReportedComments()
 	{
 	    $db = $this->dbConnect(); 
-		$req = $db->query('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE reported = 1');
+		$req = $db->query('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE reported = 1 ORDER BY commentDate DESC');
 	    $data = $req->fetchAll();
 	   	$reportedComments = array();
 	   	for ($i=0; $i < count($data); $i++) { 

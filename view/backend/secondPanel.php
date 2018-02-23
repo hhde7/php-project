@@ -2,12 +2,17 @@
 	$reportedComments = $commentManager->getAllReportedComments();
 ?>
 <h2 class="second-panel-title">COMMENTAIRES RÉCENTS SIGNALÉS <i class="fas fa-comments"></i></h2>
-        <img src="public/images/chain1.png" class="back-second-panel-left-chain">     
-        <img src="public/images/chain1.png" class="back-second-panel-right-chain">
+<div class="chains-nails-contener">
+    <div>
+        <img src="public/images/chain2.png" class="back-second-panel-left-chain">     
+        <img src="public/images/chain2.png" class="back-second-panel-right-chain">
+    </div>
+    <div>
         <img src="public/images/nail1.png" class="back-second-panel-left-nail">
         <img src="public/images/nail1.png" class="back-second-panel-right-nail">
-
-
+    </div>
+</div>
+<div class="second-panel-reported-comments">
 <?php
 	
 	for ($i=0; $i < 2 /*count($reportedComments)*/ ; $i++) {
@@ -35,10 +40,14 @@
     }
     ?>
     <a href="index.php?action=reportedComments&page=1">Tout voir</a> 
+</div>
 <h2 class="second-panel-title">COMMENTAIRES RÉCENTS <i class="fas fa-comments"></i></h2>
-
+<div class="chains-nails-contener">
+    <div>
         <img src="public/images/nail1.png" class="back-second-panel-second-level-left-nail">
         <img src="public/images/nail1.png" class="back-second-panel-second-level-right-nail">
+    </div>
+</div>
     <div class="second-level-comment-contener">    
 <?php
 
