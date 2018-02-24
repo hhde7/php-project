@@ -19,7 +19,14 @@
 		include('view/frontend/header.php');
 		include('view/backend/lateralBar.php');
 	?>
-	<div class="col-lg-4 first-panel first-panel-back">
+
+	<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
+		<?php
+		include('view/backend/mobileMenu.php');
+		?>
+	</div>
+
+	<div class="col-lg-4 col-lg-pull-0 col-md-4 col-md-pull-0 col-sm-8 col-sm-pull-1 col-xs-12 col-xs-pull-0 first-panel first-panel-back">
 
 		<h2 class="first-panel-title">TOUS LES ÉPISODES <i class="fab fa-envira"></i></h2>
 		<div class="chains-nails-contener">
@@ -31,7 +38,7 @@
 			</div>
 		</div>
 
-		<table>
+		<table class="table table-striped">
 			<tr>
 				<th>TITRE</th>		
 				<th>DATE DE PUBLICATION</th>
@@ -86,6 +93,8 @@ for ($j=0; $j < $pagesNumber; $j++) {
 
 	</div>
 
+
+
 	<!-- JAVASCRIPT -->
 	<!-- FONT AWESOME SCRIPT -->
 		
@@ -98,5 +107,6 @@ for ($j=0; $j < $pagesNumber; $j++) {
 
 
 </body>
+	
 
 </html>

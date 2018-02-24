@@ -20,7 +20,14 @@
 		include('view/frontend/header.php');
 		include('view/backend/lateralBar.php');
 	?>
-	<div class="col-lg-4 first-panel first-panel-back"> 	
+
+	<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
+		<?php
+		include('view/backend/mobileMenu.php');
+		?>
+	</div>
+
+	<div class="col-lg-4 col-lg-pull-0 col-md-4 col-md-pull-0 col-sm-8 col-sm-pull-1 col-xs-12 col-xs-pull-0 first-panel first-panel-back"> 	
 
 		<h2 class="first-panel-title">COMMENTAIRES SIGNALÉS <i class="fas fa-comments"></i></h2>
 		<div class="chains-nails-contener">
@@ -31,10 +38,9 @@
 				<img src="public/images/nail1.png" class="back-first-panel-right-nail-comment">
 			</div>
 		</div>
-		<table>
+		<table class="table table-striped">
 			<tr>
-				<th>AUTEUR</th>		
-				<th>COMMENTAIRE</th>
+				<th>AUTEUR</th>	
 				<th>DATE DE PUBLICATION</th>
 				<th>ACTION</th>
 			</tr>
@@ -56,7 +62,6 @@
 			<tr>
 				<td class="table-title"><?= $reportedComment[$i]->getAuthor() ?></td> 
 				<td class="table-comment"><?= mb_strimwidth($reportedComment[$i]->getComment(), 0, 35, '...') ?></td>
-				<td class="table-date-comment"><?= mb_strimwidth($reportedComment[$i]->getCommentDate(), 4, 18)?></td> 
 				<td class="table-options"><a href="index.php?action=reportedComments&amp;see=<?= $reportedComment[$i]->getCommentId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
 				<a href="index.php?action=moderate&amp;allow=<?= $reportedComment[$i]->getCommentId() ?>&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>" title="Accepter"><i class="fas fa-check-circle"></i></a>
 			<a href="index.php?action=moderate&amp;delete=<?= $reportedComment[$i]->getCommentId() ?>&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="fas fa-minus-circle"></i></a></td>
@@ -94,5 +99,4 @@ for ($j=0; $j < $pagesNumber; $j++) {
 
 
 </body>
-
 </html>

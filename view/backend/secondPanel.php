@@ -1,7 +1,7 @@
 <?php 
 	$reportedComments = $commentManager->getAllReportedComments();
 ?>
-<h2 class="second-panel-title">COMMENTAIRES RÉCENTS SIGNALÉS <i class="fas fa-comments"></i></h2>
+<h2 class="second-panel-title">COMMENTAIRES SIGNALÉS <i class="fas fa-comments"></i></h2>
 <div class="chains-nails-contener">
     <div>
         <img src="public/images/chain2.png" class="back-second-panel-left-chain">     

@@ -77,7 +77,7 @@ header {
 .right-bar li {
     transform: translateX(-42px);
     text-align: left;
-    width: 119px;
+    width: 129px;
     font-weight: 700;
 }
 
@@ -134,6 +134,7 @@ li {
 #menu {
     position: relative;
     z-index: -1;
+    width: 260px;
     margin-top: 4px;
 }
 
@@ -394,6 +395,7 @@ h2 {
 
 .first-panel-back {
     transform: translate(68px, 22px);
+    margin-bottom: 30px;
 }
 
 .second-panel-back {
@@ -771,15 +773,11 @@ tr:hover {
 }
 
 .table-author {
-  width: 10%;
-}
-
-.table-comment {
-  width: 15%;
+  width: 30%;
 }
 
 .table-date-comment {
-    width: 10px;
+    width: 30%;
 }
 
 /* MISE EN  FORME DU CONTENU TEXTUEL DES PANNEAUX */
@@ -990,19 +988,6 @@ footer {
 
   
 
-    .table-date-comment {
-        width: 40%
-    }
-
-   
-
-    .table-author {
-        width: 10%;
-    }
-
-    .table-comment {
-       width: 10%;
-    }
 
      #readers-stats p {
       font-size: smaller;
@@ -1379,17 +1364,19 @@ footer {
     td {
         font-size: 12px;
     }
-    table {
+    .table {
       font-size: 8px;
     }
+
+    /*
     .table-author {
         width: 5%;
     }
 
-    .table-date-comment,
-    .table-comment {
+    .table-date-comment
+     {
         width: 0%;
-    }
+    }*/
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1152px) {
@@ -1593,6 +1580,16 @@ footer {
         transform: translateX(-11px);
     }
 
+    /* --------- BACKEND -------- */
+
+    .first-panel-back {
+        transform: translate(13px, 22px);
+    }
+
+    .second-panel-back {
+        transform: translate(-33px, 22px);
+    }
+
     th,
     td {
         font-size: 12px;
@@ -1600,14 +1597,15 @@ footer {
     table {
       font-size: 8px;
     }
+
+    /*
     .table-author {
         width: 5%;
     }
 
-    .table-date-comment,
-    .table-comment {
+    .table-date-comment {
         width: 0%;
-    }
+    }*/
 }
 
 @media screen and (min-width: 992px) and (max-width: 1023px) {
@@ -1706,21 +1704,59 @@ footer {
         transform: translateX(-11px);
     }
 
+    /*  ----- BACKEND -------- */
+
+    .first-panel-back {
+        transform: translate(22px, 22px);
+    }
+
+    .second-panel-back {
+        transform: translate(-22px, 22px);
+    }
+
+    .second-panel-reported-comments {
+        top: 50px;
+        margin-bottom: 70px;
+    }
+
+
+
+
+    .second-panel-comment {
+        top: 20px;
+        margin-bottom: 60px;
+    }
+
+    .second-panel-reported-comments {
+        top: 50px;
+        margin-bottom: 70px;
+    }
+
+    .first-panel-back form,
+    .second-panel-back form {
+      top: 5px;
+      margin-bottom: 35px;
+    }
+
+
+
     th,
     td {
         font-size: 12px;
     }
     table {
-      font-size: 8px;
+        top: 20px;
+        margin-bottom: 30px;
     }
+
+    /*
     .table-author {
         width: 5%;
     }
 
-    .table-date-comment,
-    .table-comment {
+    .table-date-comment {
         width: 0%;
-    }
+    }*/
 
 }
 
@@ -1783,9 +1819,6 @@ footer {
       margin-top: 20px;
     }
 
-    .right-bar {
-    }
-
    .right-bar li {
         width: 110px;
         margin: auto;
@@ -1820,13 +1853,50 @@ footer {
         transform: translateX(-11px);
     }
 
+
+    /* ----------backend--------- */
+
+    #menu {
+      width: 220px !important;
+    }
+
+    .second-panel-back {
+        transform: translate(-39px, 22px);
+        margin-bottom: 50px;
+    }
+
+    .second-panel-second-level-back {
+        transform: translate(69px, 50px);
+        margin-bottom: 50px;
+    }
+
+    .second-panel-comment {
+        top: 30px;
+        margin-bottom: 60px;
+    }
+
+    .second-panel-reported-comments {
+        top: 50px;
+        margin-bottom: 70px;
+    }
+
+    .first-panel-back form,
+    .second-panel-back form {
+      top: 5px;
+      margin-bottom: 35px;
+    }
+
     th,
     td {
         font-size: 12px;
     }
     table {
       font-size: 8px;
+      top: 30px;
+      margin-bottom: 60px !important;
     }
+
+    /*
     .table-author {
         width: 5%;
     }
@@ -1834,12 +1904,12 @@ footer {
     .table-date-comment,
     .table-comment {
         width: 0%;
-    }
+    }*/
 
 }
 
 @media screen and (max-width: 767px) {
-   body {
+    body {
         background-image: none ;
         background-color: #e0d0ce85 !important;
     }
@@ -1971,13 +2041,86 @@ footer {
 
     }
 
+    /* --------------BACKEND--------------- */
+    /* MENU*/
+
+    #menu {
+      width: 100% !important;
+      margin: 0;
+      padding: 0;  
+      transform: translateY(55px);
+      text-align: center;
+    }
+  
+    nav {
+      transform: translate(0, -80px) !important;
+      padding-top: 45px;
+    }
+
+    #posts-stats,
+    #readers-stats {
+       transform: translate(0, -6px);
+    }
+
+    #admin-title {
+      transform: translate(0, -24px);
+    }
+
+    #posts-stats-title,
+    #readers-stats-title {
+      transform: translate(0, 47px);
+    }
+
+    h2 {
+        font-size: 15px !important;
+    }
+
+    li {
+        font-size: 16px !important;
+        height: 30px;
+    }
+
+    footer {
+        transform: translateY(114px);
+
+    }
+
+    /*---------PANNEAUX ---------*/
+
+    .mobile-menu {
+    }
+
+    .first-panel-back {
+        transform: translate(0px, 33px) !important;
+    }
+
+    .second-panel-back {
+        transform: translate(0px, 73px) !important;
+
+    }
+
+    .second-panel-comment {
+        top: 20px;
+        margin-bottom: 40px;
+    }
+
+    form {
+        top: 10px !important;
+        padding-bottom: 53px;
+    }   
+
+
+    /* TABLEAU */
+
     th,
     td {
         font-size: 12px;
     }
     table {
       font-size: 8px;
+      margin-top: 60px;
     }
+    /*
     .table-author {
         width: 5%;
     }
@@ -1985,7 +2128,7 @@ footer {
     .table-date-comment,
     .table-comment {
         width: 0%;
-    }
+    }*/
 
 }
 }

@@ -23,7 +23,7 @@ if ($type == 'episode') {
 
 ?>
 
-<div class="col-lg-4 col-lg-push-1 second-panel  second-panel-back">
+<div class="col-lg-4 col-lg-push-1 col-md-4 col-md-push-1 col-sm-8 col-sm-pull-1 col-xs-12 second-panel second-panel-back second-panel-second-level-back">
 
 	<h2 class="second-panel-title">MODIFIER UN <?= $type ?></h2>
 	<div class="chains-nails-contener">
@@ -45,3 +45,7 @@ if ($type == 'episode') {
 	    <input type="submit" value ="Valider" class="submit" name="submit">
 	</form>
 </div>
+
+	<?php
+    include('view/frontend/footer.php');
+    ?>

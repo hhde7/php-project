@@ -27,21 +27,36 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		 
 		<?php
 		include('view/frontend/header.php');
+		?>
+		<div>
+
+		<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
+			<?php
+			include('view/backend/mobileMenu.php');
+			?>
+		</div>
+
+		<?php
 		include('view/backend/lateralBar.php');
 		?>
-		
-		<div class="col-lg-4 first-panel first-panel-back">
+		</div>
+		<div class="col-lg-4 col-lg-pull-0 col-md-4 col-md-pull-0 col-sm-4 col-sm-pull-1 hidden-xs first-panel first-panel-back">
 			<?php 
 			include('firstPanel.php');
 			?>
 		</div>
 
 
-		<div class="col-lg-4 col-lg-push-1 second-panel second-panel-back">
+		<div class="col-lg-4 col-lg-push-1 col-md-4 col-md-push-1 col-sm-4 col-sm-push-1 hidden-xs second-panel second-panel-back ">
 			<?php 
 			include('secondPanel.php');
 			?>
 		</div>
+
+		<?php
+    	include('view/frontend/footer.php');
+    	?>
+	
 
 
 		<!-- JAVASCRIPT -->
@@ -53,9 +68,5 @@ $counterManager = new JeanForteroche\Blog\Model\CounterManager;
 		
 		
 	</body>
-	
-	<?php
-    include('view/frontend/footer.php');
-    ?>
 	
 </html>
