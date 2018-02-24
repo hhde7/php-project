@@ -17,6 +17,6 @@ $allReaders = $counterManager->getReaders(364*10);
 			<p class="col-lg-6"><?= '<strong>' . $yearReaders . '</strong>' ?><br />cette année</p>
 	</div>
 
-	<h2><i class="fas fa-calculator"></i> Total des lecteurs uniques : <?= '<strong>' . $allReaders . '</strong>' ?></h2>
+	<h2><i class="fas fa-calculator"></i> <?= '<strong>' . $allReaders . '</strong>' ?> lecteurs uniques</h2>
 
 </div>

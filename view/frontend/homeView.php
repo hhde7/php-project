@@ -45,6 +45,7 @@ require_once('model/CommentManager.php');
 		
 	<?php
     include('view/frontend/footer.php');
+    include('view/frontend/visitorCounter.php');
     ?>
 		
 		<!-- JAVASCRIPT -->

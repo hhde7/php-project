@@ -260,6 +260,9 @@ class Controller
 
 	public function displayModeratePage()
 	{
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
+
 		require('view/backend/moderateView.php');
 	}
 

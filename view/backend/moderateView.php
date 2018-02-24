@@ -11,9 +11,13 @@
 <?php
 		if ($_GET['from'] == 'allEpisodes') {
 			$type = 'épisode <i class="fab fa-envira"></i>';
+			$episode = $postManager->getPost($_GET['delete']);
+			$element = $episode->getTitle();
 		}
 		elseif ($_GET['from'] == 'allTickets') {
 			$type = 'billet <i class="fas fa-bullhorn"></i>';
+			$ticket = $postManager->getPost($_GET['delete']);
+			$element = $ticket->getTitle();
 		}
 		elseif ($_GET['from'] == 'allComments') {
 			$type = 'commentaire <i class="fas fa-comments"></i>';
@@ -35,19 +39,19 @@
 			<p>Souhaitez-vous vraiment accepter le <?= $type ?> ?</p>
 				<?php
 				if ($_GET['from'] == 'dashboard') {
+					$comment = $commentManager->getComment($_GET['allow']);
+					$element = $comment->getAuthor();	
 				?>
+					<p><?= $element ?></p>
 					<a href="index.php?action=<?= $action ?>&amp;allow=<?=$_GET['allow']?>&amp;confirm=allow&amp;from=dashboard"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=dashboard"><input type="button" value="Non" /></a>
 				<?php
-				}/*
-				elseif ($_GET['from'] == 'allComments') {
-				?>
-					<a href="index.php?action=<?= $action ?>&amp;allow=<?=$_GET['allow']?>&amp;confirm=allow&amp;from=allComments"><input type="button" value="Oui" /></a>
-					<a href="index.php?action=allComments"><input type="button" value="Non" /></a>
-				<?php
-				}*/
+				}
 				elseif ($_GET['from'] == 'reportedComments') {
+					$comment = $commentManager->getComment($_GET['allow']);
+					$element = $comment->getAuthor();
 				?>
+					<p><?= $element ?></p>
 					<a href="index.php?action=<?= $action ?>&amp;allow=<?=$_GET['allow']?>&amp;confirm=allow&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=reportedComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
@@ -58,31 +62,42 @@
 			<p>Souhaitez-vous vraiment supprimer cet élément ?</p>
 				<?php
 				if ($_GET['from'] == 'dashboard') {
+					$comment = $commentManager->getComment($_GET['delete']);
+					$element = $comment->getAuthor();	
 				?>
+					<p><?= $element ?></p>
 					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=dashboard"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=dashboard"><input type="button" value="Non" /></a>
 				<?php
 				}
 				elseif ($_GET['from'] == 'allEpisodes') {
 				?>
+					<p><?= $element ?></p>
 					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allEpisodes&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=allEpisodes&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
 				}
 				elseif ($_GET['from'] == 'allTickets') {
 				?>
+					<p><?= $element ?></p>
 					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allTickets&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=allTickets&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
 				}
 				elseif ($_GET['from'] == 'allComments') {
+					$comment = $commentManager->getComment($_GET['delete']);
+					$element = $comment->getAuthor();	
 				?>
+					<p><?= $element ?></p>
 					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=allComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=allComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
 				}
 				elseif ($_GET['from'] == 'reportedComments') {
+					$comment = $commentManager->getComment($_GET['delete']);
+					$element = $comment->getAuthor();	
 				?>
+					<p><?= $element ?></p>
 					<a href="index.php?action=<?= $action ?>&amp;delete=<?=$_GET['delete']?>&amp;confirm=delete&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Oui" /></a>
 					<a href="index.php?action=reportedComments&amp;page=<?= $_GET['page'] ?>"><input type="button" value="Non" /></a>
 				<?php
@@ -95,23 +110,6 @@
 				<p>bug</p>	
 			<?php
 			}
-						
-			$commentManager = new JeanForteroche\Blog\Model\CommentManager();
-			if (isset($_GET['allow']) AND isset($_GET['from']) AND ($_GET['from'] == 'allComments' OR $_GET['from'] == 'reportedComments' OR $_GET['from'] == 'dashboard')) {
-				$comment = $commentManager->getComment($_GET['allow']);
-				?>
-				<p><strong><?= $comment->getAuthor() ?></strong> <?= mb_strimwidth($comment->getCommentDate(), 0, 22) ?></p>
-				<p><?= $comment->getComment() ?></p>
-				<?php
-			}
-			elseif (isset($_GET['delete']) AND isset($_GET['from']) AND ($_GET['from'] == 'allComments' OR $_GET['from'] == 'reportedComments' OR $_GET['from'] == 'dashboard')) {
-				$comment = $commentManager->getComment($_GET['delete']);
-				?>
-				<p><strong><?= $comment->getAuthor() ?></strong> <?= mb_strimwidth($comment->getCommentDate(), 0, 22) ?></p>
-				<p><?= $comment->getComment() ?></p>
-				<?php
-			}
-			
 			?>	
 
 	</div>
