@@ -31,22 +31,22 @@ require_once('model/CommentManager.php');
 		</div>
 		
 		<div class="col-lg-2 col-lg-pull-1 col-md-2 col-md-pull-1 col-sm-3 col-sm-pull-2 hidden-xs first-panel first-panel-front">
-		<?php
-		include('view/frontend/firstPanel.php');
+			<?php
+			include "view/frontend/firstPanel.php";
 		?>
 		</div>
 
 		<div class="col-lg-5 col-md-5 col-sm-5 col-sm-pull-2 col-xs-12 second-panel second-panel-front">
-		<?php
-		include('view/frontend/secondPanel.php');
+			<?php
+			include('view/frontend/secondPanel.php');
 		?>
 		</div>
 		
 		
-	<?php
-    include('view/frontend/footer.php');
-    include('view/frontend/visitorCounter.php');
-    ?>
+		<?php
+    	include('view/frontend/footer.php');
+    	include('view/frontend/visitorCounter.php');
+    	?>
 		
 		<!-- JAVASCRIPT -->
 
@@ -54,6 +54,4 @@ require_once('model/CommentManager.php');
 		
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	</body>
-	
-	
 </html>

@@ -49,36 +49,6 @@ class PostManager extends Manager
         return $allTickets;
     }
 
-   /* //------------- A supprimer ----------------------   // 
-    public function getAllPostsPerPage($pagesNumber)
-    {
-    	$db = $this->dbConnect();
-        $relatedPosts = $db->prepare('SELECT id, title, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, content, type FROM posts WHERE type = episode AND id  BETWEEN ? AND ? ');
-
-
-        // a mettre dans le controller 
-        if (!isset($_GET['page']) OR $_GET['page'] == 1 AND is_numeric($_GET['page']))
-        {
-            $_GET['page'] = 1;
-            $relatedPosts->execute(array($_GET['page'], $_GET['page']+9));
-        }
-        elseif (isset($_GET['page'])
-                AND $_GET['page'] <= $pagesNumber 
-                AND $_GET['page'] >= 1 
-                AND is_numeric($_GET['page'])
-               )
-        {
-            $relatedPosts ->execute(array($_GET['page']*10-9, $_GET['page']*10));
-        }
-        else
-        {
-            throw new \Exception('Page inexistante');
-        }
-        // --------------------------
-        return $relatedPosts;
-    }
-*/
-    
     public function nb_posts($type)
     {
         $db = $this->dbConnect();
@@ -146,17 +116,6 @@ class PostManager extends Manager
         $lastTicket = new Post($data);
 
         return $lastTicket;
-    }
-
-
-    public function postCheck($postId)
-    {
-        $db = $this->dbConnect(); 
-        $req = $db->prepare('SELECT id FROM posts WHERE id = ?');
-        $req->execute(array($postId));
-        $postStatus = $req->fetch();
-        
-        return $postStatus;
     }
 
     public function newPost($title, $content, $type)

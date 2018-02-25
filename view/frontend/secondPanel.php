@@ -1,4 +1,5 @@
-<h2 class="second-panel-title">BILLET SIMPLE POUR L'ALASKA - ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></i></i></h2>
+<!-- AFFICHAGE DE LA PARTIE SUPÉRIEURE DU PANNEAU 2: LES ÉPISODES -->
+<h2 class="second-panel-title">BILLET SIMPLE POUR L'ALASKA - ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></h2>
 <div class="chains-nails-contener">
     <div>
         <img src="public/images/chain2.png" class="front-second-panel-left-chain"> 	
@@ -14,18 +15,14 @@
 	<p class="first-panel-post-date"><?= $episode_->getCreationDate() ?></p>
 	<p class="first-panel-post-content"><?= $episode_->getContent() ?></p>
 </div>
-
+<!-- LIENS DE NAVIGATION ENTRE LES ÉPISODES -->    
 <div id="nav-control">
 	<?= $previousEpisodeLink ?>
 	<?= $nextEpisodeLink ?>
 </div>
 
-   
-<?php
-
-$comment = $commentManager->getAllComments($episode_->getPostId());
-?>
-<h2 class="second-panel-title">COMMENTAIRES <i class="fa fa-comments"></i></i></i></h2>
+<!-- AFFICHAGE DE LA PARTIE INFÉRIEURE DU PANNEAU 2: LES COMMENTAIRES DES ÉPISODES -->
+<h2 class="second-panel-title">COMMENTAIRES <i class="fa fa-comments"></i></h2>
 <div class="chains-nails-contener">
     <div>
         <img src="public/images/nail1.png" class="front-second-panel-second-level-left-nail">
@@ -33,76 +30,71 @@ $comment = $commentManager->getAllComments($episode_->getPostId());
     </div>
 </div>
 <div class="second-level-first-panel-post">
+    <!-- BOUCLE RENVOYANT TOUS LES COMMENTAIRES LIÉS A L'ÉPISODE AFFICHÉ PRÉCÉDEMMENT -->
 	<?php
-	foreach ($comment as $key => $value) {
-		?>
+	foreach ($episodeComments as $key => $value) {
+	?>
 		<p><strong><?= $value->getAuthor() ?></strong><?= mb_strimwidth($value->getCommentDate(), 0, 22) ?></p>
 		<p><?= $value->getComment() ?></p>
-		<?php
+        
+        <?php
+        // LES DEUX PREMIÈRES CONDITIONS S'APPLIQUENT SI DES DONNÉES SONT TRANSMISENT VIA l'URL.
 		if ($value->getReported() === '1' AND isset($_GET['ticket'])) {
-                ?>
-                <p class="reported">(message en attente de modération)<br /></p>
-                <?php
-        }
-        elseif ($value->getReported() === '0' AND isset($_GET['ticket']))
-        {
+              // AFFICHE QUE LE COMMENTAIRE EST EN ATTENTE DE MODÉRATION
+            ?>
+            <p class="reported">(message en attente de modération)<br /></p>
+        <?php
+        } elseif ($value->getReported() === '0' AND isset($_GET['ticket'])) {
+            // AFFICHE LE LIEN VERS LE SIGNALEMENT DU COMMENTAIRE
+            // SI CE DERNIER N'EST PAS DÉJÀ SIGNALÉ  
             $thisComment = $value->getCommentId();
             ?>
             <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?=$_GET['ticket']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">signaler un abus<br /></a>
         <?php
-    	}
-    	elseif ($value->getReported() === '1' AND !isset($_GET['ticket']))
-    	{
-    		$thisComment = $value->getCommentId();
+
+        // LES CONDITIONS SUIVANTES S'APPLIQUENT SI AUCUNES DONNÉES NE SONT TRANSMISENT VIA l'URL.
+    	} elseif ($value->getReported() === '1' AND !isset($_GET['ticket'])) {
+    	    $thisComment = $value->getCommentId();
             ?>
             <p class="reported">(message en attente de modération)<br /></p>
         <?php
-    	}
-    	elseif ($value->getReported() === '0' AND !isset($_GET['ticket']))
-    	{
-    		$thisComment = $value->getCommentId();
+    	} elseif ($value->getReported() === '0' AND !isset($_GET['ticket'])) {
+    	    $thisComment = $value->getCommentId();
             ?>
             <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $lastTicket->getPostId() ?>&amp;ticket=<?= $lastTicket->getPostId() ?>&amp;episode=<?= $lastEpisode->getPostId() ?>">signaler un abus<br /></a>
         <?php
     	}
     	?>
     	<br />
-    	<?php
-
+    <?php
 	}
 	?>
 </div>	
 
+<!-- CHARGE LE FORMULAIRE D'AJOUT DE COMMENTAIRES --> 
 <?php
+// SI PRÉSENCE DE DONNÉES VIA L'URL
 if (isset($_GET['episode'])) {
-	
-$postManager = new JeanForteroche\Blog\Model\PostManager();
-        $ticket = $postManager->getPost($_GET['episode']);
-        
-        ?>
-        <form class="episode-comment-form"  action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=episode&amp;post=<?= $_GET['episode'] ?>" method="post" id="episode-comment-form">
-            <div>
-                <label for="author">Pseudo</label><br />
-                <input type="text" id="author" name="author" required/>
-            </div>
-            <div>
-                <label for="comment">Commentaire</label><br />
-                <textarea class="comment" name="comment" required></textarea>
-            </div>
-            <div>
-                <input type="submit" class="submit" />
-            </div>
-        </form>
+    ?>
+    <form class="episode-comment-form"  action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=episode&amp;post=<?= $_GET['episode'] ?>" method="post" id="episode-comment-form">
+        <div>
+            <label for="author">Pseudo</label><br />
+            <input type="text" id="author" name="author" required/>
+        </div>
+        <div>
+            <label for="comment">Commentaire</label><br />
+            <textarea class="comment" name="comment" required></textarea>
+        </div>
+        <div>
+            <input type="submit" class="submit" />
+        </div>
+    </form>
 <?php
-} 
-else 
-{
-	$episode = $postManager->getLastEpisode();
-	?>
+} else {
+    ?>
 	<div class="leave-comment">
-	<a href="index.php?ticket=<?= $ticket->getPostId() ?>&amp;episode=<?= $episode->getPostId() ?>#episode-comment-form">Laisser un commentaire</a>
-</div>
-	
-	<?php
+	   <a href="index.php?ticket=<?= $lastTicket->getPostId() ?>&amp;episode=<?= $lastEpisode->getPostId() ?>#episode-comment-form">Laisser un commentaire</a>
+    </div>
+<?php
 }
 ?>

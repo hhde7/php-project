@@ -16,7 +16,7 @@ class CommentManager extends Manager
 	    $req->execute(array($postId));
 	    $data = $req->fetchAll();
 	    $allComments = array();
-	    /* foreach */
+
 	    for ($i=0; $i < count($data) ; $i++) {
 	       	$comment = new Comment($data[$i]);
 	       	$allComments[] = $comment;
@@ -31,7 +31,7 @@ class CommentManager extends Manager
 	    $req = $db->query('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments ORDER BY commentDateFr DESC');
 	    $data = $req->fetchAll();
 	    $allComments = array();
-	    /* foreach */
+
 	    for ($i=0; $i < count($data) ; $i++) {
 	       	$comment = new Comment($data[$i]);
 	       	$allComments[] = $comment;
@@ -52,7 +52,6 @@ class CommentManager extends Manager
        	}
 	 
        	return $lastComments;
-
     }
 
     public function getComment($id)
@@ -73,7 +72,6 @@ class CommentManager extends Manager
         $req->execute(array($type));
         $postId = $req->fetch(); 
      	
-
         return $postId[0];
     }
 
@@ -109,6 +107,7 @@ class CommentManager extends Manager
 		$req = $db->query('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE reported = 1 ORDER BY commentDate DESC');
 	    $data = $req->fetchAll();
 	   	$reportedComments = array();
+	   	
 	   	for ($i=0; $i < count($data); $i++) { 
 	    	$comment = new Comment($data[$i]);
 			$reportedComments[] = $comment;   
