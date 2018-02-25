@@ -9,16 +9,13 @@ try {
 	if (isset($_GET['action'])) {
 			if ($_GET['action'] == 'home') {
 				$controller->home();
-			}
-			
+			}			
 			elseif ($_GET['action'] == 'mobileTickets') {
 				$controller->ticketsMobile();
 			}
-
 			elseif ($_GET['action'] == 'mobileList') {
 				$controller->mobileList();
-			}
-			
+			}			
 			elseif ($_GET['action'] == 'addComment') {
 	        	if (isset($_GET['ticket'], $_GET['episode']) AND $_GET['ticket'] > 0 AND $_GET['episode'] > 0) {
 	            	if (!empty($_POST['author']) AND !empty($_POST['comment'])) {
@@ -67,8 +64,6 @@ try {
 	    			throw new Exception('erreur d\'accès à la page de connexion');
 	    		}
 	    	}
-
-
 	    	elseif ($_GET['action'] == 'dashboard') {
 	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
 	    			$controller->displayDashboard();	    			   	   		
@@ -108,7 +103,6 @@ try {
 		    			$controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_POST['creationDate'], $_GET['type']);
 		    			$controller->displayPost();
 		    		}
-
 	    		}
 	    		else {
 	    			throw new Exception('impossible de charger la liste des billets');
@@ -160,8 +154,6 @@ try {
 	    		if ((isset($_GET['allow']) AND !isset($_GET['confirm'])) OR (isset($_GET['delete']) AND !isset($_GET['confirm']))) {
 	    			$controller->displayModeratePage();
 	    		}
-
-
 	    		// CONFIRMER LA CONSERVATION DU COMMENTAIRE
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'allow') {
 	    			$controller->moderateComment($_GET['allow'], 'allow');
@@ -175,12 +167,8 @@ try {
 	    				header('location: index.php?action=reportedComments&page=' . $_GET['page']);
 	    			}
 	    		}
-
-
-
 	    		// CONFIRMER LA SUPPRESSION DE LA PUBLICATION
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'delete') {
-
 					// SUPPRESSION : EPISODE OU BILLET
 	    			if (isset($_GET['from']) AND  $_GET['from'] == 'allEpisodes') 
 	    			{	
@@ -192,7 +180,6 @@ try {
 	    				$controller->moderatePost($_GET['delete']);
 	    				header('location: index.php?action=allTickets&page=' . $_GET['page']);
 	    			}
-
 	    			// SUPPRESSION : COMMENTAIRE
 	    			elseif (isset($_GET['from']) AND ($_GET['from'] == 'dashboard'))
 	    			{
@@ -211,15 +198,11 @@ try {
 		    		}
 		    		else
 		    		{
-		    			throw new Exception('c\'est là que ça plante');
-		    				
+		    			throw new Exception('c\'est là que ça plante');		
 		    		}
 		    	}
-	    	}
-	    		
-	    	
-	  }
-	
+	    	}	    	
+	  }	
 	else {
 		$controller->home();
 	}

@@ -61,12 +61,7 @@ class CommentManager extends Manager
 	    $req = $db->prepare('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE id = ? ORDER BY commentDateFr DESC');
 	    $req->execute(array($id));
 	    $data = $req->fetch();
-	    /*$allComments = array();*/
-	    /* foreach */
-	    /*for ($i=0; $i < count($data) ; $i++) {*/
-	       	$comment = new Comment($data);
-	       	/*$allComments[] = $comment;*/
-       	/*}*/
+	   	$comment = new Comment($data);
 	 
        	return $comment;
     }
