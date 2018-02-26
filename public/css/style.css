@@ -757,8 +757,11 @@ textarea {
 /* ... SIGNALER UN COMMENTAIRE ... */
 
 .reported {
+  position: relative;
   color: #e28989;
   float: right;
+  font-size: smaller;
+  top: -5px;
 }
 
 .report-it {

@@ -1,30 +1,4 @@
-<?php 
-require_once('model/PostManager.php');
-$postManager = new  JeanForteroche\Blog\Model\PostManager();
-$episode = $postManager->getPost($_GET['edit']);
-$type = $episode->getType();
-
-// Conversion creationDate en datetime-local
-$originalDate = $episode->getCreationDate();
-$date = mb_strimwidth($originalDate, 10,18);
-$date = str_replace('h', ':', $date);
-$dmY = mb_strimwidth($originalDate, 10,10);
-$dmY = strtotime($dmY);
-$Ymd = date('Y-m-d', $dmY);
-$date = $Ymd . 'T' . mb_strimwidth($date, 13,2) . ':' . mb_strimwidth($date, 16,2);
-
-
-if ($type == 'episode') {
-	$type = 'ÉPISODE <i class="fab fa-envira"></i>';
-} elseif ($type == 'ticket') {
-	$type = 'BILLET <i class="fas fa-bullhorn"></i>';
-}
-
-
-?>
-
 <div class="col-lg-4 col-lg-push-1 col-md-4 col-md-push-1 col-sm-8 col-sm-pull-1 col-xs-12 second-panel second-panel-back second-panel-second-level-back">
-
 	<h2 class="second-panel-title">MODIFIER UN <?= $type ?></h2>
 	<div class="chains-nails-contener">
     	<div>
@@ -46,6 +20,6 @@ if ($type == 'episode') {
 	</form>
 </div>
 
-	<?php
-    include('view/frontend/footer.php');
-    ?>
+<?php
+include "view/frontend/footer.php";
+?>

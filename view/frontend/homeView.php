@@ -1,6 +1,5 @@
 <?php
-
-require_once('model/CommentManager.php');
+require_once "model/CommentManager.php";
 
 ?>
 
@@ -20,13 +19,13 @@ require_once('model/CommentManager.php');
 	<body>
 		 
 		<?php
-		include('view/frontend/header.php');
-		include('view/frontend/lateralBar.php');
+		include "view/frontend/header.php";
+		include "view/frontend/lateralBar.php";
 		?>
 		
 		<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
 			<?php
-			include('view/frontend/mobileMenu.php');
+			include "view/frontend/mobileMenu.php";
 			?>
 		</div>
 		
@@ -38,14 +37,14 @@ require_once('model/CommentManager.php');
 
 		<div class="col-lg-5 col-md-5 col-sm-5 col-sm-pull-2 col-xs-12 second-panel second-panel-front">
 			<?php
-			include('view/frontend/secondPanel.php');
+			include "view/frontend/secondPanel.php";
 		?>
 		</div>
 		
 		
 		<?php
-    	include('view/frontend/footer.php');
-    	include('view/frontend/visitorCounter.php');
+    	include "view/frontend/footer.php";
+    	include "view/frontend/visitorCounter.php";
     	?>
 		
 		<!-- JAVASCRIPT -->

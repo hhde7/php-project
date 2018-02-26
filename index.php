@@ -1,8 +1,7 @@
 <?php
-
 session_start();
 
-require_once('controller/Controller.php');
+require_once "controller/Controller.php";
 $controller = new Controller;
 
 try {
@@ -134,8 +133,7 @@ try {
 	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
 	    			$controller->displayWriteNewArticle();
 	    			if (isset($_GET['posted']) AND isset($_POST['title']) AND isset($_POST['content'])) {
-	    				$controller->addPost($_POST['title'], $_POST['content'], $_GET['posted']);
-	    				echo 'nouvel article publié';			
+	    				$controller->addPost($_POST['title'], $_POST['content'], $_GET['posted']);			
 	    			}
 	    		} 	    		
 	    		else {
@@ -209,5 +207,5 @@ try {
 }
 catch (Exception $e) {
 	$errorMessage = 'Message : ' . $e->getMessage();
-	require('view/frontend/404.php');
+	require "view/frontend/404.php";
 }

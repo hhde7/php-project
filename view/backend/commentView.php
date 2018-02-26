@@ -1,19 +1,4 @@
-<?php
-	$commentManager = new JeanForteroche\Blog\Model\CommentManager();
-	$comment = $commentManager->getComment($_GET['see']);
-	$postId = $comment->getPostId();
-	$postManager = new JeanForteroche\Blog\Model\PostManager();
-	$post = $postManager->getPost($postId);
-
-	if ($post->getType() == 'episode') {
-		$type = '<i class="fab fa-envira"></i>';
-	} elseif ($post->getType() == 'ticket') {
-		$type = '<i class="fas fa-bullhorn"></i>';
-	}
-
-?>
 <div class="col-lg-4 col-lg-push-1 col-md-4 col-md-push-1 col-sm-8 col-sm-pull-1 col-xs-12 second-panel second-panel-back second-panel-second-level-back">
-
 	<h2 class="second-panel-title">CONTENU DU COMMENTAIRE <i class="fas fa-comments"></i></h2>
 	<div class="chains-nails-contener">
     	<div>
@@ -29,11 +14,10 @@
 		<div class="second-panel-comment-content">
 			<p><?= $comment->getComment() ?></p>
 		</div>
-		<p class="second-panel-comment-relatedPost"><i class="fas fa-long-arrow-alt-right"> </i>
-<?= $post->getTitle() . ' ' . $type ?> </p>
+		<p class="second-panel-comment-relatedPost"><i class="fas fa-long-arrow-alt-right"> </i> <?= $post->getTitle() . ' ' . $type ?> </p>
 	</div>
 </div>
 
-	<?php
-    include('view/frontend/footer.php');
-    ?>
+<?php
+include "view/frontend/footer.php";
+?>

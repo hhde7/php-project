@@ -1,9 +1,9 @@
 <?php
-
 namespace JeanForteroche\Blog\Model;
+
 use JeanForteroche\Blog\Model\Counter;
 
-require_once ('model/Counter.php');
+require_once "model/Counter.php";
 
 class CounterManager extends Manager
 {
@@ -29,7 +29,6 @@ class CounterManager extends Manager
     	$db = $this->dbConnect();
     	$req = $db->prepare('SELECT postId, COUNT(*) FROM counter WHERE postType = ? GROUP BY postId ORDER BY COUNT(*) DESC LIMIT 1' );
         $req->execute(array($type));
-        
         $article = $req->fetch(); 
      	
         return $article[0];
@@ -40,8 +39,7 @@ class CounterManager extends Manager
     	$db = $this->dbConnect();
     	$req = $db->prepare('SELECT COUNT(DISTINCT ip) FROM counter WHERE DATEDIFF(NOW(), accessDate) <= ? ');
     	$req->execute(array($period));
-
-    	$readers = $req->fetch();
+        $readers = $req->fetch();
 
     	return $readers[0];
     }

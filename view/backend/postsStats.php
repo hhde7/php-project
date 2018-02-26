@@ -1,20 +1,3 @@
-<?php 
-
-$episodeStats = $postManager->getAllEpisodes();
-$ticketStats = $postManager->getAllTickets();
-
-$mostCommentedEpisode = $commentManager->getMostCommentedArticle('episode');
-$mostCommentedTicket = $commentManager->getMostCommentedArticle('ticket');
-$episode = $postManager->getPost($mostCommentedEpisode);
-$ticket = $postManager->getPost($mostCommentedTicket);
-
-$mostReadEpisode = $counterManager->mostReadArticle('episode');
-$mostReadTicket = $counterManager->mostReadArticle('ticket');
-$episodeN1 = $postManager->getPost($mostReadEpisode);
-$ticketN1 = $postManager->getPost($mostReadTicket);
-
-?>        
-
 <div>
 	<h2><i class="fas fa-paperclip"></i> LES PUBLICATIONS</h2>
 

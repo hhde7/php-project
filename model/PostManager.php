@@ -1,9 +1,10 @@
 <?php
-
 namespace JeanForteroche\Blog\Model;
+
 use JeanForteroche\Blog\Model\Post;
-require_once('model/Manager.php');
-require_once('model/Post.php');
+
+require_once "model/Manager.php";
+require_once "model/Post.php";
 
 class PostManager extends Manager
 {
@@ -13,6 +14,7 @@ class PostManager extends Manager
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts');
         $data = $req->fetchAll();
         $allPosts = array();
+        
         for ($i=0; $i < count($data) ; $i++) {
             $post = new Post($data[$i]);
             $allPosts[] = $post;
@@ -27,6 +29,7 @@ class PostManager extends Manager
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "episode" ORDER BY creationDate DESC ');
         $data = $req->fetchAll();
         $allPosts = array();
+        
         for ($i=0; $i < count($data) ; $i++) {
             $post = new Post($data[$i]);
             $allPosts[] = $post;
@@ -41,6 +44,7 @@ class PostManager extends Manager
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "ticket" ORDER BY creationDate DESC ');
         $data = $req->fetchAll();
         $allTickets = array();
+        
         for ($i=0; $i < count($data) ; $i++) {
             $ticket = new Post($data[$i]);
             $allTickets[] = $ticket;
@@ -153,9 +157,7 @@ class PostManager extends Manager
         $req->bindParam(':type', $type);
         $updatedPost = $req->execute();
         
-
         return $updatedPost;
-
     }
 
     // PAGINATION ---//

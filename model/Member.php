@@ -79,5 +79,4 @@ class Member
 	{
 		$this->registrationDate = $registrationDate;
 	}
-
 }

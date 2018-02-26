@@ -1,11 +1,12 @@
 <?php
-
 namespace JeanForteroche\Blog\Model;
+
 use JeanForteroche\Blog\Model\Comment;
 use JeanForteroche\Blog\Model\Post;
-require_once ('model/Manager.php');
-require_once ('model/Comment.php');
-require_once ('model/Post.php');
+
+require_once "model/Manager.php";
+require_once "model/Comment.php";
+require_once "model/Post.php";
 
 class CommentManager extends Manager
 {
@@ -46,6 +47,7 @@ class CommentManager extends Manager
     	$req = $db->query('SELECT id, postId, author, postType, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments ORDER BY commentDate DESC LIMIT 10');
     	$data = $req->fetchAll();
     	$lastComments = array();
+
 	    for ($i=0; $i < count($data) ; $i++) {
 	       	$comment = new Comment($data[$i]);
 	       	$lastComments[] = $comment;
@@ -144,9 +146,7 @@ class CommentManager extends Manager
         	$req = $db->prepare('SELECT COUNT(*) FROM comments WHERE reported = 1');
         	$req->execute(array($reported));
         	$nb_comments = $req->fetch();
-        }  
-        else
-        {
+        } else {
         	$req = $db->query('SELECT COUNT(*) FROM comments');
         	$nb_comments = $req->fetch();
         } 
@@ -161,6 +161,4 @@ class CommentManager extends Manager
 
         return $nb_pages;
     }
-
-
 }

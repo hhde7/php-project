@@ -12,28 +12,28 @@
 	</head>
 	<body>
 		<?php
-		include('view/frontend/header.php');
+		include "view/frontend/header.php";
 		?>
 		<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
 			<?php
-			include('view/frontend/mobileMenu.php');
+			include "view/frontend/mobileMenu.php";
 		?>
 		</div>
 		<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-list">
 			<div class="col-xs-6">
 				<p class="mobile-episode-title">LES ÉPISODES</p>
 				<?php
-				include('allEpisodesTitles.php');
+				include "allEpisodesTitles.php";
 			?>
 			</div>
 			<div class="col-xs-6">
 				<?php
-				include('profil.php');
+				include "profil.php";
 			?>
 			</div>
 		</div>
 		<?php
-    	include('view/frontend/footer.php');
+    	include "view/frontend/footer.php";
     	?>
 		
 		<!-- FONT AWESOME SCRIPT -->
