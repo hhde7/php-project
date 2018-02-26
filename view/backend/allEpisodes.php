@@ -5,7 +5,7 @@
 			<meta charset="utf-8">
 			<link rel="stylesheet" type="text/css" href="public/css/style.css">
 			<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-			
+
 			<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<title>Tous les épisodes</title>
 	</head>
@@ -23,10 +23,10 @@
 		<div class="col-lg-4 col-lg-pull-0 col-md-4 col-md-pull-0 col-sm-8 col-sm-pull-1 col-xs-12 col-xs-pull-0 first-panel first-panel-back">
 
 			<h2 class="first-panel-title">TOUS LES ÉPISODES <i class="fab fa-envira"></i></h2>
-			
+
 			<div class="chains-nails-contener">
 	    		<div>
-					<img src="public/images/chain2.png" class="back-first-panel-left-chain"> 	
+					<img src="public/images/chain2.png" class="back-first-panel-left-chain">
 					<img src="public/images/chain2.png" class="back-first-panel-right-chain">
 					<img src="public/images/nail1.png" class="back-first-panel-left-nail-episode">
 					<img src="public/images/nail1.png" class="back-first-panel-right-nail-episode">
@@ -34,9 +34,9 @@
 			</div>
 			<table class="table table-striped">
 				<tr>
-					<th>TITRE</th>		
-					<th>DATE DE PUBLICATION</th>
-					<th>ACTION</th>
+					<th class="col-lg-6">TITRE</th>
+					<th class="col-lg-5">DATE DE PUBLICATION</th>
+					<th class="col-lg-1">ACTION</th>
 				</tr>
 
 				<?php
@@ -49,12 +49,12 @@
 					$end = $_GET['page']*20;
 				}
 				// BOUCLE AFFICHANT LES ÉPISODES EXISTANTS POUR CHAQUE PAGE
-				for ($i=$start; $i < $end ; $i++) { 
-				
+				for ($i=$start; $i < $end ; $i++) {
+
 					if (isset($episodes[$i])) {
 						?>
 						<tr>
-							<td class="table-title"><?= mb_strimwidth($episodes[$i]->getTitle(), 0, 45, '...') ?></td> 
+							<td class="table-title"><?= mb_strimwidth($episodes[$i]->getTitle(), 0, 45, '...') ?></td>
 							<td class="table-date"><?= mb_strimwidth($episodes[$i]->getCreationDate(), 10, 18) ?></td>
 							<td class="table-options">
 								<a href="index.php?action=allEpisodes&amp;see=<?= $episodes[$i]->getPostId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
@@ -63,26 +63,28 @@
 							</td>
 						</tr>
 					<?php
-				 	}		
+				 	}
 				}
 			?>
 			</table>
 
-			<p id="pagination">Allez à la page :     
+			<p class="active-page">Page : <?= $_GET['page'] ?></p>
+			<p id="pagination">Allez à la page :
 			<?php
 			// PAGINATION
 			for ($j=0; $j < $pagesNumber; $j++) {
 				?>
-			    <a href="index.php?action=allEpisodes&page=<?= $j+1 ?>"><?= $j+1 ?></a>
-			<?php 
+			    <a class="pages-number" href="index.php?action=allEpisodes&page=<?= $j+1 ?>"><?= $j+1 ?></a>
+			<?php
 			}
 			?>
 			</p>
 		</div>
 
 		<!-- JAVASCRIPT -->
+		<script type="text/javascript" src="public/js/autoScroll.js"></script>
 		<!-- FONT AWESOME SCRIPT -->
-			
+
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 		<!-- TINYMCE SCRIPTS -->

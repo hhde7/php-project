@@ -34,9 +34,9 @@
 			</div>
 			<table class="table table-striped">
 				<tr>
-					<th>AUTEUR</th>		
-					<th>DATE DE PUBLICATION</th>
-					<th>ACTION</th>
+					<th class="col-lg-6">AUTEUR</th>		
+					<th class="col-lg-5">DATE DE PUBLICATION</th>
+					<th class="col-lg-1">ACTION</th>
 				</tr>
 
 				<?php
@@ -67,12 +67,13 @@
 			?>
 			</table>
 
+			<p class="active-page">Page : <?= $_GET['page'] ?></p>
 			<p id="pagination">Aller à la page :    
 			<?php	
 			// PAGINATION
 			for ($j=0; $j < $pagesNumber; $j++) {
 			   	?>
-		    	<a href="index.php?action=allComments&page=<?= $j+1 ?>"><?= $j+1 ?></a>
+		    	<a class="pages-number" href="index.php?action=allComments&page=<?= $j+1 ?>"><?= $j+1 ?></a>
 			<?php 
 			}
 			?>
@@ -80,6 +81,7 @@
 		</div>
 
 		<!-- JAVASCRIPT -->
+		<script type="text/javascript" src="public/js/autoScroll.js"></script>
 		<!-- FONT AWESOME SCRIPT -->
 			
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>

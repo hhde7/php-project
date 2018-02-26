@@ -34,9 +34,9 @@
 			</div>
 			<table class="table table-striped">
 				<tr>
-					<th>AUTEUR</th>	
-					<th>DATE DE PUBLICATION</th>
-					<th>ACTION</th>
+					<th class="col-lg-6">AUTEUR</th>		
+					<th class="col-lg-5">DATE DE PUBLICATION</th>
+					<th class="col-lg-1">ACTION</th>
 				</tr>
 				
 				<?php
@@ -55,7 +55,7 @@
 						?>
 						<tr>
 							<td class="table-title"><?= $reportedComments[$i]->getAuthor() ?></td> 
-							<td class="table-comment"><?= mb_strimwidth($reportedComments[$i]->getComment(), 0, 35, '...') ?></td>
+							<td class="table-date-comment"><?= mb_strimwidth($reportedComments[$i]->getCommentDate(), 4, 18)?></td> 
 							<td class="table-options">
 								<a href="index.php?action=reportedComments&amp;see=<?= $reportedComments[$i]->getCommentId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
 								<a href="index.php?action=moderate&amp;allow=<?= $reportedComments[$i]->getCommentId() ?>&amp;from=reportedComments&amp;page=<?= $_GET['page'] ?>" title="Accepter"><i class="fas fa-check-circle"></i></a>
@@ -68,12 +68,13 @@
 			?>
 			</table>
 
+			<p class="active-page">Page : <?= $_GET['page'] ?></p>
 			<p id="pagination">Allez à la page :     
 			<?php
 			// PAGINATION
 			for ($j=0; $j < $pagesNumber; $j++) {
 				?>
-	    		<a href="index.php?action=reportedComments&page=<?= $j+1 ?>"><?= $j+1 ?></a>
+	    		<a class="pages-number" href="index.php?action=reportedComments&page=<?= $j+1 ?>"><?= $j+1 ?></a>
 			<?php 
 			}
 			?>
@@ -81,6 +82,7 @@
 		</div>
 
 		<!-- JAVASCRIPT -->	
+		<script type="text/javascript" src="public/js/autoScroll.js"></script>
 		<!-- FONT AWESOME SCRIPT -->
 			
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>

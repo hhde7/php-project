@@ -547,6 +547,12 @@ class Controller
 		$yearReaders = $counterManager->getReaders(364);
 		$allReaders = $counterManager->getReaders(364*10);
 
+		if ($_GET['action'] == 'episode') {
+			$type = 'NOUVEL ÉPISODE <i class="fab fa-envira"></i>';
+		} elseif ($_GET['action'] == 'ticket') {
+			$type = 'NOUVEAU BILLET <i class="fas fa-bullhorn"></i>';
+		}
+
 		require "view/backend/newArticle.php";
 	}
 

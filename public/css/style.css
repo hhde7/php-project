@@ -332,6 +332,18 @@ nav .fa-long-arrow-alt-right {
   color: orange;
 }
 
+.fa-plus-circle,
+.fa-edit,
+.fa-minus-circle,
+.fa-check-circle,
+.fa-trash-alt {
+  font-size: 13px;
+}
+
+.pages-number {
+  padding-left: 20px;
+}
+
 /* ############ COMMENT VIEW .PHP ############ */
 /* ############ COMMENT VIEW .PHP ############ */
 /* ############ COMMENT VIEW .PHP ############ */
@@ -811,6 +823,7 @@ table {
   background-color: #FFF!important;
   border: 1px dotted #a59191;
   width: 100%;
+  margin-bottom: -20px !important;
 }
 
 th {
@@ -830,7 +843,7 @@ td {
 tr {
   border: 1px solid rgba(0,0,0,0.1);
 }
-
+/*
 .table-title {
   width: 50%;
 }
@@ -849,7 +862,7 @@ tr {
 
 .table-date-comment {
   width: 30%;
-}
+} */
 
 /* ############ BOITES DE DIALOGUE & LOGIN ############ */
 /* ############ BOITES DE DIALOGUE & LOGIN ############ */
