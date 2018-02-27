@@ -20,9 +20,15 @@ class Controller
 		$firstEpisode = $postManager->getFirstEpisode();
 		$lastTicket = $postManager->getLastTicket();
 		$lastEpisode = $postManager->getLastEpisode();
+		
+		if (isset($_GET['ticket'], $_GET['episode'])) {
+			$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
+			$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
+		}
 
 		// SI PAGE DE GARDE OU, DERNIER TICKET ET DERNIER EPISODE 
-		if (!isset($_GET['ticket'], $_GET['episode']) OR $_GET['ticket'] == $lastTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId())
+		if (!isset($_GET['ticket'], $_GET['episode']) OR $_GET['ticket'] == $lastTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId()
+		 	OR $ticketCheck->getPostId() === null OR $episodeCheck->getPostId() === null) 
 		{
 			$ticket = $postManager->getLastTicket();
 			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
@@ -221,9 +227,33 @@ class Controller
 	public function confirmReport($commentId)
 	{	
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
-		$comment = $commentManager->getComment(htmlspecialchars($_GET['comment']));
-				
-		require "view/frontend/reportView.php";
+		
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
+		$postIdCheck = $postManager->getPost(htmlspecialchars($_GET['id']));
+		$commentCheck = $commentManager->getComment(htmlspecialchars($_GET['comment']));
+		
+		if (isset($_GET['ticket'], $_GET['episode'])) {
+			$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
+			$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
+
+				if ($commentCheck->getPostId() === $postIdCheck->getPostId()) {
+	
+					if ($commentCheck->getPostId() !== null AND $postIdCheck->getPostId() !== null
+						 AND $ticketCheck->getPostId() !== null AND $episodeCheck->getPostId() !== null) {
+
+						$comment = $commentManager->getComment(htmlspecialchars($_GET['comment']));
+
+						require "view/frontend/reportView.php";
+					} else {
+						throw new Exception("Des informations manquent pour effectuer cette opération");	
+					}	
+				} else {
+					throw new Exception("Le commentaire ne correspond pas à l'article");	
+				} 
+		} else {
+			throw new Exception("Le commentaire à signaler n'existe pas");	
+		}
 	}
 
 	public function displayModeratePage()
@@ -284,8 +314,8 @@ class Controller
 			} elseif ($_GET['from'] == 'reportedComments') {
 				$comment = $commentManager->getComment(htmlspecialchars($_GET['delete']));
 				$element = $comment->getAuthor();	
-				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . $_GET['delete'] . '&amp;confirm=delete&amp;from=reportedComments&amp;page=' . $_GET['page'] . '"><input type="button" value="Oui" /></a>
-				<a href="index.php?action=reportedComments&amp;page=' . $_GET['page'] . '"><input type="button" value="Non" /></a>';
+				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . htmlspecialchars($_GET['delete']) . '&amp;confirm=delete&amp;from=reportedComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Oui" /></a>
+				<a href="index.php?action=reportedComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Non" /></a>';
 			}		
 		} else {
 			throw new Exception('impossible de récupérer les données de l\'élément');		
@@ -375,7 +405,7 @@ class Controller
 	public function displayArticleWriter()
 	{
 	    $postManager = new  JeanForteroche\Blog\Model\PostManager();
-		$episode = $postManager->getPost($_GET['edit']);
+		$episode = $postManager->getPost(htmlspecialchars($_GET['edit']));
 		$type = $episode->getType();
 
 		// ATTRIBUTION DE L'ICONE
@@ -560,7 +590,7 @@ class Controller
 	{
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
-		$comment = $commentManager->getComment($_GET['see']);
+		$comment = $commentManager->getComment(htmlspecialchars($_GET['see']));
 		$postId = $comment->getPostId();
 		$post = $postManager->getPost($postId);
 
@@ -579,10 +609,10 @@ class Controller
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
 		// CHOIX DE L'ACTION
 		if (isset($_GET['see'])) {
-			$post = $postManager->getPost($_GET['see']);
+			$post = $postManager->getPost(htmlspecialchars($_GET['see']));
 			$type = $post->getType();
 		} else {
-			$post = $postManager->getPost($_GET['update']);
+			$post = $postManager->getPost(htmlspecialchars($_GET['update']));
 			$type = $post->getType();
 		}
 		// ATTRIBUTION DE L'ICONE

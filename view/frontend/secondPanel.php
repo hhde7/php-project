@@ -49,7 +49,7 @@
             // SI CE DERNIER N'EST PAS DÉJÀ SIGNALÉ  
             $thisComment = $value->getCommentId();
             ?>
-            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?=$_GET['ticket']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">signaler un abus<br /></a>
+            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?=$_GET['episode']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">signaler un abus<br /></a>
         <?php
 
         // LES CONDITIONS SUIVANTES S'APPLIQUENT SI AUCUNES DONNÉES NE SONT TRANSMISENT VIA l'URL.
@@ -61,7 +61,7 @@
     	} elseif ($value->getReported() === '0' AND !isset($_GET['ticket'])) {
     	    $thisComment = $value->getCommentId();
             ?>
-            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $lastTicket->getPostId() ?>&amp;ticket=<?= $lastTicket->getPostId() ?>&amp;episode=<?= $lastEpisode->getPostId() ?>">signaler un abus<br /></a>
+            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $lastEpisode->getPostId() ?>&amp;ticket=<?= $lastTicket->getPostId() ?>&amp;episode=<?= $lastEpisode->getPostId() ?>">signaler un abus<br /></a>
         <?php
     	}
     	?>

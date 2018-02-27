@@ -11,8 +11,8 @@ class MemberManager extends Manager
 	public function memberCheck($email, $password)
 	{
 	    $db = $this->dbConnect(); 
-	    $req = $db->prepare('SELECT * FROM members WHERE email = ?');
-	    $req->execute(array($email));
+	    $req = $db->prepare('SELECT * FROM members WHERE email = ? AND password = ?');
+	    $req->execute(array($email, $password));
 	    $data = $req->fetch();
 	    $member = new Member($data);
 

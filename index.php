@@ -28,16 +28,15 @@ try {
 	            	throw new Exception('aucun identifiant de billet envoyé');
 	        	}
 	    	}
-	    	elseif ($_GET['action'] == 'report' ) {
+	    	elseif ($_GET['action'] == 'report' AND isset($_GET['comment'], $_GET['id'], $_GET['ticket'], $_GET['episode'])) {
 	    		if (!isset($_GET['reported'])) {
 	    			$controller->confirmReport(htmlspecialchars($_GET['comment']));
-	    		}
-	    		elseif (isset($_GET['reported']) AND $_GET['reported'] > 0) {
-	    			$controller->reportComment(htmlspecialchars($_GET['reported']));
-	    		}
-	    		else {
+	    		}else {
 	    			throw new Exception('impossible de signaler ce commentaire');
 	    		}
+	    	}
+	    	elseif ($_GET['action'] == 'report' AND isset($_GET['reported'], $_GET['id'], $_GET['ticket'], $_GET['episode'])) {
+	    			$controller->reportComment(htmlspecialchars($_GET['reported']));
 	    	}
 	    	elseif ($_GET['action'] == 'login' ) {
 	    		if (isset($_GET['action']) AND !isset($_SESSION['email']) AND !isset($_SESSION['password'])) {
