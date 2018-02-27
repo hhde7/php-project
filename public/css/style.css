@@ -32,6 +32,7 @@ body {
   font-family: 'Varela Round', sans-serif;
   background: url(../images/stock/20.jpg) repeat-y ;
   margin: auto;
+  word-wrap: break-word;
 }
 
 html {
@@ -774,10 +775,6 @@ textarea {
   margin-top: 50px;
 }
 
-.second-level-first-panel-post p {
-  word-wrap: break-word;
-}
-
 /* ... SIGNALER UN COMMENTAIRE ... */
 /* ... SIGNALER UN COMMENTAIRE ... */
 
@@ -853,8 +850,16 @@ td {
   padding-right: 10px!important;
 }
 
+td {
+  word-wrap: break-word;
+}
+
 tr {
   border: 1px solid rgba(0,0,0,0.1);
+}
+
+.table-title {
+  word-break: break-all;
 }
 
 /* ############ BOITES DE DIALOGUE & LOGIN ############ */

@@ -37,11 +37,11 @@
 			<form action="index.php?action=<?= $_GET['action'] ?>&amp;posted=<?= $_GET['action'] ?>" method="post">
 	            <div>
 	                <label for="author">Titre</label><br />
-	                <input type="text" class="title" name="title" required/>
+	                <input type="text" class="title" name="title" maxlength="45" required/>
 	            </div>
 	            <div>
 	                <label for="comment">Contenu</label><br />
-	                <textarea class="tinymce" id="writer" name="content" ></textarea>
+	                <textarea class="tinymce" id="writer" name="content"></textarea>
 	            </div>
 	            <div>
 	                <input type="submit" class="submit" />
