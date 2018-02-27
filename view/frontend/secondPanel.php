@@ -74,7 +74,7 @@
 <!-- CHARGE LE FORMULAIRE D'AJOUT DE COMMENTAIRES --> 
 <?php
 // SI PRÉSENCE DE DONNÉES VIA L'URL
-if (isset($_GET['episode']) AND $ticketCheck->getType() === 'episode') {
+if (isset($_GET['episode']) AND $episodeCheck->getType() === 'episode') {
     ?>
     <form class="episode-comment-form"  action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=episode&amp;post=<?= $_GET['episode'] ?>" method="post" id="episode-comment-form">
         <div>
