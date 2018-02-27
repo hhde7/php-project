@@ -85,7 +85,7 @@ if (isset($_GET['ticket'])) {
         </div>
         <div>
             <label for="ticket-comment">Commentaire</label><br />
-            <textarea class="comment" id="ticket-comment" name="comment" required></textarea>
+            <textarea class="comment" id="ticket-comment" name="comment" maxlength="400" required></textarea>
         </div>
         <div>
             <input type="submit" class="submit" />

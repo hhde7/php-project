@@ -7,20 +7,20 @@
 /* 0371 PANNEAUX
 /* 0563 SUSPENSIONS DES PANNEAUX
 /* 0734 FORMULAIRES
-/* 0820 TABLEAUX
-/* 0856 BOITES DE DIALOGUE & LOGIN
-/* 0914 FOOTER
-/* 0923 MEDIA QUERIES
-/*    0928 (min-width: 1621px) and (max-width: 1820px)
-/*    0976 (min-width: 1481px) and (max-width: 1620px)
-/*    1038 (min-width: 1381px) and (max-width: 1480px)
-/*    1064 (min-width: 1281px) and (max-width: 1380px)
-/*    1074 (min-width: 1281px) and (max-width: 1480px)
-/*    1155 (min-width: 1153px) and (max-width: 1280px)
-/*    1322 (min-width: 1024px) and (max-width: 1152px)
-/*    1499 (min-width: 992px) and (max-width: 1023px)
-/*    1619 (min-width: 768px) and (max-width: 991px)
-/*    1764 (max-width: 767px)
+/* 0824 TABLEAUX
+/* 0860 BOITES DE DIALOGUE & LOGIN
+/* 0918 FOOTER
+/* 0927 MEDIA QUERIES
+/*    0932 (min-width: 1621px) and (max-width: 1820px)
+/*    0980 (min-width: 1481px) and (max-width: 1620px)
+/*    1042 (min-width: 1381px) and (max-width: 1480px)
+/*    1070 (min-width: 1281px) and (max-width: 1380px)
+/*    1078 (min-width: 1281px) and (max-width: 1480px)
+/*    1159 (min-width: 1153px) and (max-width: 1280px)
+/*    1326 (min-width: 1024px) and (max-width: 1152px)
+/*    1503 (min-width: 992px) and (max-width: 1023px)
+/*    1623 (min-width: 768px) and (max-width: 991px)
+/*    1768 (max-width: 767px)
 /* --------------------------------------------------- */
 
 /* ################## MISE EN PAGE ################## */
@@ -772,6 +772,10 @@ textarea {
 .ticket-comment-form,
 .episode-comment-form {
   margin-top: 50px;
+}
+
+.second-level-first-panel-post p {
+  word-wrap: break-word;
 }
 
 /* ... SIGNALER UN COMMENTAIRE ... */

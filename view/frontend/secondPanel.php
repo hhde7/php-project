@@ -83,7 +83,7 @@ if (isset($_GET['episode'])) {
         </div>
         <div>
             <label for="episode-comment">Commentaire</label><br />
-            <textarea class="comment" id="episode-comment" name="comment" required></textarea>
+            <textarea class="comment" id="episode-comment" name="comment" maxlength="400" required></textarea>
         </div>
         <div>
             <input type="submit" class="submit" />
