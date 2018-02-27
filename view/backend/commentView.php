@@ -2,10 +2,10 @@
 	<h2 class="second-panel-title">CONTENU DU COMMENTAIRE <i class="fas fa-comments"></i></h2>
 	<div class="chains-nails-contener">
     	<div>
-			<img src="public/images/chain1.png" class="back-second-panel-left-chain"> 	
-			<img src="public/images/chain1.png" class="back-second-panel-right-chain">
-			<img src="public/images/nail1.png" class="back-second-panel-left-nail-article">
-			<img src="public/images/nail1.png" class="back-second-panel-right-nail-article">
+			<img src="public/images/chain2.png" alt="" class="back-second-panel-left-chain"> 	
+			<img src="public/images/chain2.png" alt="" class="back-second-panel-right-chain">
+			<img src="public/images/nail1.png" alt="" class="back-second-panel-left-nail-article">
+			<img src="public/images/nail1.png" alt="" class="back-second-panel-right-nail-article">
 		</div>
 	</div>
 	<div class="second-panel-comment">
@@ -17,7 +17,3 @@
 		<p class="second-panel-comment-relatedPost"><i class="fas fa-long-arrow-alt-right"> </i> <?= $post->getTitle() . ' ' . $type ?> </p>
 	</div>
 </div>
-
-<?php
-include "view/frontend/footer.php";
-?>

@@ -18,7 +18,7 @@ try {
 			elseif ($_GET['action'] == 'addComment') {
 	        	if (isset($_GET['ticket'], $_GET['episode']) AND $_GET['ticket'] > 0 AND $_GET['episode'] > 0) {
 	            	if (!empty($_POST['author']) AND !empty($_POST['comment'])) {
-	                	$controller->addComment($_GET['post'], $_GET['type'], $_POST['author'], $_POST['comment']);
+	                	$controller->addComment(htmlspecialchars($_GET['post']), htmlspecialchars($_GET['type']), htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));
 	            	}
 	            	else {
 	                	throw new Exception('tous les champs ne sont pas remplis !');
@@ -30,10 +30,10 @@ try {
 	    	}
 	    	elseif ($_GET['action'] == 'report' ) {
 	    		if (!isset($_GET['reported'])) {
-	    			$controller->confirmReport($_GET['comment']);
+	    			$controller->confirmReport(htmlspecialchars($_GET['comment']));
 	    		}
 	    		elseif (isset($_GET['reported']) AND $_GET['reported'] > 0) {
-	    			$controller->reportComment($_GET['reported']);
+	    			$controller->reportComment(htmlspecialchars($_GET['reported']));
 	    		}
 	    		else {
 	    			throw new Exception('impossible de signaler ce commentaire');
@@ -53,7 +53,7 @@ try {
 	    	elseif ($_GET['action'] == 'loginCheck' ) {
 	    		if (isset($_POST['email']) AND isset($_POST['password']) OR !isset($_SESSION['email']) AND !isset($_SESSION['password']))
 	    		{
-	    			$controller->loginCheck($_POST['email'], $_POST['password']);
+	    			$controller->loginCheck(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']));
 	    		}
 	    		elseif (isset($_SESSION['email']) AND isset($_SESSION['password']))
 	    		{
@@ -148,21 +148,21 @@ try {
 	    			throw new Exception('il y a eu un problème lors de la déconnection...');
 	    		}
 	    	}
-	    	elseif ($_GET['action'] == 'moderate') {
-	    		if ((isset($_GET['allow']) AND !isset($_GET['confirm'])) OR (isset($_GET['delete']) AND !isset($_GET['confirm']))) {
+	    	elseif ($_GET['action'] == 'moderate' AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
+	    		if ((isset($_GET['allow']) AND !isset($_GET['confirm'])) OR (isset($_GET['delete']) AND !isset($_GET['confirm'])) ) {
 	    			$controller->displayModeratePage();
 	    		}
 	    		// CONFIRMER LA CONSERVATION DU COMMENTAIRE
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'allow') {
-	    			$controller->moderateComment($_GET['allow'], 'allow');
+	    			$controller->moderateComment(htmlspecialchars($_GET['allow']), 'allow');
 	    			if ($_GET['from'] == 'dashboard') {
 	    				header('location: index.php?action=dashboard');
 	    			} 
 	    			elseif ($_GET['from'] == 'allComments') {
-	    				header('location: index.php?action=allComments&page=' . $_GET['page'] );
+	    				header('location: index.php?action=allComments&page=' . htmlspecialchars($_GET['page']));
 	    			}
 	    			elseif ($_GET['from'] == 'reportedComments') {
-	    				header('location: index.php?action=reportedComments&page=' . $_GET['page']);
+	    				header('location: index.php?action=reportedComments&page=' . htmlspecialchars($_GET['page']));
 	    			}
 	    		}
 	    		// CONFIRMER LA SUPPRESSION DE LA PUBLICATION
@@ -171,12 +171,12 @@ try {
 	    			if (isset($_GET['from']) AND  $_GET['from'] == 'allEpisodes') 
 	    			{	
 	    				$controller->moderatePost($_GET['delete']);
-	    				header('location: index.php?action=allEpisodes&page=' . $_GET['page']);
+	    				header('location: index.php?action=allEpisodes&page=' . htmlspecialchars($_GET['page']));
 	    			}
 	    			elseif (isset($_GET['from']) AND  $_GET['from'] == 'allTickets')
 	    			{
 	    				$controller->moderatePost($_GET['delete']);
-	    				header('location: index.php?action=allTickets&page=' . $_GET['page']);
+	    				header('location: index.php?action=allTickets&page=' . htmlspecialchars($_GET['page']));
 	    			}
 	    			// SUPPRESSION : COMMENTAIRE
 	    			elseif (isset($_GET['from']) AND ($_GET['from'] == 'dashboard'))
@@ -187,12 +187,12 @@ try {
 		    		elseif (isset($_GET['from']) AND ($_GET['from'] == 'allComments'))
 	    			{
 		    			$controller->moderateComment($_GET['delete'], 'delete');
-		    			header('location: index.php?action=allComments&page=' . $_GET['page']);
+		    			header('location: index.php?action=allComments&page=' . htmlspecialchars($_GET['page']));
 		    		}
 		    		elseif (isset($_GET['from']) AND ($_GET['from'] == 'reportedComments'))
 	    			{
 		    			$controller->moderateComment($_GET['delete'], 'delete');
-		    			header('location: index.php?action=reportedComments&page=' . $_GET['page']);
+		    			header('location: index.php?action=reportedComments&page=' . htmlspecialchars($_GET['page']));
 		    		}
 		    		else
 		    		{

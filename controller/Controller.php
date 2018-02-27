@@ -39,12 +39,12 @@ class Controller
 		} 
 		elseif (isset($_GET['ticket']) AND isset($_GET['episode']))
 		{
-			$ticket = $postManager->getPost($_GET['ticket']);
-			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost(htmlspecialchars($_GET['ticket']));
+			$episode_ = $postManager->getPost(htmlspecialchars($_GET['episode']));//à remplacer $episode
 			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
 			$previousEpisode = $postManager->getPreviousPost($episode_->getPostId(), 'episode');
-			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
-			$nextEpisode = $postManager->getNextPost($_GET['episode'], 'episode');
+			$nextTicket = $postManager->getNextPost(htmlspecialchars($_GET['ticket']), 'ticket');
+			$nextEpisode = $postManager->getNextPost(htmlspecialchars($_GET['episode']), 'episode');
 			$ticketComments = $commentManager->getAllComments($ticket->getPostId());
 			$episodeComments = $commentManager->getAllComments($episode_->getPostId());
 
@@ -152,18 +152,18 @@ class Controller
 			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
 			$ticketComments = $commentManager->getAllComments($lastTicket->getPostId());
 			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
-			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$nextTicket = $postManager->getNextPost(htmlspecialchars($_GET['ticket']), 'ticket');
 		
 			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
 			$nextTicketLink = Null;
 		}
 		elseif ($_GET['ticket'] != $lastTicket->getPostId())
 		{
-			$ticket = $postManager->getPost($_GET['ticket']);
-			$episode_ = $postManager->getPost($_GET['episode']);//à remplacer $episode
+			$ticket = $postManager->getPost(htmlspecialchars($_GET['ticket']));
+			$episode_ = $postManager->getPost(htmlspecialchars($_GET['episode']));//à remplacer $episode
 			$ticketComments = $commentManager->getAllComments($ticket->getPostId());
 			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
-			$nextTicket = $postManager->getNextPost($_GET['ticket'], 'ticket');
+			$nextTicket = $postManager->getNextPost(htmlspecialchars($_GET['ticket']), 'ticket');
 
 			if (isset($_GET['ticket']) AND $_GET['ticket'] == $firstTicket->getPostId())
 			{
@@ -201,7 +201,7 @@ class Controller
 			throw new Exception('Impossible d\'ajouter le commentaire !');
 		}
 		else {
-			header('location: index.php?ticket=' . $_GET['ticket'] . '&episode=' . $_GET['episode']);
+			header('location: index.php?ticket=' . htmlspecialchars($_GET['ticket']) . '&episode=' . htmlspecialchars($_GET['episode']));
 		}
 	}
 
@@ -221,7 +221,7 @@ class Controller
 	public function confirmReport($commentId)
 	{	
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
-		$comment = $commentManager->getComment($_GET['comment']);
+		$comment = $commentManager->getComment(htmlspecialchars($_GET['comment']));
 				
 		require "view/frontend/reportView.php";
 	}
@@ -234,11 +234,11 @@ class Controller
 		// ATTRIBUTION DE L'ICONE
 		if ($_GET['from'] == 'allEpisodes') {
 			$type = 'épisode <i class="fab fa-envira"></i>';
-			$episode = $postManager->getPost($_GET['delete']);
+			$episode = $postManager->getPost(htmlspecialchars($_GET['delete']));
 			$element = $episode->getTitle();
 		} elseif ($_GET['from'] == 'allTickets') {
 			$type = 'billet <i class="fas fa-bullhorn"></i>';
-			$ticket = $postManager->getPost($_GET['delete']);
+			$ticket = $postManager->getPost(htmlspecialchars($_GET['delete']));
 			$element = $ticket->getTitle();
 		} elseif ($_GET['from'] == 'allComments') {
 			$type = 'commentaire <i class="fas fa-comments"></i>';
@@ -252,37 +252,37 @@ class Controller
 		if (isset($_GET['allow']) AND $_GET['allow'] > 0) {
 			$message = '<p>Souhaitez-vous vraiment accepter le ' . $type . '?</p>';
 			if ($_GET['from'] == 'dashboard') {
-				$comment = $commentManager->getComment($_GET['allow']);
+				$comment = $commentManager->getComment(htmlspecialchars($_GET['allow']));
 				$element = $comment->getAuthor();	
-				$buttons = '<a href="index.php?action=' . $action . '&amp;allow=' . $_GET['allow'] . '&amp;confirm=allow&amp;from=dashboard"><input type="button" value="Oui" /></a>
+				$buttons = '<a href="index.php?action=' . $action . '&amp;allow=' . htmlspecialchars($_GET['allow']) . '&amp;confirm=allow&amp;from=dashboard"><input type="button" value="Oui" /></a>
 				<a href="index.php?action=dashboard"><input type="button" value="Non" /></a>';		
 			} elseif ($_GET['from'] == 'reportedComments') {
-				$comment = $commentManager->getComment($_GET['allow']);
+				$comment = $commentManager->getComment(htmlspecialchars($_GET['allow']));
 				$element = $comment->getAuthor();
-				$buttons = '<a href="index.php?action=' . $action . '&amp;allow=' . $_GET['allow'] . '&amp;confirm=allow&amp;from=reportedComments&amp;page=' . $_GET['page'] . '"><input type="button" value="Oui" /></a>
-				<a href="index.php?action=reportedComments&amp;page=' . $_GET['page'] . '"><input type="button" value="Non" /></a>';
+				$buttons = '<a href="index.php?action=' . $action . '&amp;allow=' . htmlspecialchars($_GET['allow']) . '&amp;confirm=allow&amp;from=reportedComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Oui" /></a>
+				<a href="index.php?action=reportedComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Non" /></a>';
 			}
 
 		} elseif (isset($_GET['delete']) AND $_GET['delete'] > 0) {
 			$message = '<p>Souhaitez-vous vraiment supprimer cet élément ?</p>';
 			if ($_GET['from'] == 'dashboard') {
-				$comment = $commentManager->getComment($_GET['delete']);
+				$comment = $commentManager->getComment(htmlspecialchars($_GET['delete']));
 				$element = $comment->getAuthor();	
-				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . $_GET['delete'] . '&amp;confirm=delete&amp;from=dashboard"><input type="button" value="Oui" /></a>
+				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . htmlspecialchars($_GET['delete']) . '&amp;confirm=delete&amp;from=dashboard"><input type="button" value="Oui" /></a>
 				<a href="index.php?action=dashboard"><input type="button" value="Non" /></a>';
 			} elseif ($_GET['from'] == 'allEpisodes') {
-				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . $_GET['delete'] . '&amp;confirm=delete&amp;from=allEpisodes&amp;page=' . $_GET['page'] . '"><input type="button" value="Oui" /></a>
-				<a href="index.php?action=allEpisodes&amp;page=' . $_GET['page'] . '"><input type="button" value="Non" /></a>';
+				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . htmlspecialchars($_GET['delete']) . '&amp;confirm=delete&amp;from=allEpisodes&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Oui" /></a>
+				<a href="index.php?action=allEpisodes&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Non" /></a>';
 			} elseif ($_GET['from'] == 'allTickets') {
-				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . $_GET['delete'] . '&amp;confirm=delete&amp;from=allTickets&amp;page=' . $_GET['page'] . '"><input type="button" value="Oui" /></a>
-				<a href="index.php?action=allTickets&amp;page=' . $_GET['page'] . '"><input type="button" value="Non" /></a>';
+				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . htmlspecialchars($_GET['delete']) . '&amp;confirm=delete&amp;from=allTickets&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Oui" /></a>
+				<a href="index.php?action=allTickets&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Non" /></a>';
 			} elseif ($_GET['from'] == 'allComments') {
-				$comment = $commentManager->getComment($_GET['delete']);
+				$comment = $commentManager->getComment(htmlspecialchars($_GET['delete']));
 				$element = $comment->getAuthor();	
-				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . $_GET['delete'] . '&amp;confirm=delete&amp;from=allComments&amp;page=' . $_GET['page'] . '"><input type="button" value="Oui" /></a>
-				<a href="index.php?action=allComments&amp;page=' . $_GET['page'] .'"><input type="button" value="Non" /></a>';
+				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . htmlspecialchars($_GET['delete']) . '&amp;confirm=delete&amp;from=allComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Oui" /></a>
+				<a href="index.php?action=allComments&amp;page=' . htmlspecialchars($_GET['page']) .'"><input type="button" value="Non" /></a>';
 			} elseif ($_GET['from'] == 'reportedComments') {
-				$comment = $commentManager->getComment($_GET['delete']);
+				$comment = $commentManager->getComment(htmlspecialchars($_GET['delete']));
 				$element = $comment->getAuthor();	
 				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . $_GET['delete'] . '&amp;confirm=delete&amp;from=reportedComments&amp;page=' . $_GET['page'] . '"><input type="button" value="Oui" /></a>
 				<a href="index.php?action=reportedComments&amp;page=' . $_GET['page'] . '"><input type="button" value="Non" /></a>';
@@ -347,8 +347,8 @@ class Controller
 
 		$lastEpisode = $postManager->getLastEpisode();
 		$lastTicket = $postManager->getLastTicket();
-		$reportedComments = $commentManager->getAllReportedComments();
-		$lastComments = $commentManager->getLastComments();
+		$lastTwoReportedComments = $commentManager->getLastTwoReportedComments();
+		$lastFiveComments = $commentManager->getLastFiveComments();
 
 		$episodeStats = $postManager->getAllEpisodes();
 		$ticketStats = $postManager->getAllTickets();

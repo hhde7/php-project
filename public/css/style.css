@@ -3,24 +3,24 @@
 /* 0055 HEADER
 /* 0069 MENU FRONTEND
 /* 0153 MENU BACKEND
-/* 0246 FONT AWESOME
-/* 0350 PANNEAUX
-/* 0542 SUSPENSIONS DES PANNEAUX
-/* 0713 FORMULAIRES
-/* 0796 TABLEAUX
-/* 0851 BOITES DE DIALOGUE & LOGIN
-/* 0909 FOOTER
-/* 0918 MEDIA QUERIES
-/*    0923 (min-width: 1621px) and (max-width: 1820px)
-/*    0971 (min-width: 1481px) and (max-width: 1620px)
-/*    1033 (min-width: 1381px) and (max-width: 1480px)
-/*    1059 (min-width: 1281px) and (max-width: 1380px)
-/*    1069 (min-width: 1281px) and (max-width: 1480px)
-/*    1150 (min-width: 1153px) and (max-width: 1280px)
-/*    1317 (min-width: 1024px) and (max-width: 1152px)
-/*    1494 (min-width: 992px) and (max-width: 1023px)
-/*    1614 (min-width: 768px) and (max-width: 991px)
-/*    1759 (max-width: 767px)
+/* 0251 FONT AWESOME
+/* 0371 PANNEAUX
+/* 0563 SUSPENSIONS DES PANNEAUX
+/* 0734 FORMULAIRES
+/* 0820 TABLEAUX
+/* 0856 BOITES DE DIALOGUE & LOGIN
+/* 0914 FOOTER
+/* 0923 MEDIA QUERIES
+/*    0928 (min-width: 1621px) and (max-width: 1820px)
+/*    0976 (min-width: 1481px) and (max-width: 1620px)
+/*    1038 (min-width: 1381px) and (max-width: 1480px)
+/*    1064 (min-width: 1281px) and (max-width: 1380px)
+/*    1074 (min-width: 1281px) and (max-width: 1480px)
+/*    1155 (min-width: 1153px) and (max-width: 1280px)
+/*    1322 (min-width: 1024px) and (max-width: 1152px)
+/*    1499 (min-width: 992px) and (max-width: 1023px)
+/*    1619 (min-width: 768px) and (max-width: 991px)
+/*    1764 (max-width: 767px)
 /* --------------------------------------------------- */
 
 /* ################## MISE EN PAGE ################## */
@@ -101,7 +101,7 @@ header {
   font-weight: 700;
 }
 
-.right-bar h2 {
+.right-bar h1 {
   border: 1px dotted rgba(168, 130, 122, 0.8);
   border-top: none;
   background-color: #FFF;
@@ -144,14 +144,19 @@ li a:hover {
   text-decoration: none;
 }
 
-h2 {
-  font-size: 15px!important;
+h1,h2 {
+  font-size: 15px !important;
   font-weight: 700;
   color: grey;
 }
 
 /* //////////////// BACKEND //////////////// */
 /* //////////////// BACKEND //////////////// */
+
+#dashboard-link {
+  position: relative;
+  color: rgba(0, 0, 0, 0.7);
+}
 
 #menu {
   position: relative;
@@ -163,7 +168,7 @@ h2 {
 nav {
   border: 1px dashed rgba(168, 130, 122, 0.8);
   border-bottom: none;
-  padding: 73px 15px 15px;
+  padding: 73px 15px 25px;
   transform: translate(-15px, -80px) !important;
   background-color: #f6f2f1;
   margin-bottom: -158px;
@@ -268,6 +273,10 @@ nav .fa-long-arrow-alt-right {
 
 /* ======= FONT AWESOME ======= */
 /* ======= FONT AWESOME ======= */
+
+.fa-chevron-right {
+  color: darkred;
+}
 
 .fa-paperclip {
   color: rgba(124, 25, 198, 0.5);
@@ -506,7 +515,7 @@ nav .fa-long-arrow-alt-right {
   color: #445779cc!important;
 }
 
-#nav-control {
+.nav-control {
   height: 25px;
 }
 
@@ -771,9 +780,9 @@ textarea {
 .reported {
   position: relative;
   color: #e28989;
-  float: right;
+  /*float: left;*/
   font-size: smaller;
-  top: -5px;
+  /*top: -5px;*/
 }
 
 .report-it {
@@ -843,26 +852,6 @@ td {
 tr {
   border: 1px solid rgba(0,0,0,0.1);
 }
-/*
-.table-title {
-  width: 50%;
-}
-
-.table-date {
-  width: 45%
-}
-
-.table-options {
-  width: 10%;
-}
-
-.table-author {
-  width: 30%;
-}
-
-.table-date-comment {
-  width: 30%;
-} */
 
 /* ############ BOITES DE DIALOGUE & LOGIN ############ */
 /* ############ BOITES DE DIALOGUE & LOGIN ############ */
@@ -973,7 +962,7 @@ footer {
     transform: translateX(-48px);
     width: 125px;
   }
-  .right-bar h2 {
+  .right-bar h1 {
     font-size: smaller !important;
     padding: 3px;
   }
@@ -1026,7 +1015,7 @@ footer {
     width: 110px;
     font-size: smaller;
   }
-  .right-bar h2,
+  .right-bar h1,
   .right-bar p {
     font-size: smaller !important;
   }
@@ -1056,7 +1045,7 @@ footer {
   }
   /* ##################### MENU ##################### */
   /* //////////////// FRONTEND //////////////// */
-  .right-bar h2,
+  .right-bar h1,
   .right-bar-episode-title {
     width: 120% !important
   }
@@ -1128,7 +1117,7 @@ footer {
     width: 100px;
     font-size: 11px;
   }
-  .right-bar h2 {
+  .right-bar h1 {
     font-size: 11px !important;
     width: 120%;
     transform: translateX(-8px);
@@ -1298,7 +1287,7 @@ footer {
     transform: translateX(-54px);
     font-size: 13px;
   }
-  .right-bar h2 {
+  .right-bar h1 {
     font-size: 11px !important;
     width: 84px;
     transform: translateX(-6px);
@@ -1475,7 +1464,7 @@ footer {
     transform: translateX(-42px);
     font-size: 13px;
   }
-  .right-bar h2 {
+  .right-bar h1 {
     font-size: 11px !important;
     width: 115%;
     transform: translateX(-11px);
@@ -1587,7 +1576,7 @@ footer {
     transform: translateX(-42px);
     font-size: 14px;
   }
-  .right-bar h2 {
+  .right-bar h1 {
     font-size: 11px !important;
     width: 110%;
     transform: translateX(-11px);
@@ -1707,7 +1696,7 @@ footer {
     transform: translateX(-45px);
     font-size: 14px;
   }
-  .right-bar h2 {
+  .right-bar h1 {
     font-size: 11px !important;
     width: 110%;
     transform: translateX(-11px);
@@ -1872,7 +1861,7 @@ footer {
     background-color: #f6f2f1;
     box-shadow: 0 0 11px grey;
   }
-  .mobile-list h2 {
+  .mobile-list h1 {
     text-align: center;
     font-weight: 700;
     color: #445779cc!important;

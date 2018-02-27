@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 			<meta charset="utf-8">
 			<link rel="stylesheet" type="text/css" href="public/css/style.css">
 			<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+			<link rel="icon" type="image/png" href="http://lafondationphoenix.com/jeanforteroche/public/images/favicon.png" />
 
 			<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<title>Tous les épisodes</title>
@@ -26,10 +27,10 @@
 
 			<div class="chains-nails-contener">
 	    		<div>
-					<img src="public/images/chain2.png" class="back-first-panel-left-chain">
-					<img src="public/images/chain2.png" class="back-first-panel-right-chain">
-					<img src="public/images/nail1.png" class="back-first-panel-left-nail-episode">
-					<img src="public/images/nail1.png" class="back-first-panel-right-nail-episode">
+					<img src="public/images/chain2.png" alt="" class="back-first-panel-left-chain">
+					<img src="public/images/chain2.png" alt="" class="back-first-panel-right-chain">
+					<img src="public/images/nail1.png" alt="" class="back-first-panel-left-nail-episode">
+					<img src="public/images/nail1.png" alt="" class="back-first-panel-right-nail-episode">
 				</div>
 			</div>
 			<table class="table table-striped">

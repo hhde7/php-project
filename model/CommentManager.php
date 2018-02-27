@@ -41,10 +41,10 @@ class CommentManager extends Manager
        	return $allComments;
     }
 
-    public function getLastComments()
+    public function getLastFiveComments()
     {
     	$db = $this->dbConnect();
-    	$req = $db->query('SELECT id, postId, author, postType, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments ORDER BY commentDate DESC LIMIT 10');
+    	$req = $db->query('SELECT id, postId, author, postType, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments ORDER BY commentDate DESC LIMIT 5');
     	$data = $req->fetchAll();
     	$lastComments = array();
 
@@ -116,6 +116,21 @@ class CommentManager extends Manager
 	   	}
 	 	    
 	    return $reportedComments;
+	}
+
+	public function getLastTwoReportedComments()
+	{
+	    $db = $this->dbConnect(); 
+		$req = $db->query('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE reported = 1 ORDER BY commentDate DESC LIMIT 2');
+	    $data = $req->fetchAll();
+	   	$lastTwoReportedComments = array();
+	   	
+	   	for ($i=0; $i < count($data); $i++) { 
+	    	$comment = new Comment($data[$i]);
+			$lastTwoReportedComments[] = $comment;   
+	   	}
+	 	    
+	    return $lastTwoReportedComments;
 	}
 
 	public function deleteComment($id)

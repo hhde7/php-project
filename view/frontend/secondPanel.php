@@ -2,10 +2,10 @@
 <h2 class="second-panel-title">BILLET SIMPLE POUR L'ALASKA - ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></h2>
 <div class="chains-nails-contener">
     <div>
-        <img src="public/images/chain2.png" class="front-second-panel-left-chain"> 	
-        <img src="public/images/chain2.png" class="front-second-panel-right-chain">
-        <img src="public/images/nail1.png" class="front-second-panel-left-nail">
-        <img src="public/images/nail1.png" class="front-second-panel-right-nail">
+        <img src="public/images/chain2.png" alt="" class="front-second-panel-left-chain"> 	
+        <img src="public/images/chain2.png" alt="" class="front-second-panel-right-chain">
+        <img src="public/images/nail1.png" alt="" class="front-second-panel-left-nail">
+        <img src="public/images/nail1.png" alt="" class="front-second-panel-right-nail">
     </div>
 </div>
 <div class="second-panel-post">
@@ -13,10 +13,10 @@
 	<p class="first-panel-post-title episode-number"><?= mb_strimwidth($episode_->getTitle(),0,2) ?></p>
 	<p class="first-panel-post-title"><?= mb_strimwidth($episode_->getTitle(),2,100) ?></p>
 	<p class="first-panel-post-date"><?= $episode_->getCreationDate() ?></p>
-	<p class="first-panel-post-content"><?= $episode_->getContent() ?></p>
+	<div class="first-panel-post-content"><?= $episode_->getContent() ?></div>
 </div>
 <!-- LIENS DE NAVIGATION ENTRE LES ÉPISODES -->    
-<div id="nav-control">
+<div class="nav-control">
 	<?= $previousEpisodeLink ?>
 	<?= $nextEpisodeLink ?>
 </div>
@@ -25,8 +25,8 @@
 <h2 class="second-panel-title">COMMENTAIRES <i class="fa fa-comments"></i></h2>
 <div class="chains-nails-contener">
     <div>
-        <img src="public/images/nail1.png" class="front-second-panel-second-level-left-nail">
-        <img src="public/images/nail1.png" class="front-second-panel-second-level-right-nail">
+        <img src="public/images/nail1.png" alt="" class="front-second-panel-second-level-left-nail">
+        <img src="public/images/nail1.png" alt="" class="front-second-panel-second-level-right-nail">
     </div>
 </div>
 <div class="second-level-first-panel-post">
@@ -78,12 +78,12 @@ if (isset($_GET['episode'])) {
     ?>
     <form class="episode-comment-form"  action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=episode&amp;post=<?= $_GET['episode'] ?>" method="post" id="episode-comment-form">
         <div>
-            <label for="author">Pseudo</label><br />
-            <input type="text" id="author" name="author" required/>
+            <label for="episode-comment-author">Pseudo</label><br />
+            <input type="text" id="episode-comment-author" name="author" required/>
         </div>
         <div>
-            <label for="comment">Commentaire</label><br />
-            <textarea class="comment" name="comment" required></textarea>
+            <label for="episode-comment">Commentaire</label><br />
+            <textarea class="comment" id="episode-comment" name="comment" required></textarea>
         </div>
         <div>
             <input type="submit" class="submit" />

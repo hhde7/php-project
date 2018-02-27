@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="public/css/style.css">
+		<link rel="icon" type="image/png" href="http://lafondationphoenix.com/jeanforteroche/public/images/favicon.png" />
 		<title>Login</title>
 	</head>
 	<body>

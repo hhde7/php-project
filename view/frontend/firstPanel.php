@@ -2,23 +2,23 @@
 <h2 class="first-panel-title">ACTUALITÉS <i class="fas fa-bullhorn"></i></h2>
 <div class="chains-nails-contener">
     <div>
-        <img src="public/images/chain2.png" class="front-first-panel-left-chain"> 	
-        <img src="public/images/chain2.png" class="front-first-panel-right-chain">
+        <img src="public/images/chain2.png" alt="" class="front-first-panel-left-chain"> 	
+        <img src="public/images/chain2.png" alt="" class="front-first-panel-right-chain">
     </div>
     <div>
-        <img src="public/images/nail1.png" class="front-first-panel-left-nail">
-        <img src="public/images/nail1.png" class="front-first-panel-right-nail">
+        <img src="public/images/nail1.png" alt="" class="front-first-panel-left-nail">
+        <img src="public/images/nail1.png" alt="" class="front-first-panel-right-nail">
     </div>
 </div>
 
 <div class="first-panel-post">
 	<p class="first-panel-post-title"><?= $ticket->getTitle() ?></p>
 	<p class="first-panel-post-date"><?= $ticket->getCreationDate() ?></p>
-	<p class="first-panel-post-content"><?= $ticket->getContent() ?></p>
+	<div class="first-panel-post-content"><?= $ticket->getContent() ?></div>
 
 </div>
 <!-- LIENS DE NAVIGATION ENTRE LES BILLETS -->	  
-<div id="nav-control">
+<div class="nav-control">
 	<?= $previousTicketLink ?>
 	<?= $nextTicketLink ?>
 </div>
@@ -27,8 +27,8 @@
 <h2 class="first-panel-title">COMMENTAIRES <i class="fa fa-comments"></i></h2>
 <div class="chains-nails-contener">
     <div>
-        <img src="public/images/nail1.png" class="front-first-panel-second-level-left-nail">
-        <img src="public/images/nail1.png" class="front-first-panel-second-level-right-nail">
+        <img src="public/images/nail1.png" alt="" class="front-first-panel-second-level-left-nail">
+        <img src="public/images/nail1.png" alt="" class="front-first-panel-second-level-right-nail">
     </div>
 </div>
 <div class="second-level-first-panel-post">
@@ -80,12 +80,12 @@ if (isset($_GET['ticket'])) {
     ?>
     <form class="ticket-comment-form" action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=ticket&amp;post=<?= $_GET['ticket'] ?>" method="post" id="ticket-comment-form">
         <div>
-            <label for="author">Pseudo</label><br />
-            <input type="text" id="author" name="author" required/>
+            <label for="ticket-comment-author">Pseudo</label><br />
+            <input type="text" id="ticket-comment-author" name="author" required/>
         </div>
         <div>
-            <label for="comment">Commentaire</label><br />
-            <textarea class="comment" name="comment" required></textarea>
+            <label for="ticket-comment">Commentaire</label><br />
+            <textarea class="comment" id="ticket-comment" name="comment" required></textarea>
         </div>
         <div>
             <input type="submit" class="submit" />
