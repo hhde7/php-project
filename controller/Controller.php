@@ -1,10 +1,10 @@
-<?php 
+<?php
 require_once "model/PostManager.php";
 require_once "model/CommentManager.php";
 require_once "model/MemberManager.php";
 require_once "model/CounterManager.php";
 
-class Controller 
+class Controller
 {
 
 	public function home() // PERMET LA NAVIGATION SIMULTANNÉE ET INDÉPENDANTE ENTRE LES ÉPISODES ET LES BILLETS
@@ -12,7 +12,7 @@ class Controller
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
 		$counterManager = new JeanForteroche\Blog\Model\CounterManager();
-		
+
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$episode = $postManager->getAllEpisodes();
 
@@ -20,15 +20,15 @@ class Controller
 		$firstEpisode = $postManager->getFirstEpisode();
 		$lastTicket = $postManager->getLastTicket();
 		$lastEpisode = $postManager->getLastEpisode();
-		
+
 		if (isset($_GET['ticket'], $_GET['episode'])) {
 			$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
 			$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
 		}
 
-		// SI PAGE DE GARDE OU, DERNIER TICKET ET DERNIER EPISODE 
+		// SI PAGE DE GARDE OU, DERNIER TICKET ET DERNIER EPISODE
 		if (!isset($_GET['ticket'], $_GET['episode']) OR $_GET['ticket'] == $lastTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId()
-		 	OR $ticketCheck->getPostId() === null OR $episodeCheck->getPostId() === null OR $ticketCheck->getType() != 'ticket' OR $episodeCheck->getType() != 'episode') 
+		 	OR $ticketCheck->getPostId() === null OR $episodeCheck->getPostId() === null OR $ticketCheck->getType() != 'ticket' OR $episodeCheck->getType() != 'episode')
 		{
 			$ticket = $postManager->getLastTicket();
 			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
@@ -41,8 +41,8 @@ class Controller
 			$nextTicketLink = Null;
 
 			$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
-			$nextEpisodeLink = Null; 		
-		} 
+			$nextEpisodeLink = Null;
+		}
 		elseif (isset($_GET['ticket']) AND isset($_GET['episode']))
 		{
 			$ticket = $postManager->getPost(htmlspecialchars($_GET['ticket']));
@@ -56,7 +56,7 @@ class Controller
 
 			// SI PREMIER TICKET ET PREMIER EPISODE
 			if ($_GET['ticket'] == $firstTicket->getPostId() AND $_GET['episode'] == $firstEpisode->getPostId())
-			{	
+			{
 				$previousTicketLink = Null;
 				$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
 
@@ -64,27 +64,27 @@ class Controller
 				$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
 			}
 			// SI PREMIER TICKET, ET UN EPISODE != DU DERNIER
-			elseif ($_GET['ticket'] == $firstTicket->getPostId() AND $_GET['episode'] != $lastEpisode->getPostId()) 
+			elseif ($_GET['ticket'] == $firstTicket->getPostId() AND $_GET['episode'] != $lastEpisode->getPostId())
 			{
-				$previousTicketLink = Null;
-				$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
-				
-				$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
-				$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
-			}
-			// SI PREMIER TICKET ET DERNIER EPISODE
-			elseif ($_GET['ticket'] == $firstTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId()) 
-			{	
 				$previousTicketLink = Null;
 				$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
 
 				$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
-				$nextEpisodeLink = Null; 	
+				$nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+			}
+			// SI PREMIER TICKET ET DERNIER EPISODE
+			elseif ($_GET['ticket'] == $firstTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId())
+			{
+				$previousTicketLink = Null;
+				$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
+
+				$previousEpisodeLink = '<a class="previous-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $previousEpisode->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
+				$nextEpisodeLink = Null;
 			}
 			// SI UN TICKET != PREMIER ET DERNIER EPISODE
 			elseif ($_GET['ticket'] != $firstTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId())
 			{
-				
+
 				$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
 				$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
 
@@ -115,7 +115,7 @@ class Controller
 			// SI DERNIER TICKET ET UN EPISODE != (PERMIER & DERNIER)
 			elseif ($_GET['ticket'] == $lastTicket->getPostId() AND
 					$_GET['episode'] != $firstEpisode->getPostId() AND
-					$_GET['episode'] != $lastEpisode->getPostId()) 
+					$_GET['episode'] != $lastEpisode->getPostId())
 			{
 				$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
 				$nextTicketLink = Null;
@@ -126,7 +126,7 @@ class Controller
 			// SI TICKET != (PERMIER & DERNIER) ET DERNIER EPISODE
 			elseif ($_GET['ticket'] != $firstTicket->getPostId() AND
 					$_GET['ticket'] != $lastTicket->getPostId() AND
-					$_GET['episode'] != $lastEpisode->getPostId()) 
+					$_GET['episode'] != $lastEpisode->getPostId())
 			{
 				$previousTicketLink = '<a class="previous-ticket-link" href="index.php?ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
 				$nextTicketLink = '<a class="next-ticket-link" href="index.php?ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
@@ -136,12 +136,12 @@ class Controller
 			}
 		}
 		else {
-			throw new Exception("Erreur de navigation");	
+			throw new Exception("Erreur de navigation");
 		}
 
 		require "view/frontend/homeView.php";
 	}
-	
+
 	public function ticketsMobile()
 	{
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
@@ -149,17 +149,21 @@ class Controller
 		$firstEpisode = $postManager->getFirstEpisode();
 		$lastTicket = $postManager->getLastTicket();
 		$lastEpisode = $postManager->getLastEpisode();
-		
+
+		$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
+		$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
+
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
 
-		if ($_GET['ticket'] == $lastTicket->getPostId()) 
+		if ($_GET['ticket'] == $lastTicket->getPostId() OR $ticketCheck->getPostId() === null
+		 		OR $episodeCheck->getPostId() === null OR $ticketCheck->getType() != 'ticket' OR $episodeCheck->getType() != 'episode')
 		{
 			$ticket = $postManager->getLastTicket();
 			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
 			$ticketComments = $commentManager->getAllComments($lastTicket->getPostId());
 			$previousTicket = $postManager->getPreviousPost($ticket->getPostId(), 'ticket');
 			$nextTicket = $postManager->getNextPost(htmlspecialchars($_GET['ticket']), 'ticket');
-		
+
 			$previousTicketLink = '<a class="previous-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
 			$nextTicketLink = Null;
 		}
@@ -177,17 +181,17 @@ class Controller
 				$nextTicketLink = '<a class="next-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
 			}
 			elseif (isset($_GET['ticket']) AND $_GET['ticket'] != $lastTicket->getPostId() AND $_GET['ticket'] != $firstTicket->getPostId())
-			{			
+			{
 				$previousTicketLink = '<a class="previous-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $previousTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-left fa-lg"></i></a>';
 				$nextTicketLink = '<a class="next-ticket-link" href="index.php?action=mobileTickets&amp;ticket='. $nextTicket->getPostId() . '&amp;episode=' . $episode_->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
 			}
 		}
-			
+
 		require "view/frontend/ticketsMobile.php";
 	}
-		
+
 	public function mobileList()
-	{	
+	{
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
 
 		$episode = $postManager->getAllEpisodes();
@@ -196,7 +200,7 @@ class Controller
 		$lastEpisode = $postManager->getLastEpisode();
 
 		require "view/frontend/mobileList.php";
-	}	
+	}
 
 	public function addComment($postId, $postType, $author, $comment)
 	{
@@ -217,20 +221,20 @@ class Controller
 	}
 
 	public function confirmReport($commentId)
-	{	
+	{
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
-		
+
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
 		$postIdCheck = $postManager->getPost(htmlspecialchars($_GET['id']));
 		$commentIdCheck = $commentManager->getComment(htmlspecialchars($_GET['comment']));
-		
+
 		if (isset($_GET['ticket'], $_GET['episode'])) {
 
 				if ($commentIdCheck->getPostId() === $postIdCheck->getPostId()) {
 					$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
 					$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
-	
+
 					if ($commentIdCheck->getPostId() !== null AND $postIdCheck->getPostId() !== null
 						 AND $ticketCheck->getPostId() !== null AND $episodeCheck->getPostId() !== null) {
 
@@ -238,18 +242,18 @@ class Controller
 
 						require "view/frontend/reportView.php";
 					} else {
-						throw new Exception("Des informations manquent pour effectuer cette opération");	
-					}	
+						throw new Exception("Des informations manquent pour effectuer cette opération");
+					}
 				} else {
-					throw new Exception("Le commentaire ne correspond pas à l'article");	
-				} 
+					throw new Exception("Le commentaire ne correspond pas à l'article");
+				}
 		} else {
-			throw new Exception("Le commentaire à signaler n'existe pas");	
+			throw new Exception("Le commentaire à signaler n'existe pas");
 		}
 	}
 
 	public function reportComment($commentId)
-	{	
+	{
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
 		$postIdCheck = $postManager->getPost(htmlspecialchars($_GET['id']));
@@ -260,25 +264,24 @@ class Controller
 				if ($reportedCommentIdCheck->getPostId() === $postIdCheck->getPostId()) {
 					$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
 					$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
-	
+
 					if ($reportedCommentIdCheck->getPostId() !== null AND $postIdCheck->getPostId() !== null
-						 AND $ticketCheck->getPostId() !== null AND $episodeCheck->getPostId() !== null 
-						 AND ($ticketCheck->getPostId() === $postIdCheck->getPostId() 
+						 AND $ticketCheck->getPostId() !== null AND $episodeCheck->getPostId() !== null
+						 AND ($ticketCheck->getPostId() === $postIdCheck->getPostId()
 						 OR $episodeCheck->getPostId() === $postIdCheck->getPostId())) {
 
-						
 						$commentManager->reportBadComment($commentId);
 
 						require "view/frontend/reportView.php";
 
 					} else {
-						throw new Exception("Des informations manquent pour effectuer cette opération");	
-					}	
+						throw new Exception("Des informations manquent pour effectuer cette opération");
+					}
 				} else {
-					throw new Exception("Le commentaire ne correspond pas à l'article");	
-				} 
+					throw new Exception("Le commentaire ne correspond pas à l'article");
+				}
 		} else {
-			throw new Exception("Le commentaire à signaler n'existe pas");	
+			throw new Exception("Le commentaire à signaler n'existe pas");
 		}
 
 
@@ -311,9 +314,9 @@ class Controller
 			$message = '<p>Souhaitez-vous vraiment accepter le ' . $type . '?</p>';
 			if ($_GET['from'] == 'dashboard') {
 				$comment = $commentManager->getComment(htmlspecialchars($_GET['allow']));
-				$element = $comment->getAuthor();	
+				$element = $comment->getAuthor();
 				$buttons = '<a href="index.php?action=' . $action . '&amp;allow=' . htmlspecialchars($_GET['allow']) . '&amp;confirm=allow&amp;from=dashboard"><input type="button" value="Oui" /></a>
-				<a href="index.php?action=dashboard"><input type="button" value="Non" /></a>';		
+				<a href="index.php?action=dashboard"><input type="button" value="Non" /></a>';
 			} elseif ($_GET['from'] == 'reportedComments') {
 				$comment = $commentManager->getComment(htmlspecialchars($_GET['allow']));
 				$element = $comment->getAuthor();
@@ -325,7 +328,7 @@ class Controller
 			$message = '<p>Souhaitez-vous vraiment supprimer cet élément ?</p>';
 			if ($_GET['from'] == 'dashboard') {
 				$comment = $commentManager->getComment(htmlspecialchars($_GET['delete']));
-				$element = $comment->getAuthor();	
+				$element = $comment->getAuthor();
 				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . htmlspecialchars($_GET['delete']) . '&amp;confirm=delete&amp;from=dashboard"><input type="button" value="Oui" /></a>
 				<a href="index.php?action=dashboard"><input type="button" value="Non" /></a>';
 			} elseif ($_GET['from'] == 'allEpisodes') {
@@ -336,19 +339,19 @@ class Controller
 				<a href="index.php?action=allTickets&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Non" /></a>';
 			} elseif ($_GET['from'] == 'allComments') {
 				$comment = $commentManager->getComment(htmlspecialchars($_GET['delete']));
-				$element = $comment->getAuthor();	
+				$element = $comment->getAuthor();
 				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . htmlspecialchars($_GET['delete']) . '&amp;confirm=delete&amp;from=allComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Oui" /></a>
 				<a href="index.php?action=allComments&amp;page=' . htmlspecialchars($_GET['page']) .'"><input type="button" value="Non" /></a>';
 			} elseif ($_GET['from'] == 'reportedComments') {
 				$comment = $commentManager->getComment(htmlspecialchars($_GET['delete']));
-				$element = $comment->getAuthor();	
+				$element = $comment->getAuthor();
 				$buttons = '<a href="index.php?action=' . $action . '&amp;delete=' . htmlspecialchars($_GET['delete']) . '&amp;confirm=delete&amp;from=reportedComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Oui" /></a>
 				<a href="index.php?action=reportedComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Non" /></a>';
-			}		
+			}
 		} else {
-			throw new Exception('impossible de récupérer les données de l\'élément');		
+			throw new Exception('impossible de récupérer les données de l\'élément');
 		}
-	
+
 
 		require "view/backend/moderateView.php";
 	}
@@ -361,7 +364,7 @@ class Controller
 		} elseif (isset($action) AND $action == 'allow') {
 			$commentManager->allowComment($id);
 		} else {
-			throw new Exception('impossible de modérer ce commentaire');	
+			throw new Exception('impossible de modérer ce commentaire');
 		}
 	}
 
@@ -398,7 +401,7 @@ class Controller
 	}
 
 	public function displayDashboard()
-	{	
+	{
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager;
 		$postManager = new JeanForteroche\Blog\Model\PostManager;
 		$counterManager = new JeanForteroche\Blog\Model\CounterManager;
@@ -455,12 +458,12 @@ class Controller
 		require "view/backend/articleEditor.php";
 	}
 
-	public function displayAllEpisodes() 
+	public function displayAllEpisodes()
 	{
 		$postManager = new  JeanForteroche\Blog\Model\PostManager();
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager;
 		$counterManager = new JeanForteroche\Blog\Model\CounterManager;
-		
+
 		$episodes = $postManager->getAllEpisodes();
 		$pagesNumber = $postManager->paging('episode');
 
@@ -486,7 +489,7 @@ class Controller
 		require "view/backend/allEpisodes.php";
 	}
 
-	public function displayAllTickets() 
+	public function displayAllTickets()
 	{
 		$postManager = new  JeanForteroche\Blog\Model\PostManager();
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager;
@@ -517,7 +520,7 @@ class Controller
 		require "view/backend/allTickets.php";
 	}
 
-	public function displayAllComments() 
+	public function displayAllComments()
 	{
 		$postManager = new  JeanForteroche\Blog\Model\PostManager();
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager;
@@ -548,7 +551,7 @@ class Controller
 		require "view/backend/allComments.php";
 	}
 
-	public function displayAllReportedComments() 
+	public function displayAllReportedComments()
 	{
 		$postManager = new  JeanForteroche\Blog\Model\PostManager();
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager;
@@ -580,7 +583,7 @@ class Controller
 		require "view/backend/allReportedComments.php";
 	}
 
-	public function displayWriteNewArticle() 
+	public function displayWriteNewArticle()
 	{
 		$postManager = new  JeanForteroche\Blog\Model\PostManager();
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager;
@@ -648,7 +651,7 @@ class Controller
 			$type = ' DE L\' ÉPISODE <i class="fab fa-envira"></i>';
 		} elseif ($type == 'ticket') {
 			$type = ' DU BILLET <i class="fas fa-bullhorn"></i>';
-		} 
+		}
 
 		require "view/backend/postView.php";
 	}
@@ -656,7 +659,7 @@ class Controller
 	public function logout()
 	{
 		session_destroy();
-	    
+
 	    header("Location: index.php");
 	}
 }

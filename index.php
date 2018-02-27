@@ -8,13 +8,13 @@ try {
 	if (isset($_GET['action'])) {
 			if ($_GET['action'] == 'home') {
 				$controller->home();
-			}			
+			} 
 			elseif ($_GET['action'] == 'mobileTickets') {
 				$controller->ticketsMobile();
 			}
 			elseif ($_GET['action'] == 'mobileList') {
 				$controller->mobileList();
-			}			
+			}
 			elseif ($_GET['action'] == 'addComment') {
 	        	if (isset($_GET['ticket'], $_GET['episode']) AND $_GET['ticket'] > 0 AND $_GET['episode'] > 0) {
 	            	if (!empty($_POST['author']) AND !empty($_POST['comment'])) {
@@ -65,7 +65,7 @@ try {
 	    	}
 	    	elseif ($_GET['action'] == 'dashboard') {
 	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
-	    			$controller->displayDashboard();	    			   	   		
+	    			$controller->displayDashboard();
 	    		}
 	    		else {
 	    			throw new Exception('impossible de charger l\'espace membre');
@@ -133,9 +133,9 @@ try {
 	    		if (isset($_GET['action']) AND isset($_SESSION['email']) AND isset($_SESSION['password'])) {
 	    			$controller->displayWriteNewArticle();
 	    			if (isset($_GET['posted']) AND isset($_POST['title']) AND isset($_POST['content'])) {
-	    				$controller->addPost($_POST['title'], $_POST['content'], $_GET['posted']);			
+	    				$controller->addPost($_POST['title'], $_POST['content'], $_GET['posted']);
 	    			}
-	    		} 	    		
+	    		}
 	    		else {
 	    			throw new Exception('impossible d\' enregisterer l\'article');
 	    		}
@@ -157,7 +157,7 @@ try {
 	    			$controller->moderateComment(htmlspecialchars($_GET['allow']), 'allow');
 	    			if ($_GET['from'] == 'dashboard') {
 	    				header('location: index.php?action=dashboard');
-	    			} 
+	    			}
 	    			elseif ($_GET['from'] == 'allComments') {
 	    				header('location: index.php?action=allComments&page=' . htmlspecialchars($_GET['page']));
 	    			}
@@ -168,8 +168,8 @@ try {
 	    		// CONFIRMER LA SUPPRESSION DE LA PUBLICATION
 	    		elseif (isset($_GET['confirm']) AND $_GET['confirm'] == 'delete') {
 					// SUPPRESSION : EPISODE OU BILLET
-	    			if (isset($_GET['from']) AND  $_GET['from'] == 'allEpisodes') 
-	    			{	
+	    			if (isset($_GET['from']) AND  $_GET['from'] == 'allEpisodes')
+	    			{
 	    				$controller->moderatePost($_GET['delete']);
 	    				header('location: index.php?action=allEpisodes&page=' . htmlspecialchars($_GET['page']));
 	    			}
@@ -196,11 +196,11 @@ try {
 		    		}
 		    		else
 		    		{
-		    			throw new Exception('c\'est là que ça plante');		
+		    			throw new Exception('c\'est là que ça plante');
 		    		}
 		    	}
-	    	}	    	
-	  }	
+	    	}
+	  }
 	else {
 		$controller->home();
 	}

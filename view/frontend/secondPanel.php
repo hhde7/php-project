@@ -2,7 +2,7 @@
 <h2 class="second-panel-title">BILLET SIMPLE POUR L'ALASKA - ÉPISODE <?= mb_strimwidth($episode_->getTitle(),0,2) ?> <i class="fab fa-envira"></i></h2>
 <div class="chains-nails-contener">
     <div>
-        <img src="public/images/chain2.png" alt="" class="front-second-panel-left-chain"> 	
+        <img src="public/images/chain2.png" alt="" class="front-second-panel-left-chain">
         <img src="public/images/chain2.png" alt="" class="front-second-panel-right-chain">
         <img src="public/images/nail1.png" alt="" class="front-second-panel-left-nail">
         <img src="public/images/nail1.png" alt="" class="front-second-panel-right-nail">
@@ -15,7 +15,7 @@
 	<p class="first-panel-post-date"><?= $episode_->getCreationDate() ?></p>
 	<div class="first-panel-post-content"><?= $episode_->getContent() ?></div>
 </div>
-<!-- LIENS DE NAVIGATION ENTRE LES ÉPISODES -->    
+<!-- LIENS DE NAVIGATION ENTRE LES ÉPISODES -->
 <div class="nav-control">
 	<?= $previousEpisodeLink ?>
 	<?= $nextEpisodeLink ?>
@@ -36,7 +36,7 @@
 	?>
 		<p><strong><?= $value->getAuthor() ?></strong><?= mb_strimwidth($value->getCommentDate(), 0, 22) ?></p>
 		<p><?= $value->getComment() ?></p>
-        
+
         <?php
         // LES DEUX PREMIÈRES CONDITIONS S'APPLIQUENT SI DES DONNÉES SONT TRANSMISENT VIA l'URL.
 		if ($value->getReported() === '1' AND isset($_GET['ticket'])) {
@@ -46,7 +46,7 @@
         <?php
         } elseif ($value->getReported() === '0' AND isset($_GET['ticket'])) {
             // AFFICHE LE LIEN VERS LE SIGNALEMENT DU COMMENTAIRE
-            // SI CE DERNIER N'EST PAS DÉJÀ SIGNALÉ  
+            // SI CE DERNIER N'EST PAS DÉJÀ SIGNALÉ
             $thisComment = $value->getCommentId();
             ?>
             <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?=$_GET['episode']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">signaler un abus<br /></a>
@@ -69,12 +69,12 @@
     <?php
 	}
 	?>
-</div>	
+</div>
 
-<!-- CHARGE LE FORMULAIRE D'AJOUT DE COMMENTAIRES --> 
+<!-- CHARGE LE FORMULAIRE D'AJOUT DE COMMENTAIRES -->
 <?php
 // SI PRÉSENCE DE DONNÉES VIA L'URL
-if (isset($_GET['episode']) AND $episodeCheck->getType() === 'episode') {
+if (isset($_GET['episode']) AND $episodeCheck->getType() === 'episode' AND $episodeCheck->getPostId() != Null) {
     ?>
     <form class="episode-comment-form"  action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=episode&amp;post=<?= $_GET['episode'] ?>" method="post" id="episode-comment-form">
         <div>

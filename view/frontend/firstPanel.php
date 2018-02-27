@@ -2,7 +2,7 @@
 <h2 class="first-panel-title">ACTUALITÉS <i class="fas fa-bullhorn"></i></h2>
 <div class="chains-nails-contener">
     <div>
-        <img src="public/images/chain2.png" alt="" class="front-first-panel-left-chain"> 	
+        <img src="public/images/chain2.png" alt="" class="front-first-panel-left-chain">
         <img src="public/images/chain2.png" alt="" class="front-first-panel-right-chain">
     </div>
     <div>
@@ -17,7 +17,7 @@
 	<div class="first-panel-post-content"><?= $ticket->getContent() ?></div>
 
 </div>
-<!-- LIENS DE NAVIGATION ENTRE LES BILLETS -->	  
+<!-- LIENS DE NAVIGATION ENTRE LES BILLETS -->
 <div class="nav-control">
 	<?= $previousTicketLink ?>
 	<?= $nextTicketLink ?>
@@ -38,7 +38,7 @@
 	?>
 		<p><strong><?= $value->getAuthor() ?></strong><?= mb_strimwidth($value->getCommentDate(), 0, 22) ?></p>
 		<p><?= $value->getComment() ?></p>
-		
+
 		<?php
         // LES DEUX PREMIÈRES CONDITIONS S'APPLIQUENT SI DES DONNÉES SONT TRANSMISENT VIA l'URL.
         if ($value->getReported() === '1' AND isset($_GET['ticket'])) {
@@ -48,7 +48,7 @@
         <?php
         } elseif ($value->getReported() === '0' AND isset($_GET['ticket'])) {
             // AFFICHE LE LIEN VERS LE SIGNALEMENT DU COMMENTAIRE
-            // SI CE DERNIER N'EST PAS DÉJÀ SIGNALÉ  
+            // SI CE DERNIER N'EST PAS DÉJÀ SIGNALÉ
             $thisComment = $value->getCommentId();
             ?>
             <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $_GET['ticket']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">signaler un abus<br /></a>
@@ -73,10 +73,10 @@
 	?>
 </div>
 
-<!-- CHARGE LE FORMULAIRE D'AJOUT DE COMMENTAIRES --> 
+<!-- CHARGE LE FORMULAIRE D'AJOUT DE COMMENTAIRES -->
 <?php
 // SI PRÉSENCE DE DONNÉES VIA L'URL
-if (isset($_GET['ticket']) AND $ticketCheck->getType() === 'ticket') {
+if (isset($_GET['ticket']) AND $ticketCheck->getType() === 'ticket' AND $ticketCheck->getPostId() != Null) {
     ?>
     <form class="ticket-comment-form" action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=ticket&amp;post=<?= $_GET['ticket'] ?>" method="post" id="ticket-comment-form">
         <div>
