@@ -36,7 +36,8 @@ try {
 	    		}
 	    	}
 	    	elseif ($_GET['action'] == 'report' AND isset($_GET['reported'], $_GET['id'], $_GET['ticket'], $_GET['episode'])) {
-	    			$controller->reportComment(htmlspecialchars($_GET['reported']));
+	    		$controller->reportComment(htmlspecialchars($_GET['reported']));
+
 	    	}
 	    	elseif ($_GET['action'] == 'login' ) {
 	    		if (isset($_GET['action']) AND !isset($_SESSION['email']) AND !isset($_SESSION['password'])) {

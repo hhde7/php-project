@@ -28,7 +28,7 @@ class Controller
 
 		// SI PAGE DE GARDE OU, DERNIER TICKET ET DERNIER EPISODE 
 		if (!isset($_GET['ticket'], $_GET['episode']) OR $_GET['ticket'] == $lastTicket->getPostId() AND $_GET['episode'] == $lastEpisode->getPostId()
-		 	OR $ticketCheck->getPostId() === null OR $episodeCheck->getPostId() === null) 
+		 	OR $ticketCheck->getPostId() === null OR $episodeCheck->getPostId() === null OR $ticketCheck->getType() != 'ticket' OR $episodeCheck->getType() != 'episode') 
 		{
 			$ticket = $postManager->getLastTicket();
 			$episode_ = $postManager->getLastEpisode();//à remplacer $episode
@@ -216,14 +216,6 @@ class Controller
 		$newPost = $postManager->newPost($title, $content, $type);
 	}
 
-	public function reportComment($commentId)
-	{	
-		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
-		$commentManager->reportBadComment($commentId);
-
-		require "view/frontend/reportView.php";
-	}
-
 	public function confirmReport($commentId)
 	{	
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
@@ -231,15 +223,15 @@ class Controller
 		$postManager = new JeanForteroche\Blog\Model\PostManager();
 		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
 		$postIdCheck = $postManager->getPost(htmlspecialchars($_GET['id']));
-		$commentCheck = $commentManager->getComment(htmlspecialchars($_GET['comment']));
+		$commentIdCheck = $commentManager->getComment(htmlspecialchars($_GET['comment']));
 		
 		if (isset($_GET['ticket'], $_GET['episode'])) {
-			$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
-			$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
 
-				if ($commentCheck->getPostId() === $postIdCheck->getPostId()) {
+				if ($commentIdCheck->getPostId() === $postIdCheck->getPostId()) {
+					$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
+					$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
 	
-					if ($commentCheck->getPostId() !== null AND $postIdCheck->getPostId() !== null
+					if ($commentIdCheck->getPostId() !== null AND $postIdCheck->getPostId() !== null
 						 AND $ticketCheck->getPostId() !== null AND $episodeCheck->getPostId() !== null) {
 
 						$comment = $commentManager->getComment(htmlspecialchars($_GET['comment']));
@@ -254,6 +246,42 @@ class Controller
 		} else {
 			throw new Exception("Le commentaire à signaler n'existe pas");	
 		}
+	}
+
+	public function reportComment($commentId)
+	{	
+		$commentManager = new JeanForteroche\Blog\Model\CommentManager();
+		$postManager = new JeanForteroche\Blog\Model\PostManager();
+		$postIdCheck = $postManager->getPost(htmlspecialchars($_GET['id']));
+		$reportedCommentIdCheck = $commentManager->getComment(htmlspecialchars($_GET['reported']));
+
+		if (isset($_GET['ticket'], $_GET['episode'])) {
+
+				if ($reportedCommentIdCheck->getPostId() === $postIdCheck->getPostId()) {
+					$ticketCheck = $postManager->getPost(htmlspecialchars($_GET['ticket']));
+					$episodeCheck = $postManager->getPost(htmlspecialchars($_GET['episode']));
+	
+					if ($reportedCommentIdCheck->getPostId() !== null AND $postIdCheck->getPostId() !== null
+						 AND $ticketCheck->getPostId() !== null AND $episodeCheck->getPostId() !== null 
+						 AND ($ticketCheck->getPostId() === $postIdCheck->getPostId() 
+						 OR $episodeCheck->getPostId() === $postIdCheck->getPostId())) {
+
+						
+						$commentManager->reportBadComment($commentId);
+
+						require "view/frontend/reportView.php";
+
+					} else {
+						throw new Exception("Des informations manquent pour effectuer cette opération");	
+					}	
+				} else {
+					throw new Exception("Le commentaire ne correspond pas à l'article");	
+				} 
+		} else {
+			throw new Exception("Le commentaire à signaler n'existe pas");	
+		}
+
+
 	}
 
 	public function displayModeratePage()
