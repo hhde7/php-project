@@ -2,7 +2,6 @@ tinymce.init({
 	selector: "textarea.tinymce",
   language: 'fr_FR',
 	theme: 'modern',
-	mobile: { theme: 'mobile' },
 	branding: false,
 
 	height: 300,
