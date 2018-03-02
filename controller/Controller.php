@@ -428,9 +428,10 @@ class Controller
         $date = mb_strimwidth($originalDate, 10, 18);
         $date = str_replace('h', ':', $date);
         $dmY = mb_strimwidth($originalDate, 10, 10);
-        $dmY = strtotime($dmY);
-        $Ymd = date('Y-m-d', $dmY);
-        $date = $Ymd . 'T' . mb_strimwidth($date, 13, 2) . ':' . mb_strimwidth($date, 16, 2);
+        $dmY = str_replace('/', '-', $dmY);
+        $Ydm = date("Y/m/d", strtotime($dmY));
+        $Ydm = str_replace('/', '-', $Ydm);
+        $date = $Ydm . 'T' . mb_strimwidth($date, 13, 2) . ':' . mb_strimwidth($date, 16, 2);
 
         require "view/backend/articleEditor.php";
     }
