@@ -14,12 +14,12 @@ class PostManager extends Manager
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts');
         $data = $req->fetchAll();
         $allPosts = array();
-        
+
         for ($i=0; $i < count($data) ; $i++) {
             $post = new Post($data[$i]);
             $allPosts[] = $post;
         }
-     
+
         return $allPosts;
     }
 
@@ -29,12 +29,12 @@ class PostManager extends Manager
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "episode" ORDER BY creationDate DESC ');
         $data = $req->fetchAll();
         $allPosts = array();
-        
+
         for ($i=0; $i < count($data) ; $i++) {
             $post = new Post($data[$i]);
             $allPosts[] = $post;
         }
-     
+
         return $allPosts;
     }
 
@@ -44,12 +44,12 @@ class PostManager extends Manager
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "ticket" ORDER BY creationDate DESC ');
         $data = $req->fetchAll();
         $allTickets = array();
-        
+
         for ($i=0; $i < count($data) ; $i++) {
             $ticket = new Post($data[$i]);
             $allTickets[] = $ticket;
         }
-     
+
         return $allTickets;
     }
 
@@ -61,7 +61,7 @@ class PostManager extends Manager
         $nb_posts = $req->fetch();
 
         return $nb_posts;
-    }       
+    }
 
     public function paging($type)
     {
@@ -73,12 +73,12 @@ class PostManager extends Manager
 
     public function getPost($postId)
     {
-    	$db = $this->dbConnect(); 
-    	$req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE id = ?');
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE id = ?');
         $req->execute(array($postId));
         $data = $req->fetch();
         $post = new Post($data);
-     
+
         return $post;
     }
 
@@ -92,7 +92,7 @@ class PostManager extends Manager
         return $lastPost;
     }
 
-     public function getLastTicket()
+    public function getLastTicket()
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "ticket" ORDER BY creationDate DESC LIMIT 1');
@@ -112,7 +112,7 @@ class PostManager extends Manager
         return $lastPost;
     }
 
-     public function getFirstTicket()
+    public function getFirstTicket()
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE type = "ticket" ORDER BY creationDate ASC LIMIT 1');
@@ -132,7 +132,7 @@ class PostManager extends Manager
         $req->bindParam(':creationDate', $creationDate);
         $req->bindParam(':type', $type);
         $newPostData = $req->execute();
-        
+
         return $newPostData;
     }
 
@@ -156,30 +156,30 @@ class PostManager extends Manager
         $req->bindParam(':creationDate', $creationDate);
         $req->bindParam(':type', $type);
         $updatedPost = $req->execute();
-        
+
         return $updatedPost;
     }
 
     // PAGINATION ---//
-    public function getPreviousPost($id, $type) 
+    public function getPreviousPost($id, $type)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE creationDate < (SELECT creationDate FROM posts WHERE id = ?) AND type = ? ORDER BY creationDate DESC LIMIT 1');
         $req->execute(array($id, $type));
         $data = $req->fetch();
         $post = new Post($data);
-     
+
         return $post;
     }
 
-     public function getNextPost($id, $type) 
+    public function getNextPost($id, $type)
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creationDate, \'%d/%m/%Y à %Hh%imin%ss\') AS creationDateFr, type FROM posts WHERE creationDate > (SELECT creationDate FROM posts WHERE id = ?) AND type = ? ORDER BY creationDate ASC LIMIT 1');
         $req->execute(array($id, $type));
         $data = $req->fetch();
         $post = new Post($data);
-     
+
         return $post;
     }
 }

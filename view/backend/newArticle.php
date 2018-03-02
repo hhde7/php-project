@@ -6,28 +6,28 @@
 			<link rel="stylesheet" type="text/css" href="public/css/style.css">
 			<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 			<link rel="icon" type="image/png" href="http://lafondationphoenix.com/jeanforteroche/public/images/favicon.png" />
-			
+
 			<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<title>Rédaction d'un <?= $type ?></title>
 	</head>
 	<body>
 		<?php
-			include('view/frontend/header.php');
-			include('view/backend/lateralBar.php');
-		?>
+            include('view/frontend/header.php');
+            include('view/backend/lateralBar.php');
+        ?>
 
 		<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
 			<?php
-			include('view/backend/mobileMenu.php');
-			?>
+            include('view/backend/mobileMenu.php');
+            ?>
 		</div>
 
-		<div class="col-lg-4 col-lg-pull-0 col-md-4 col-md-pull-0 col-sm-8 col-sm-pull-1 col-xs-12 col-xs-pull-0 first-panel first-panel-back"> 	
+		<div class="col-lg-4 col-lg-pull-0 col-md-4 col-md-pull-0 col-sm-8 col-sm-pull-1 col-xs-12 col-xs-pull-0 first-panel first-panel-back">
 
 			<h2 class="first-panel-title">RÉDIGER UN <?= $type ?></h2>
 			<div class="chains-nails-contener">
 	    		<div>
-					<img src="public/images/chain2.png" alt="" class="back-first-panel-left-chain"> 	
+					<img src="public/images/chain2.png" alt="" class="back-first-panel-left-chain">
 					<img src="public/images/chain2.png" alt="" class="back-first-panel-right-chain">
 					<img src="public/images/nail1.png" alt="" class="back-first-panel-left-nail-new-article">
 					<img src="public/images/nail1.png" alt="" class="back-first-panel-right-nail-new-article">
@@ -51,7 +51,7 @@
 
 		<!-- JAVASCRIPT -->
 		<!-- FONT AWESOME SCRIPT -->
-			
+
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 		<!-- TINYMCE SCRIPTS -->
@@ -61,7 +61,7 @@
 
 
 	</body>
-	
+
 	<?php
     include('view/frontend/footer.php');
     ?>

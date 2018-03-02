@@ -34,49 +34,45 @@
 <div class="second-level-first-panel-post">
     <!-- BOUCLE RENVOYANT TOUS LES COMMENTAIRES LIÉS AU BILLET AFFICHÉ PRÉCÉDEMMENT -->
 	<?php
-	foreach ($ticketComments as $key => $value) {
-	?>
+    foreach ($ticketComments as $key => $value) {
+        ?>
 		<p><strong><?= $value->getAuthor() ?></strong><?= mb_strimwidth($value->getCommentDate(), 0, 22) ?></p>
 		<p><?= $value->getComment() ?></p>
 
 		<?php
         // LES DEUX PREMIÈRES CONDITIONS S'APPLIQUENT SI DES DONNÉES SONT TRANSMISENT VIA l'URL.
-        if ($value->getReported() === '1' AND isset($_GET['ticket'])) {
+        if ($value->getReported() === '1' and isset($_GET['ticket'])) {
             // AFFICHE QUE LE COMMENTAIRE EST EN ATTENTE DE MODÉRATION
             ?>
             <p class="reported">(message en attente de modération)<br /></p>
         <?php
-        } elseif ($value->getReported() === '0' AND isset($_GET['ticket'])) {
+        } elseif ($value->getReported() === '0' and isset($_GET['ticket'])) {
             // AFFICHE LE LIEN VERS LE SIGNALEMENT DU COMMENTAIRE
             // SI CE DERNIER N'EST PAS DÉJÀ SIGNALÉ
-            $thisComment = $value->getCommentId();
-            ?>
+            $thisComment = $value->getCommentId(); ?>
             <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $_GET['ticket']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">signaler un abus<br /></a>
         <?php
 
         // LES CONDITIONS SUIVANTES S'APPLIQUENT SI AUCUNES DONNÉES NE SONT TRANSMISENT VIA l'URL.
-        } elseif ($value->getReported() === '1' AND !isset($_GET['ticket'])) {
-    		$thisComment = $value->getCommentId();
-            ?>
+        } elseif ($value->getReported() === '1' and !isset($_GET['ticket'])) {
+            $thisComment = $value->getCommentId(); ?>
             <p class="reported">(message en attente de modération)<br /></p>
         <?php
-    	} elseif ($value->getReported() === '0' AND !isset($_GET['ticket'])) {
-    		$thisComment = $value->getCommentId();
-            ?>
+        } elseif ($value->getReported() === '0' and !isset($_GET['ticket'])) {
+            $thisComment = $value->getCommentId(); ?>
             <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $lastTicket->getPostId() ?>&amp;ticket=<?= $lastTicket->getPostId() ?>&amp;episode=<?= $lastEpisode->getPostId() ?>">signaler un abus<br /></a>
         <?php
-    	}
-    	?>
+        } ?>
     	<br />
     <?php
     }
-	?>
+    ?>
 </div>
 
 <!-- CHARGE LE FORMULAIRE D'AJOUT DE COMMENTAIRES -->
 <?php
 // SI PRÉSENCE DE DONNÉES VIA L'URL
-if (isset($_GET['ticket']) AND $ticketCheck->getType() === 'ticket' AND $ticketCheck->getPostId() != Null) {
+if (isset($_GET['ticket']) and $ticketCheck->getType() === 'ticket' and $ticketCheck->getPostId() != null) {
     ?>
     <form class="ticket-comment-form" action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=ticket&amp;post=<?= $_GET['ticket'] ?>" method="post" id="ticket-comment-form">
         <div>
@@ -98,5 +94,5 @@ if (isset($_GET['ticket']) AND $ticketCheck->getType() === 'ticket' AND $ticketC
 		<a href="index.php?ticket=<?= $lastTicket->getPostId() ?>&amp;episode=<?= $lastEpisode->getPostId() ?>#ticket-comment-form">Laisser un commentaire</a>
 	</div>
 <?php
-}
+    }
 ?>
