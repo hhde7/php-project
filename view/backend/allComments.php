@@ -45,9 +45,11 @@
                 if ($_GET['page'] == 1) {
                     $start = 0;
                     $end = 20;
-                } elseif ($_GET['page'] > 1) {
+                } elseif ($_GET['page'] > 1)  {
                     $start = htmlspecialchars($_GET['page'])*20 - 20;
                     $end = htmlspecialchars($_GET['page'])*20;
+                } else {
+                	die;
                 }
                 // BOUCLE AFFICHANT LES COMMENTAIRES EXISTANTS POUR CHAQUE PAGE
                 for ($i=$start; $i < $end ; $i++) {
@@ -67,17 +69,26 @@
             ?>
 			</table>
 
-			<p class="active-page">Page : <?= htmlspecialchars($_GET['page']) ?></p>
-			<p id="pagination">Aller à la page :
+			<p id="pagination">Allez à la page :
 			<?php
             // PAGINATION
             for ($j=0; $j < $pagesNumber; $j++) {
                 ?>
-		    	<a class="pages-number" href="index.php?action=allComments&page=<?= $j+1 ?>"><?= $j+1 ?></a>
+			    <a class="pages-number" href="index.php?action=allEpisodes&page=<?= $j+1 ?>"><?= $j+1 ?></a>
 			<?php
             }
             ?>
 			</p>
+			<p class="active-page">Page :
+				<?php
+                if (htmlspecialchars($_GET['page']) <= $pagesNumber) {
+                    ?>
+				<?= htmlspecialchars($_GET['page']) ?></p>
+				<?php
+                } else {
+                    echo  'inconnue </p>' ;
+                }
+            ?>
 		</div>
 
 		<!-- JAVASCRIPT -->
