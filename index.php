@@ -60,7 +60,7 @@ try {
                 } elseif (isset($_GET['edit'])) {
                     $controller->displayArticleWriter();
                 } elseif (isset($_GET['update'])) {
-                    $controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_POST['creationDate'], $_GET['type']);
+                    $controller->updateArticle(htmlspecialchars($_GET['update']), htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']), htmlspecialchars($_POST['creationDate']), htmlspecialchars($_GET['type']));
                     $controller->displayPost();
                 }
             } else {
@@ -74,7 +74,7 @@ try {
                 } elseif (isset($_GET['edit'])) {
                     $controller->displayArticleWriter();
                 } elseif (isset($_GET['update'])) {
-                    $controller->updateArticle($_GET['update'], $_POST['title'], $_POST['content'], $_POST['creationDate'], $_GET['type']);
+                    $controller->updateArticle(htmlspecialchars($_GET['update']), htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']), htmlspecialchars($_POST['creationDate']), htmlspecialchars($_GET['type']));
                     $controller->displayPost();
                 }
             } else {
@@ -102,7 +102,7 @@ try {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
                 $controller->displayWriteNewArticle();
                 if (isset($_GET['posted']) and isset($_POST['title']) and isset($_POST['content'])) {
-                    $controller->addPost($_POST['title'], $_POST['content'], $_GET['posted']);
+                    $controller->addPost(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']), htmlspecialchars($_GET['posted']));
                 }
             } else {
                 throw new Exception('impossible d\' enregisterer l\'article');
@@ -132,24 +132,24 @@ try {
             elseif (isset($_GET['confirm']) and $_GET['confirm'] == 'delete') {
                 // SUPPRESSION : EPISODE OU BILLET
                 if (isset($_GET['from']) and  $_GET['from'] == 'allEpisodes') {
-                    $controller->moderatePost($_GET['delete']);
+                    $controller->moderatePost(htmlspecialchars($_GET['delete']));
                     header('location: index.php?action=allEpisodes&page=' . htmlspecialchars($_GET['page']));
                 } elseif (isset($_GET['from']) and  $_GET['from'] == 'allTickets') {
-                    $controller->moderatePost($_GET['delete']);
+                    $controller->moderatePost(htmlspecialchars($_GET['delete']));
                     header('location: index.php?action=allTickets&page=' . htmlspecialchars($_GET['page']));
                 }
                 // SUPPRESSION : COMMENTAIRE
                 elseif (isset($_GET['from']) and ($_GET['from'] == 'dashboard')) {
-                    $controller->moderateComment($_GET['delete'], 'delete');
+                    $controller->moderateComment(htmlspecialchars($_GET['delete']), 'delete');
                     header('location: index.php?action=dashboard');
                 } elseif (isset($_GET['from']) and ($_GET['from'] == 'allComments')) {
-                    $controller->moderateComment($_GET['delete'], 'delete');
+                    $controller->moderateComment(htmlspecialchars($_GET['delete']), 'delete');
                     header('location: index.php?action=allComments&page=' . htmlspecialchars($_GET['page']));
                 } elseif (isset($_GET['from']) and ($_GET['from'] == 'reportedComments')) {
-                    $controller->moderateComment($_GET['delete'], 'delete');
+                    $controller->moderateComment(htmlspecialchars($_GET['delete']), 'delete');
                     header('location: index.php?action=reportedComments&page=' . htmlspecialchars($_GET['page']));
                 } else {
-                    throw new Exception('c\'est là que ça plante');
+                    throw new Exception('Erreur de paramètre dans l\url');
                 }
             }
         }

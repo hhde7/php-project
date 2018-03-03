@@ -34,7 +34,7 @@
 				</div>
 			</div>
 
-			<form action="index.php?action=<?= $_GET['action'] ?>&amp;posted=<?= $_GET['action'] ?>" method="post">
+			<form action="index.php?action=<?= htmlspecialchars($_GET['action']) ?>&amp;posted=<?= htmlspecialchars($_GET['action']) ?>" method="post">
 	            <div>
 	                <label for="author">Titre</label><br />
 	                <input type="text" class="title" name="title" maxlength="45" required/>

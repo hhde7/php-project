@@ -46,8 +46,8 @@
                     $start = 0;
                     $end = 20;
                 } elseif ($_GET['page'] > 1) {
-                    $start = $_GET['page']*20 - 20;
-                    $end = $_GET['page']*20;
+                    $start = htmlspecialchars($_GET['page'])*20 - 20;
+                    $end = htmlspecialchars($_GET['page'])*20;
                 }
                 // BOUCLE AFFICHANT LES COMMENTAIRES EXISTANTS POUR CHAQUE PAGE
                 for ($i=$start; $i < $end ; $i++) {
@@ -57,8 +57,8 @@
 							<td class="table-author"><?= mb_strimwidth($comments[$i]->getAuthor(), 0, 15, '...') ?></td>
 							<td class="table-date-comment"><?= mb_strimwidth($comments[$i]->getCommentDate(), 4, 18)?></td>
 							<td class="table-options">
-								<a href="index.php?action=allComments&amp;see=<?= $comments[$i]->getCommentId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
-								<a href="index.php?action=moderate&amp;delete=<?= $comments[$i]->getCommentId() ?>&amp;from=allComments&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="fas fa-minus-circle"></i></a>
+								<a href="index.php?action=allComments&amp;see=<?= $comments[$i]->getCommentId() ?>&amp;page=<?= htmlspecialchars($_GET['page']) ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+								<a href="index.php?action=moderate&amp;delete=<?= $comments[$i]->getCommentId() ?>&amp;from=allComments&amp;page=<?= htmlspecialchars($_GET['page']) ?>" title="Supprimer"><i class="fas fa-minus-circle"></i></a>
 							</td>
 						</tr>
 					<?php
@@ -67,7 +67,7 @@
             ?>
 			</table>
 
-			<p class="active-page">Page : <?= $_GET['page'] ?></p>
+			<p class="active-page">Page : <?= htmlspecialchars($_GET['page']) ?></p>
 			<p id="pagination">Aller à la page :
 			<?php
             // PAGINATION

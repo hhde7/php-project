@@ -46,8 +46,8 @@
                     $start = 0;
                     $end = 20;
                 } elseif ($_GET['page'] > 1) {
-                    $start = $_GET['page']*20 - 20;
-                    $end = $_GET['page']*20;
+                    $start = htmlspecialchars($_GET['page'])*20 - 20;
+                    $end = htmlspecialchars($_GET['page'])*20;
                 }
                 // BOUCLE AFFICHANT LES BILLETS EXISTANTS POUR CHAQUE PAGE
                 for ($i=$start; $i < $end ; $i++) {
@@ -57,9 +57,9 @@
 							<td class="table-title"><?= mb_strimwidth($tickets[$i]->getTitle(), 0, 45, '...') ?></td>
 							<td class="table-date"><?= mb_strimwidth($tickets[$i]->getCreationDate(), 10, 18) ?></td>
 							<td class="table-options">
-								<a href="index.php?action=allTickets&amp;see=<?= $tickets[$i]->getPostId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
-								<a href="index.php?action=allTickets&amp;edit=<?= $tickets[$i]->getPostId() ?>&amp;type=ticket&amp;page=<?= $_GET['page'] ?>" title="Modifier"><i class="far fa-edit"></i></a>
-								<a href="index.php?action=moderate&amp;delete=<?= $tickets[$i]->getPostId() ?>&amp;from=allTickets&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="far fa-trash-alt"></i></a>
+								<a href="index.php?action=allTickets&amp;see=<?= $tickets[$i]->getPostId() ?>&amp;page=<?= htmlspecialchars($_GET['page']) ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+								<a href="index.php?action=allTickets&amp;edit=<?= $tickets[$i]->getPostId() ?>&amp;type=ticket&amp;page=<?= htmlspecialchars($_GET['page']) ?>" title="Modifier"><i class="far fa-edit"></i></a>
+								<a href="index.php?action=moderate&amp;delete=<?= $tickets[$i]->getPostId() ?>&amp;from=allTickets&amp;page=<?= htmlspecialchars($_GET['page']) ?>" title="Supprimer"><i class="far fa-trash-alt"></i></a>
 							</td>
 						</tr>
 					<?php
@@ -68,7 +68,7 @@
             ?>
 			</table>
 
-			<p class="active-page">Page : <?= $_GET['page'] ?></p>
+			<p class="active-page">Page : <?= htmlspecialchars($_GET['page']) ?></p>
 			<p id="pagination">Allez à la page :
 			<?php
             // PAGINATION

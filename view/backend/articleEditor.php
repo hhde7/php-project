@@ -8,7 +8,7 @@
 			<img src="public/images/nail1.png" alt="" class="back-second-panel-right-nail-article-editor">
 		</div>
 	</div>
-	<form name="formulaire" id="formulaire" action="index.php?action=<?= $_GET['action'] ?>&amp;update=<?= $_GET['edit'] ?>&amp;type=<?= $_GET['type'] ?>&amp;from=allEpisodes&amp;page=<?= $_GET['page'] ?>" method="post">
+	<form name="formulaire" id="formulaire" action="index.php?action=<?= htmlspecialchars($_GET['action']) ?>&amp;update=<?= htmlspecialchars($_GET['edit']) ?>&amp;type=<?= htmlspecialchars($_GET['type']) ?>&amp;from=allEpisodes&amp;page=<?= htmlspecialchars($_GET['page']) ?>" method="post">
 	    <label>Titre :</label><br />
 	    <input type="text" value="<?= $episode->getTitle() ?>" class="title" name="title" maxlength="45" required/><br />
 	   	<label>Modifier la date</label><br />

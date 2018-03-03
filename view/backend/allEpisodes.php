@@ -46,8 +46,8 @@
                     $start = 0;
                     $end = 20;
                 } elseif ($_GET['page'] > 1) {
-                    $start = $_GET['page']*20 - 20;
-                    $end = $_GET['page']*20;
+                    $start = htmlspecialchars($_GET['page'])*20 - 20;
+                    $end = htmlspecialchars($_GET['page'])*20;
                 }
                 // BOUCLE AFFICHANT LES ÉPISODES EXISTANTS POUR CHAQUE PAGE
                 for ($i=$start; $i < $end ; $i++) {
@@ -57,9 +57,9 @@
 							<td class="table-title"><?= mb_strimwidth($episodes[$i]->getTitle(), 0, 45, '...') ?></td>
 							<td class="table-date"><?= mb_strimwidth($episodes[$i]->getCreationDate(), 10, 18) ?></td>
 							<td class="table-options">
-								<a href="index.php?action=allEpisodes&amp;see=<?= $episodes[$i]->getPostId() ?>&amp;page=<?= $_GET['page'] ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
-								<a href="index.php?action=allEpisodes&amp;edit=<?= $episodes[$i]->getPostId() ?>&amp;type=episode&amp;page=<?= $_GET['page'] ?>" title="Modifier"><i class="far fa-edit"></i></a>
-								<a href="index.php?action=moderate&amp;delete=<?= $episodes[$i]->getPostId() ?>&amp;type=<?= $episodes[$i]->getType()?>&amp;from=allEpisodes&amp;page=<?= $_GET['page'] ?>" title="Supprimer"><i class="far fa-trash-alt"></i></a>
+								<a href="index.php?action=allEpisodes&amp;see=<?= $episodes[$i]->getPostId() ?>&amp;page=<?= htmlspecialchars($_GET['page']) ?>" title="Voir"><i class="fas fa-plus-circle"></i></a>
+								<a href="index.php?action=allEpisodes&amp;edit=<?= $episodes[$i]->getPostId() ?>&amp;type=episode&amp;page=<?= htmlspecialchars($_GET['page']) ?>" title="Modifier"><i class="far fa-edit"></i></a>
+								<a href="index.php?action=moderate&amp;delete=<?= $episodes[$i]->getPostId() ?>&amp;type=<?= $episodes[$i]->getType()?>&amp;from=allEpisodes&amp;page=<?= htmlspecialchars($_GET['page']) ?>" title="Supprimer"><i class="far fa-trash-alt"></i></a>
 							</td>
 						</tr>
 					<?php
@@ -68,7 +68,7 @@
             ?>
 			</table>
 
-			<p class="active-page">Page : <?= $_GET['page'] ?></p>
+			<p class="active-page">Page : <?= htmlspecialchars($_GET['page']) ?></p>
 			<p id="pagination">Allez à la page :
 			<?php
             // PAGINATION

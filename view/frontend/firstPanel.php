@@ -50,7 +50,7 @@
             // AFFICHE LE LIEN VERS LE SIGNALEMENT DU COMMENTAIRE
             // SI CE DERNIER N'EST PAS DÉJÀ SIGNALÉ
             $thisComment = $value->getCommentId(); ?>
-            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= $_GET['ticket']?>&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>">signaler un abus<br /></a>
+            <a class="report-it" href="index.php?action=report&amp;comment=<?= $thisComment ?>&amp;id=<?= htmlspecialchars($_GET['ticket']) ?>&amp;ticket=<?= htmlspecialchars($_GET['ticket']) ?>&amp;episode=<?= htmlspecialchars($_GET['episode']) ?>">signaler un abus<br /></a>
         <?php
 
         // LES CONDITIONS SUIVANTES S'APPLIQUENT SI AUCUNES DONNÉES NE SONT TRANSMISENT VIA l'URL.
@@ -74,7 +74,7 @@
 // SI PRÉSENCE DE DONNÉES VIA L'URL
 if (isset($_GET['ticket']) and $ticketCheck->getType() === 'ticket' and $ticketCheck->getPostId() != null) {
     ?>
-    <form class="ticket-comment-form" action="index.php?action=addComment&amp;ticket=<?= $_GET['ticket'] ?>&amp;episode=<?= $_GET['episode'] ?>&amp;type=ticket&amp;post=<?= $_GET['ticket'] ?>" method="post" id="ticket-comment-form">
+    <form class="ticket-comment-form" action="index.php?action=addComment&amp;ticket=<?= htmlspecialchars($_GET['ticket']) ?>&amp;episode=<?= htmlspecialchars($_GET['episode']) ?>&amp;type=ticket&amp;post=<?= htmlspecialchars($_GET['ticket']) ?>" method="post" id="ticket-comment-form">
         <div>
             <label for="ticket-comment-author">Pseudo</label><br />
             <input type="text" id="ticket-comment-author" name="author" required/>
