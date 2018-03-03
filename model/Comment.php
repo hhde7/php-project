@@ -8,20 +8,25 @@ class Comment
     private $postType;
     private $author;
     private $comment;
-    private $commentDate;
+    private $commentDateFr;
     private $reported;
 
     public function __construct($data)
     {
-        $this->id = $data['id'];
-        $this->postId = $data['postId'];
-        $this->postType = $data['postType'];
-        $this->author = $data['author'];
-        $this->comment = $data['comment'];
-        $this->commentDate = $data['commentDateFr'];
-        $this->reported = $data['reported'];
+        if (is_array($data)) {
+            $this->hydrate($data);
+        }
+    }
 
-        return $this;
+    public function hydrate($data)
+    {
+        foreach ($data as $key => $value) {
+            $method = 'set'.ucfirst($key);
+
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
     public function getCommentId()
@@ -29,9 +34,9 @@ class Comment
         return $this->id;
     }
 
-    public function setCommentId($commentId)
+    public function setId($Id)
     {
-        $this->id = $commentId;
+        $this->id = $Id;
     }
 
     public function getPostId()
@@ -49,7 +54,7 @@ class Comment
         return $this->postType;
     }
 
-    public function setPostType($postId)
+    public function setPostType($postType)
     {
         $this->postType = $postType;
     }
@@ -76,12 +81,12 @@ class Comment
 
     public function getCommentDate()
     {
-        return $this->commentDate;
+        return $this->commentDateFr;
     }
 
-    public function setCommentDate($commentDate)
+    public function setCommentDateFr($commentDateFr)
     {
-        $this->commentDate = $commentDate;
+        $this->commentDateFr = $commentDateFr;
     }
 
     public function getReported()

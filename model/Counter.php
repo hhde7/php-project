@@ -10,10 +10,20 @@ class Counter
 
     public function __construct($data)
     {
-        $this->postId = $data['postId'];
-        $this->ip = $data['ip'];
-        $this->postType = $data['postType'];
-        $this->accessDate = $data['accessDate'];
+        if (is_array($data)) {
+            $this->hydrate($data);
+        }
+    }
+
+    public function hydrate($data)
+    {
+        foreach ($data as $key => $value) {
+            $method = 'set'.ucfirst($key);
+
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
     public function getPostId()

@@ -5,17 +5,26 @@ class Post
 {
     private $id;
     private $title;
-    private $creationDate;
+    private $creationDateFr;
     private $content;
     private $type;
 
     public function __construct($data)
     {
-        $this->id = $data['id'];
-        $this->title = $data['title'];
-        $this->creationDate = $data['creationDateFr'];
-        $this->content = $data['content'];
-        $this->type = $data['type'];
+        if (is_array($data)) {
+            $this->hydrate($data);
+        }
+    }
+
+    public function hydrate($data)
+    {
+        foreach ($data as $key => $value) {
+            $method = 'set'.ucfirst($key);
+
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
     }
 
     public function getPostId()
@@ -23,8 +32,9 @@ class Post
         return $this->id;
     }
 
-    public function setPostId($id)
+    public function setId($id)
     {
+
         $this->id = $id;
     }
 
@@ -50,12 +60,12 @@ class Post
 
     public function getCreationDate()
     {
-        return 'publié le ' . $this->creationDate;
+        return 'publié le ' . $this->creationDateFr;
     }
 
-    public function setCreationDate($creationDate)
+    public function setCreationDateFr($creationDateFr)
     {
-        $this->creationDate = $creationDate;
+        $this->creationDateFr = $creationDateFr;
     }
 
     public function getType()
@@ -66,5 +76,6 @@ class Post
     public function setType($type)
     {
         $this->type = $type;
+
     }
 }
