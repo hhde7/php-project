@@ -13,7 +13,7 @@ class CommentManager extends Manager
     public function getAllComments($postId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE postId = ? ORDER BY commentDateFr DESC');
+        $req = $db->prepare('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE postId = ? ORDER BY commentDate DESC');
         $req->execute(array($postId));
         $data = $req->fetchAll();
         $allComments = array();
@@ -29,7 +29,7 @@ class CommentManager extends Manager
     public function getAllUnsortedComments()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments ORDER BY commentDateFr DESC');
+        $req = $db->query('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments ORDER BY commentDate DESC');
         $data = $req->fetchAll();
         $allComments = array();
 
@@ -59,7 +59,7 @@ class CommentManager extends Manager
     public function getComment($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE id = ? ORDER BY commentDateFr DESC');
+        $req = $db->prepare('SELECT id, postId, postType, author, comment, DATE_FORMAT(commentDate, \' le %d/%m/%Y à %Hh%imin%ss\') AS commentDateFr, reported FROM comments WHERE id = ? ORDER BY commentDate DESC');
         $req->execute(array($id));
         $data = $req->fetch();
         $comment = new Comment($data);
