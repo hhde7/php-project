@@ -1,5 +1,4 @@
 <?php
-require_once "model/CounterManager.php";
 
 if (!isset($_GET['ticket']) or !isset($_GET['episode'])) {
     $episodeId = $lastEpisode->getPostId();

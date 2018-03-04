@@ -1,8 +1,3 @@
-<?php
-require_once "model/CommentManager.php";
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 	<head>

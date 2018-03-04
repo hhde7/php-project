@@ -1,11 +1,6 @@
 <?php
 namespace JeanForteroche\Blog\Controller;
 
-require_once "model/PostManager.php";
-require_once "model/CommentManager.php";
-require_once "model/MemberManager.php";
-require_once "model/CounterManager.php";
-
 class Controller
 {
     public function home() // PERMET LA NAVIGATION SIMULTANNÉE ET INDÉPENDANTE ENTRE LES ÉPISODES ET LES BILLETS
@@ -124,7 +119,7 @@ class Controller
                 $nextEpisodeLink = '<a class="next-episode-link" href="index.php?ticket='. $ticket->getPostId() .'&amp;episode='. $nextEpisode->getPostId() .'"><i class="far fa-hand-point-right fa-lg"></i></a>';
             }
         } else {
-            throw new Exception("Erreur de navigation");
+            throw new \Exception("Erreur de navigation");
         }
 
         require "view/frontend/homeView.php";
@@ -192,7 +187,7 @@ class Controller
         $newCommentDatas = $commentManager->postComment($postId, $postType, $author, $comment);
 
         if ($newCommentDatas === false) {
-            throw new Exception('Impossible d\'ajouter le commentaire !');
+            throw new \Exception('Impossible d\'ajouter le commentaire !');
         } else {
             header('location: index.php?ticket=' . htmlspecialchars($_GET['ticket']) . '&episode=' . htmlspecialchars($_GET['episode']));
         }
@@ -223,13 +218,13 @@ class Controller
 
                     require "view/frontend/reportView.php";
                 } else {
-                    throw new Exception("Des informations manquent pour effectuer cette opération");
+                    throw new \Exception("Des informations manquent pour effectuer cette opération");
                 }
             } else {
-                throw new Exception("Le commentaire ne correspond pas à l'article");
+                throw new \Exception("Le commentaire ne correspond pas à l'article");
             }
         } else {
-            throw new Exception("Le commentaire à signaler n'existe pas");
+            throw new \Exception("Le commentaire à signaler n'existe pas");
         }
     }
 
@@ -254,13 +249,13 @@ class Controller
 
                     require "view/frontend/reportView.php";
                 } else {
-                    throw new Exception("Des informations manquent pour effectuer cette opération");
+                    throw new \Exception("Des informations manquent pour effectuer cette opération");
                 }
             } else {
-                throw new Exception("Le commentaire ne correspond pas à l'article");
+                throw new \Exception("Le commentaire ne correspond pas à l'article");
             }
         } else {
-            throw new Exception("Le commentaire à signaler n'existe pas");
+            throw new \Exception("Le commentaire à signaler n'existe pas");
         }
     }
 
@@ -325,7 +320,7 @@ class Controller
 				<a href="index.php?action=reportedComments&amp;page=' . htmlspecialchars($_GET['page']) . '"><input type="button" value="Non" /></a>';
             }
         } else {
-            throw new Exception('impossible de récupérer les données de l\'élément');
+            throw new \Exception('impossible de récupérer les données de l\'élément');
         }
 
 
@@ -341,7 +336,7 @@ class Controller
         } elseif (isset($action) and $action == 'allow') {
             $commentManager->allowComment($id);
         } else {
-            throw new Exception('impossible de modérer ce commentaire');
+            throw new \Exception('impossible de modérer ce commentaire');
         }
     }
 
@@ -370,7 +365,8 @@ class Controller
         $member = $memberManager->memberCheck($email, $password);
 
         if ($member->getEmail() !== $email or $member->getPassword() !== $password) {
-            throw new Exception('Les identifiants sont incorrects');
+
+            throw new \Exception('Les identifiants sont incorrects');
         } else {
             $_SESSION['email'] = $email;
             $_SESSION['password'] = $password;

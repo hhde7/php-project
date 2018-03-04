@@ -1,13 +1,6 @@
 <?php
 namespace JeanForteroche\Blog\Model;
 
-use JeanForteroche\Blog\Model\Comment;
-use JeanForteroche\Blog\Model\Post;
-
-require_once "model/Manager.php";
-require_once "model/Comment.php";
-require_once "model/Post.php";
-
 class CommentManager extends Manager
 {
     public function getAllComments($postId)

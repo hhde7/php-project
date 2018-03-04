@@ -1,10 +1,6 @@
 <?php
 namespace JeanForteroche\Blog\Model;
 
-use JeanForteroche\Blog\Model\Counter;
-
-require_once "model/Counter.php";
-
 class CounterManager extends Manager
 {
     public function setCount($postId, $ip, $postType)

@@ -1,11 +1,6 @@
 <?php
 namespace JeanForteroche\Blog\Model;
 
-use JeanForteroche\Blog\Model\Post;
-
-require_once "model/Manager.php";
-require_once "model/Post.php";
-
 class PostManager extends Manager
 {
     public function getAllPosts()

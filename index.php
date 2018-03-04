@@ -1,7 +1,11 @@
 <?php
+namespace JeanForteroche\Blog;
+
 session_start();
 
-require_once "controller/Controller.php";
+require_once "Autoloader.php";
+\JeanForteroche\Blog\Autoloader::register();
+
 $controller = new \JeanForteroche\Blog\Controller\Controller();
 
 try {
@@ -17,16 +21,16 @@ try {
                 if (!empty($_POST['author']) and !empty($_POST['comment'])) {
                     $controller->addComment(htmlspecialchars($_GET['post']), htmlspecialchars($_GET['type']), htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']));
                 } else {
-                    throw new Exception('tous les champs ne sont pas remplis !');
+                    throw new \Exception('tous les champs ne sont pas remplis !');
                 }
             } else {
-                throw new Exception('aucun identifiant de billet envoyé');
+                throw new \Exception('aucun identifiant de billet envoyé');
             }
         } elseif ($_GET['action'] == 'report' and isset($_GET['comment'], $_GET['id'], $_GET['ticket'], $_GET['episode'])) {
             if (!isset($_GET['reported'])) {
                 $controller->confirmReport(htmlspecialchars($_GET['comment']));
             } else {
-                throw new Exception('impossible de signaler ce commentaire');
+                throw new \Exception('impossible de signaler ce commentaire');
             }
         } elseif ($_GET['action'] == 'report' and isset($_GET['reported'], $_GET['id'], $_GET['ticket'], $_GET['episode'])) {
             $controller->reportComment(htmlspecialchars($_GET['reported']));
@@ -36,7 +40,7 @@ try {
             } elseif (isset($_SESSION['email']) and isset($_SESSION['password'])) {
                 $controller->displayDashboard();
             } else {
-                throw new Exception('erreur d\'accès à la page de connexion');
+                throw new \Exception('erreur d\'accès à la page de connexion');
             }
         } elseif ($_GET['action'] == 'loginCheck') {
             if (isset($_POST['email']) and isset($_POST['password']) or !isset($_SESSION['email']) and !isset($_SESSION['password'])) {
@@ -44,13 +48,13 @@ try {
             } elseif (isset($_SESSION['email']) and isset($_SESSION['password'])) {
                 $controller->displayDashboard();
             } else {
-                throw new Exception('erreur d\'accès à la page de connexion');
+                throw new \Exception('erreur d\'accès à la page de connexion');
             }
         } elseif ($_GET['action'] == 'dashboard') {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
                 $controller->displayDashboard();
             } else {
-                throw new Exception('impossible de charger l\'espace membre');
+                throw new \Exception('impossible de charger l\'espace membre');
             }
         } elseif ($_GET['action'] == 'allEpisodes') {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
@@ -64,7 +68,7 @@ try {
                     $controller->displayPost();
                 }
             } else {
-                throw new Exception('impossible de charger la liste des épisodes');
+                throw new \Exception('impossible de charger la liste des épisodes');
             }
         } elseif ($_GET['action'] == 'allTickets') {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
@@ -78,7 +82,7 @@ try {
                     $controller->displayPost();
                 }
             } else {
-                throw new Exception('impossible de charger la liste des billets');
+                throw new \Exception('impossible de charger la liste des billets');
             }
         } elseif ($_GET['action'] == 'allComments') {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
@@ -87,7 +91,7 @@ try {
                     $controller->displayComment();
                 }
             } else {
-                throw new Exception('impossible de charger la liste des commentaires');
+                throw new \Exception('impossible de charger la liste des commentaires');
             }
         } elseif ($_GET['action'] == 'reportedComments') {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
@@ -96,7 +100,7 @@ try {
                     $controller->displayComment();
                 }
             } else {
-                throw new Exception('impossible de charger la liste des commentaires');
+                throw new \Exception('impossible de charger la liste des commentaires');
             }
         } elseif ($_GET['action'] == 'episode' or $_GET['action'] == 'ticket') {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
@@ -105,13 +109,13 @@ try {
                     $controller->addPost(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']), htmlspecialchars($_GET['posted']));
                 }
             } else {
-                throw new Exception('impossible d\' enregisterer l\'article');
+                throw new \Exception('impossible d\' enregisterer l\'article');
             }
         } elseif ($_GET['action'] == 'logout') {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
                 $controller->logout();
             } else {
-                throw new Exception('il y a eu un problème lors de la déconnection...');
+                throw new \Exception('il y a eu un problème lors de la déconnection...');
             }
         } elseif ($_GET['action'] == 'moderate' and isset($_SESSION['email']) and isset($_SESSION['password'])) {
             if ((isset($_GET['allow']) and !isset($_GET['confirm'])) or (isset($_GET['delete']) and !isset($_GET['confirm']))) {
@@ -149,14 +153,15 @@ try {
                     $controller->moderateComment(htmlspecialchars($_GET['delete']), 'delete');
                     header('location: index.php?action=reportedComments&page=' . htmlspecialchars($_GET['page']));
                 } else {
-                    throw new Exception('Erreur de paramètre dans l\url');
+                    throw new \Exception('Erreur de paramètre dans l\url');
                 }
             }
         }
     } else {
         $controller->home();
     }
-} catch (Exception $e) {
+} catch (\Exception $e) {
     $errorMessage = 'Message : ' . $e->getMessage();
+
     require "view/frontend/404.php";
 }
