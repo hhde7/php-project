@@ -1,4 +1,6 @@
 <?php
+namespace JeanForteroche\Blog\Controller;
+
 require_once "model/PostManager.php";
 require_once "model/CommentManager.php";
 require_once "model/MemberManager.php";
@@ -8,9 +10,9 @@ class Controller
 {
     public function home() // PERMET LA NAVIGATION SIMULTANNÉE ET INDÉPENDANTE ENTRE LES ÉPISODES ET LES BILLETS
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
-        $counterManager = new JeanForteroche\Blog\Model\CounterManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+        $counterManager = new \JeanForteroche\Blog\Model\CounterManager();
 
         $ip = $_SERVER['REMOTE_ADDR'];
         $episodes = $postManager->getAllEpisodes();
@@ -130,8 +132,8 @@ class Controller
 
     public function ticketsMobile()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
         $firstTicket = $postManager->getFirstTicket();
         $firstEpisode = $postManager->getFirstEpisode();
@@ -173,7 +175,7 @@ class Controller
 
     public function mobileList()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
 
         $episodes = $postManager->getAllEpisodes();
 
@@ -185,7 +187,7 @@ class Controller
 
     public function addComment($postId, $postType, $author, $comment)
     {
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
         $newCommentDatas = $commentManager->postComment($postId, $postType, $author, $comment);
 
@@ -198,14 +200,14 @@ class Controller
 
     public function addPost($title, $content, $type)
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
         $newPost = $postManager->newPost($title, $content, $type);
     }
 
     public function confirmReport($commentId)
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
         $postIdCheck = $postManager->getPost(htmlspecialchars($_GET['id']));
         $commentIdCheck = $commentManager->getComment(htmlspecialchars($_GET['comment']));
@@ -233,8 +235,8 @@ class Controller
 
     public function reportComment($commentId)
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
         $postIdCheck = $postManager->getPost(htmlspecialchars($_GET['id']));
         $reportedCommentIdCheck = $commentManager->getComment(htmlspecialchars($_GET['reported']));
@@ -264,8 +266,8 @@ class Controller
 
     public function displayModeratePage()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
         // ATTRIBUTION DE L'ICONE
         if ($_GET['from'] == 'allEpisodes') {
@@ -332,7 +334,7 @@ class Controller
 
     public function moderateComment($id, $action)
     {
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
         if (isset($action) and $action == 'delete') {
             $commentManager->deleteComment($id);
@@ -345,14 +347,14 @@ class Controller
 
     public function moderatePost($id)
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
 
         $postManager->deletePost($id);
     }
 
     public function updateArticle($id, $title, $content, $creationDate, $type)
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
 
         $postManager->updatePost($id, $title, $content, $creationDate, $type);
     }
@@ -364,7 +366,7 @@ class Controller
 
     public function loginCheck($email, $password)
     {
-        $memberManager = new JeanForteroche\Blog\Model\MemberManager();
+        $memberManager = new \JeanForteroche\Blog\Model\MemberManager();
         $member = $memberManager->memberCheck($email, $password);
 
         if ($member->getEmail() !== $email or $member->getPassword() !== $password) {
@@ -378,9 +380,9 @@ class Controller
 
     public function displayDashboard()
     {
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager;
-        $postManager = new JeanForteroche\Blog\Model\PostManager;
-        $counterManager = new JeanForteroche\Blog\Model\CounterManager;
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager;
+        $postManager = new \JeanForteroche\Blog\Model\PostManager;
+        $counterManager = new \JeanForteroche\Blog\Model\CounterManager;
 
         $lastEpisode = $postManager->getLastEpisode();
         $lastTicket = $postManager->getLastTicket();
@@ -411,7 +413,7 @@ class Controller
 
     public function displayArticleWriter()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
 
         $episode = $postManager->getPost(htmlspecialchars($_GET['edit']));
         $type = $episode->getType();
@@ -438,9 +440,9 @@ class Controller
 
     public function displayAllEpisodes()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager;
-        $counterManager = new JeanForteroche\Blog\Model\CounterManager;
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager;
+        $counterManager = new \JeanForteroche\Blog\Model\CounterManager;
 
         $episodes = $postManager->getAllEpisodes();
         $pagesNumber = $postManager->paging('episode');
@@ -469,9 +471,9 @@ class Controller
 
     public function displayAllTickets()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager;
-        $counterManager = new JeanForteroche\Blog\Model\CounterManager;
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager;
+        $counterManager = new \JeanForteroche\Blog\Model\CounterManager;
 
         $tickets = $postManager->getAllTickets();
         $pagesNumber = $postManager->paging('ticket');
@@ -500,9 +502,9 @@ class Controller
 
     public function displayAllComments()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager;
-        $counterManager = new JeanForteroche\Blog\Model\CounterManager;
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager;
+        $counterManager = new \JeanForteroche\Blog\Model\CounterManager;
 
         $comments = $commentManager->getAllUnsortedComments();
         $pagesNumber = $commentManager->paging('withReported');
@@ -531,9 +533,9 @@ class Controller
 
     public function displayAllReportedComments()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager;
-        $counterManager = new JeanForteroche\Blog\Model\CounterManager;
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager;
+        $counterManager = new \JeanForteroche\Blog\Model\CounterManager;
 
         $reportedComments = $commentManager->getAllReportedComments();
         $reported = 1;
@@ -563,9 +565,9 @@ class Controller
 
     public function displayWriteNewArticle()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager;
-        $counterManager = new JeanForteroche\Blog\Model\CounterManager;
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager;
+        $counterManager = new \JeanForteroche\Blog\Model\CounterManager;
 
         $episodeStats = $postManager->getAllEpisodes();
         $ticketStats = $postManager->getAllTickets();
@@ -597,8 +599,8 @@ class Controller
 
     public function displayComment()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
-        $commentManager = new JeanForteroche\Blog\Model\CommentManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
+        $commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
         $comment = $commentManager->getComment(htmlspecialchars($_GET['see']));
         $postId = $comment->getPostId();
@@ -616,7 +618,7 @@ class Controller
 
     public function displayPost()
     {
-        $postManager = new JeanForteroche\Blog\Model\PostManager();
+        $postManager = new \JeanForteroche\Blog\Model\PostManager();
 
         // CHOIX DE L'ACTION
         if (isset($_GET['see'])) {

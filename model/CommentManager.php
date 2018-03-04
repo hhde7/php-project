@@ -173,7 +173,7 @@ class CommentManager extends Manager
     {
         $nb_posts = $this->nb_comments($reported);
         $nb_pages = ceil(($nb_posts[0] / 20));
-      
+
         return $nb_pages;
     }
 }

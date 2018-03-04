@@ -2,7 +2,7 @@
 session_start();
 
 require_once "controller/Controller.php";
-$controller = new Controller;
+$controller = new \JeanForteroche\Blog\Controller\Controller();
 
 try {
     if (isset($_GET['action'])) {
