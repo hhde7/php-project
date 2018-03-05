@@ -64,7 +64,7 @@ try {
                 } elseif (isset($_GET['edit'])) {
                     $controller->displayArticleWriter();
                 } elseif (isset($_GET['update'])) {
-                    $controller->updateArticle(htmlspecialchars($_GET['update']), htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']), htmlspecialchars($_POST['creationDate']), htmlspecialchars($_GET['type']));
+                    $controller->updateArticle(htmlspecialchars($_GET['update']), htmlspecialchars($_POST['title']), $_POST['content'], htmlspecialchars($_POST['creationDate']), htmlspecialchars($_GET['type']));
                     $controller->displayPost();
                 }
             } else {
@@ -78,7 +78,7 @@ try {
                 } elseif (isset($_GET['edit'])) {
                     $controller->displayArticleWriter();
                 } elseif (isset($_GET['update'])) {
-                    $controller->updateArticle(htmlspecialchars($_GET['update']), htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']), htmlspecialchars($_POST['creationDate']), htmlspecialchars($_GET['type']));
+                    $controller->updateArticle(htmlspecialchars($_GET['update']), htmlspecialchars($_POST['title']), $_POST['content'], htmlspecialchars($_POST['creationDate']), htmlspecialchars($_GET['type']));
                     $controller->displayPost();
                 }
             } else {
@@ -106,7 +106,7 @@ try {
             if (isset($_GET['action']) and isset($_SESSION['email']) and isset($_SESSION['password'])) {
                 $controller->displayWriteNewArticle();
                 if (isset($_GET['posted']) and isset($_POST['title']) and isset($_POST['content'])) {
-                    $controller->addPost(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['content']), htmlspecialchars($_GET['posted']));
+                    $controller->addPost(htmlspecialchars($_POST['title']), $_POST['content'], htmlspecialchars($_GET['posted']));
                 }
             } else {
                 throw new \Exception('impossible d\' enregisterer l\'article');
