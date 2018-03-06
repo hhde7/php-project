@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="public/css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-		<link rel="icon" type="image/png" href="http://lafondationphoenix.com/jeanforteroche/public/images/favicon.png" />
+		<link rel="icon" type="image/png" href="http://lafondationphoenix.com/JeanForteroche/public/images/favicon.png" />
 
 		<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -14,19 +14,19 @@
 	<body>
 		<div>
 			<?php
-            include "view/frontend/header.php";
+            include "View/frontend/header.php";
         ?>
 		<div>
 
 		<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
 			<?php
-            include "view/backend/mobileMenu.php";
+            include "View/backend/mobileMenu.php";
             ?>
 		</div>
 
 		<div>
 			<?php
-            include "view/backend/lateralBar.php";
+            include "View/backend/lateralBar.php";
             ?>
 		</div>
 

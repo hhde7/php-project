@@ -5,7 +5,7 @@
 			<meta charset="utf-8">
 			<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
-			<link rel="icon" type="image/png" href="http://lafondationphoenix.com/jeanforteroche/public/images/favicon.png" />
+			<link rel="icon" type="image/png" href="http://lafondationphoenix.com/JeanForteroche/public/images/favicon.png" />
 
 			<title>Billet simple pour l'Alaska</title>
 	</head>

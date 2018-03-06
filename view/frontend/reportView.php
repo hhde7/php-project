@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" type="text/css" href="public/css/style.css">
 
-		<link rel="icon" type="image/png" href="http://lafondationphoenix.com/jeanforteroche/public/images/favicon.png" />
+		<link rel="icon" type="image/png" href="http://lafondationphoenix.com/JeanForteroche/public/images/favicon.png" />
 
 		<title>Billet simple pour l'Alaska</title>
 	</head>

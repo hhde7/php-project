@@ -6,30 +6,30 @@
 	<link rel="stylesheet" type="text/css" href="public/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 
-	<link rel="icon" type="image/png" href="http://lafondationphoenix.com/jeanforteroche/public/images/favicon.png" />
+	<link rel="icon" type="image/png" href="http://lafondationphoenix.com/JeanForteroche/public/images/favicon.png" />
 	<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 	<title>Billet simple pour l'Alaska</title>
 </head>
 <body>
-	
+
 	<?php
-    include('view/frontend/header.php');
+    include('View/frontend/header.php');
     ?>
 
 	<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
 		<?php
-        include('view/frontend/mobileMenu.php');
+        include('View/frontend/mobileMenu.php');
         ?>
 	</div>
 	<div class="hidden-lg hidden-md hidden-sm col-xs-12 first-panel first-panel-front">
 		<?php
-        include('view/frontend/firstPanel.php');
+        include('View/frontend/firstPanel.php');
         ?>
 	</div>
 
 	<?php
-    include('view/frontend/footer.php');
+    include('View/frontend/footer.php');
     ?>
 
 

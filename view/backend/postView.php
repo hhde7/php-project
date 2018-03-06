@@ -3,7 +3,7 @@
 	<h2 class="second-panel-title">CONTENU<?= $type ?></h2>
 	<div class="chains-nails-contener">
     	<div>
-			<img src="public/images/chain2.png" alt="" class="back-second-panel-left-chain"> 	
+			<img src="public/images/chain2.png" alt="" class="back-second-panel-left-chain">
 			<img src="public/images/chain2.png" alt="" class="back-second-panel-right-chain">
 			<img src="public/images/nail1.png" alt="" class="back-second-panel-left-nail-article">
 			<img src="public/images/nail1.png" alt="" class="back-second-panel-right-nail-article">

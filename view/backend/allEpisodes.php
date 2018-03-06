@@ -5,19 +5,19 @@
 			<meta charset="utf-8">
 			<link rel="stylesheet" type="text/css" href="public/css/style.css">
 			<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-			<link rel="icon" type="image/png" href="http://lafondationphoenix.com/jeanforteroche/public/images/favicon.png" />
+			<link rel="icon" type="image/png" href="http://lafondationphoenix.com/JeanForteroche/public/images/favicon.png" />
 
 			<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<title>Tous les épisodes</title>
 	</head>
 	<body>
 		<?php
-        include "view/frontend/header.php";
-        include "view/backend/lateralBar.php";
+        include "View/frontend/header.php";
+        include "View/backend/lateralBar.php";
         ?>
 		<div class="hidden-lg hidden-md hidden-sm col-xs-12 mobile-menu">
 			<?php
-            include "view/backend/mobileMenu.php";
+            include "View/backend/mobileMenu.php";
             ?>
 		</div>
 
@@ -99,8 +99,8 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 		<!-- TINYMCE SCRIPTS -->
-		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/js/jquery.min.js"></script>
-		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/plugin/tinymce.min.js"></script>
-		<script type="text/javascript" src="http://localhost/test/jeanforteroche/plugins/tinymce/plugin/init-tinymce.js"></script>
+		<script type="text/javascript" src="http://localhost/test/JeanForteroche/plugins/tinymce/js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://localhost/test/JeanForteroche/plugins/tinymce/plugin/tinymce.min.js"></script>
+		<script type="text/javascript" src="http://localhost/test/JeanForteroche/plugins/tinymce/plugin/init-tinymce.js"></script>
 	</body>
 </html>
