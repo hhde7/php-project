@@ -1,5 +1,5 @@
 <?php
-namespace JeanForteroche\Blog\Model;
+namespace JeanForteroche\Model;
 
 class Manager
 {

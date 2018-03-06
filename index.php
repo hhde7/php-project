@@ -1,12 +1,12 @@
 <?php
-namespace JeanForteroche\Blog;
+namespace JeanForteroche;
 
 session_start();
 
 require_once "Autoloader.php";
-\JeanForteroche\Blog\Autoloader::register();
+\JeanForteroche\Autoloader::register();
 
-$controller = new \JeanForteroche\Blog\Controller\Controller();
+$controller = new \JeanForteroche\Controller\Controller();
 
 try {
     if (isset($_GET['action'])) {
@@ -163,5 +163,5 @@ try {
 } catch (\Exception $e) {
     $errorMessage = 'Message : ' . $e->getMessage();
 
-    require "view/frontend/404.php";
+    require "View/frontend/404.php";
 }

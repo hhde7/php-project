@@ -1,5 +1,5 @@
 <?php
-namespace JeanForteroche\Blog\Model;
+namespace JeanForteroche\Model;
 
 class Post
 {
@@ -34,11 +34,7 @@ class Post
 
     public function setId($id)
     {
-        $id = (int) $id;
-
-        if ($id > 0) {
             $this->id = $id;
-        }
     }
 
     public function getTitle()
