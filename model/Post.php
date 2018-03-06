@@ -34,8 +34,11 @@ class Post
 
     public function setId($id)
     {
+        $id = (int) $id;
 
-        $this->id = $id;
+        if ($id > 0) {
+            $this->id = $id;
+        }
     }
 
     public function getTitle()
@@ -45,6 +48,8 @@ class Post
 
     public function setTitle($title)
     {
+        $title = strval($title);
+        $title = htmlspecialchars($title);
         $this->title = $title;
     }
 
@@ -76,6 +81,5 @@ class Post
     public function setType($type)
     {
         $this->type = $type;
-
     }
 }
